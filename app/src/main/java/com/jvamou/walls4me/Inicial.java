@@ -1,12 +1,10 @@
-package com.jvamou.walls4me.Auth;
+package com.jvamou.walls4me;
 
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.os.Bundle;
 
-import com.jvamou.walls4me.R;
-
-public class InicialActivity extends AppCompatActivity {
+public class Inicial extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
