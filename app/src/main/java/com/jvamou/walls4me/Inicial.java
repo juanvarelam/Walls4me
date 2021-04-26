@@ -14,6 +14,7 @@ public class Inicial extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+        setTheme(R.style.splashTheme);
         super.onCreate(savedInstanceState);
         setContentView(R.layout.act_inicial);
     }
