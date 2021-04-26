@@ -1,4 +1,5 @@
 <resources>
     <string name="app_name">Walls4me</string>
     <string name="act_inicial_slogan">Deja volar tu imaginación...</string>
+    <string name="act_inicial_nombre_app">Walls4me</string>
 </resources>
