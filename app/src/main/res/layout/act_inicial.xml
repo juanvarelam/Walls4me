@@ -4,38 +4,6 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@drawable/background_inicial"
+    android:background="@drawable/fondo_logo"
     android:backgroundTintMode="src_over"
-    tools:context=".Inicial">
-
-
-    <ImageView
-        android:id="@+id/act_inicial_logo"
-        android:layout_width="300dp"
-        android:layout_height="283dp"
-        android:layout_marginTop="135dp"
-        android:layout_marginBottom="313dp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.5"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:srcCompat="@drawable/logo_inicio" />
-
-    <TextView
-        android:id="@+id/act_inicial_nombre_app"
-        android:layout_width="wrap_content"
-        android:layout_height="0dp"
-        android:text="TextView"
-        android:textColor="@color/naranja"
-        android:textColorHint="@color/black"
-        android:textSize="40sp"
-        android:textStyle="bold"
-        android:background="@color/white"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/act_inicial_logo"
-        tools:text="@string/act_inicial_nombre_app" />
-
-
-</androidx.constraintlayout.widget.ConstraintLayout>
+    tools:context=".Inicial"/>

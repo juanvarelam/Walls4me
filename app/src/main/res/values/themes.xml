@@ -14,7 +14,4 @@
         <!-- Customize your theme here. -->
     </style>
 
-    <style name="splashTheme" parent="Theme.Walls4me">
-        <item name="android:windowBackground">@drawable/splash</item>
-    </style>
 </resources>
