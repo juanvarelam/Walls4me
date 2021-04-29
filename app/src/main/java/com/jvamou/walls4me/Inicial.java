@@ -23,3 +23,4 @@ public class Inicial extends AppCompatActivity {
         setContentView(R.layout.act_inicial);
     }
 }
+

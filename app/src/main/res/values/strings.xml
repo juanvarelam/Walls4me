@@ -2,4 +2,7 @@
     <string name="app_name">Walls4me</string>
     <string name="act_inicial_slogan">Deja volar tu imaginación...</string>
     <string name="act_inicial_nombre_app">Walls4me</string>
+    <string name="act_inicial_nombre">Walls4me</string>
+    <string name="act_inicial_txt_boton_login">Iniciar sesión</string>
+    <string name="act_inicial_txt_boton_registrarse">Registrarse</string>
 </resources>
