@@ -5,4 +5,5 @@
     <string name="act_inicial_nombre">Walls4me</string>
     <string name="act_inicial_txt_boton_login">Iniciar sesión</string>
     <string name="act_inicial_txt_boton_registrarse">Registrarse</string>
+    <string name="act_login_txt_cabecera">Iniciar sesión</string>
 </resources>
