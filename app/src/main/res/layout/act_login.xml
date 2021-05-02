@@ -55,7 +55,7 @@
             android:paddingHorizontal="12dp" />
 
         <CheckBox
-            android:id="@+id/checkBox"
+            android:id="@+id/act_login_cbox_pass"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginVertical="8dp"
@@ -67,8 +67,9 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginBottom="4dp"
-            android:background="@color/naranja"
+            android:backgroundTint="@color/naranja"
             android:paddingHorizontal="8dp"
+            android:background="@drawable/fondo_input"
             android:paddingVertical="8dp"
             android:text="@string/act_login_btn_login"
             android:textSize="20sp" />
