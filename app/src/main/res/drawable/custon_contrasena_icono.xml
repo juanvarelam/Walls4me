@@ -2,10 +2,10 @@
 <selector xmlns:android="http://schemas.android.com/apk/res/android">
 
     <item android:state_focused="true"
-    android:drawable="@drawable/ic_correo_focused"/>
+    android:drawable="@drawable/ic_contrasena_focused"/>
 
     <item android:state_focused="false"
-    android:drawable="@drawable/ic_correo"/>
+    android:drawable="@drawable/ic_contrasena"/>
 
 
 </selector>
