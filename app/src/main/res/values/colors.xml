@@ -10,4 +10,5 @@
     <color name="naranja">#FF9B2E</color>
     <color name="gris">#858485</color>
     <color name="naranja_claro">#FBAC59</color>
+    <color name="transparente">#70FF0000</color>
 </resources>
