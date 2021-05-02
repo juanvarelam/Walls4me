@@ -32,6 +32,9 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:ems="10"
+            android:background="@drawable/fondo_input"
+            android:drawableStart="@drawable/ic_correo"
+            android:drawablePadding="12dp"
             android:hint="Correo electrónico"
             android:inputType="textEmailAddress" />
 
@@ -40,7 +43,9 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:ems="10"
-
+            android:background="@drawable/fondo_input"
+            android:drawableStart="@drawable/ic_contrasena"
+            android:drawablePadding="12dp"
             android:hint="Contraseña"
             android:inputType="textPassword" />
 
