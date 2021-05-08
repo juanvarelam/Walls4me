@@ -22,10 +22,12 @@ public class HomeActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.act_home);
 
+        //Listener que recibe el fragment seleccionado por el usuario
         BottomNavigationView btnNavigaton = findViewById(R.id.act_home_botton_navigation);
         btnNavigaton.setOnNavigationItemReselectedListener(mOnNavigationItemReselectedListener);
     }
 
+    //Método que le pasa a cargarFragment() el fragment seleccionado
     private final BottomNavigationView.OnNavigationItemReselectedListener mOnNavigationItemReselectedListener = new BottomNavigationView.OnNavigationItemSelectedListener() {
         @Override
         public boolean onNavigationItemSelected(@NonNull MenuItem item) {
@@ -44,6 +46,11 @@ public class HomeActivity extends AppCompatActivity {
         }
     };
 
-
+    //Método que reemplaza el fragment existente por el nuevo
+    public void cargarFragment(Fragment fragment) {
+        FragmentTransaction transaction = getSupportFragmentManager().beginTransaction();
+        transaction.replace(R.id.act_home_frame_container, fragment);
+        transaction.commit();
+    }
 
 }
