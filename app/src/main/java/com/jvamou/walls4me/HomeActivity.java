@@ -24,11 +24,11 @@ public class HomeActivity extends AppCompatActivity {
 
         //Listener que recibe el fragment seleccionado por el usuario
         BottomNavigationView btnNavigaton = findViewById(R.id.act_home_botton_navigation);
-        btnNavigaton.setOnNavigationItemReselectedListener(mOnNavigationItemReselectedListener);
+        btnNavigaton.setOnNavigationItemReselectedListener((BottomNavigationView.OnNavigationItemReselectedListener) mOnNavigationItemSelectedListener);
     }
 
     //Método que le pasa a cargarFragment() el fragment seleccionado
-    private final BottomNavigationView.OnNavigationItemReselectedListener mOnNavigationItemReselectedListener = new BottomNavigationView.OnNavigationItemSelectedListener() {
+    private final BottomNavigationView.OnNavigationItemSelectedListener mOnNavigationItemSelectedListener = new BottomNavigationView.OnNavigationItemSelectedListener() {
         @Override
         public boolean onNavigationItemSelected(@NonNull MenuItem item) {
             switch(item.getItemId()) {
