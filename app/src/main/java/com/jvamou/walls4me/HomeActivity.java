@@ -24,7 +24,9 @@ public class HomeActivity extends AppCompatActivity {
 
         //Listener que recibe el fragment seleccionado por el usuario
         BottomNavigationView btnNavigaton = findViewById(R.id.act_home_botton_navigation);
-        btnNavigaton.setOnNavigationItemReselectedListener((BottomNavigationView.OnNavigationItemReselectedListener) mOnNavigationItemSelectedListener);
+        btnNavigaton.setOnNavigationItemSelectedListener(mOnNavigationItemSelectedListener);
+
+        cargarFragment(fragmentHome);
     }
 
     //Método que le pasa a cargarFragment() el fragment seleccionado
