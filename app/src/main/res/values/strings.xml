@@ -11,4 +11,7 @@
     <string name="act_login_btn_recordar_pass">Recordar contraseña</string>
     <string name="act_register_txt_cabecera">Registrarse</string>
     <string name="act_register_btn_register">Registrarse</string>
+    <string name="bottom_navigation_inicio">Inicio</string>
+    <string name="bottom_navigation_categorias">Categorías</string>
+    <string name="bottom_navigation_favoritos">Favoritos</string>
 </resources>
