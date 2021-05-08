@@ -2,17 +2,17 @@
 <menu xmlns:android="http://schemas.android.com/apk/res/android">
 
     <item
-        android:id="@+id/fragment1"
+        android:id="@+id/fragment_home"
         android:icon="@drawable/custom_usuario_icono"
         android:title="@string/bottom_navigation_inicio"/>
 
     <item
-        android:id="@+id/fragment2"
+        android:id="@+id/fragment_categorias"
         android:icon="@drawable/custom_usuario_icono"
         android:title="@string/bottom_navigation_categorias"/>
 
     <item
-        android:id="@+id/fragment3"
+        android:id="@+id/fragment_favoritos"
         android:icon="@drawable/custom_usuario_icono"
         android:title="@string/bottom_navigation_favoritos"/>
 </menu>
