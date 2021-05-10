@@ -5,10 +5,8 @@
     android:layout_height="match_parent"
     tools:context=".FragmentHome">
 
-    <TextView
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/frg_home_recycler_home"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:gravity="center"
-        android:text="Fondos" />
-
+        android:layout_height="match_parent" />
 </FrameLayout>

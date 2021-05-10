@@ -5,11 +5,9 @@
     android:layout_height="match_parent"
     tools:context=".FragmentCategorias">
 
-    <!-- TODO: Update blank fragment layout -->
-    <TextView
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:gravity="center"
-        android:text="Categorias" />
 
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/frg_categorias_recycler_categorias"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent" />
 </FrameLayout>
