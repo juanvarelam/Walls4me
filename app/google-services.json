@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "387214622852",
+    "project_id": "walls4me-56a6b",
+    "storage_bucket": "walls4me-56a6b.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:387214622852:android:68c5345c6b0d37c6fe42d1",
+        "android_client_info": {
+          "package_name": "com.jvamou.walls4me"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "387214622852-20919bfpntu4g3c8c1fq0suhfolq2jf1.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAkyQPvFKI59NFnJ8qI_Q3NrPic5Z9vq48"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "387214622852-20919bfpntu4g3c8c1fq0suhfolq2jf1.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
