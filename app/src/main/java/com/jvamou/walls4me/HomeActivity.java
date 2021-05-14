@@ -7,6 +7,7 @@ import androidx.fragment.app.FragmentTransaction;
 
 import android.os.Bundle;
 import android.view.MenuItem;
+import android.view.View;
 
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 
@@ -16,6 +17,7 @@ public class HomeActivity extends AppCompatActivity {
     FragmentHome fragmentHome = new FragmentHome();
     FragmentCategorias fragmentCategorias = new FragmentCategorias();
     FragmentFavoritos fragmentFavoritos = new FragmentFavoritos();
+    View home;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

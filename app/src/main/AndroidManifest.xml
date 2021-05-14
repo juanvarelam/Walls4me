@@ -10,8 +10,8 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.Walls4me">
         <activity android:name=".Inicial"/>
-        <activity android:name=".RegisterActivity" />
         <activity android:name=".LoginActivity" />
+        <activity android:name=".RegisterActivity" />
         <activity android:name=".HomeActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
