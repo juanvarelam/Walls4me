@@ -6,7 +6,7 @@
     android:layout_height="match_parent"
     android:background="@drawable/fondo_logo"
     android:backgroundTintMode="src_over"
-    tools:context=".Inicial">
+    tools:context=".InicialActivity">
 
     <TextView
         android:id="@+id/act_inicial_txt_nombre"
