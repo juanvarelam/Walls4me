@@ -25,6 +25,7 @@ public class RegisterActivity extends AppCompatActivity {
     private EditText authPassword;
     private EditText authConfirmPassword;
     private Button authBtnRegistro;
+    private Button btnIniciarSesion;
 
     private FirebaseAuth mAuth;
 
@@ -38,6 +39,15 @@ public class RegisterActivity extends AppCompatActivity {
         authPassword = findViewById(R.id.act_register_txt_password);
         authConfirmPassword = findViewById(R.id.act_register_txt_confirm_password);
         authBtnRegistro = findViewById(R.id.act_register_btn_registrarse);
+        btnIniciarSesion = findViewById(R.id.act_register_btn_login);
+
+        btnIniciarSesion.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(RegisterActivity.this, LoginActivity.class);
+                startActivity(intent);
+            }
+        });
 
         authBtnRegistro.setOnClickListener(new View.OnClickListener() {
             @Override

@@ -6,36 +6,37 @@
     android:layout_height="match_parent"
     tools:context=".RegisterActivity">
 
-    <TextView
-        android:id="@+id/act_register_txt_cabecera"
-        style="@style/cabecera"
+    <LinearLayout
+        android:id="@+id/linearLayout3"
         android:layout_width="match_parent"
         android:layout_height="54dp"
+        android:orientation="horizontal"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        tools:text="@string/act_register_txt_cabecera" />
+        app:layout_constraintTop_toTopOf="parent">
 
-    <ImageView
-        android:id="@+id/act_register_imagen"
-        android:layout_width="124dp"
-        android:layout_height="122dp"
-        android:layout_marginBottom="16dp"
-        app:layout_constraintBottom_toTopOf="@+id/linearLayout2"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:srcCompat="@drawable/ic_usuario" />
+
+        <TextView
+            android:id="@+id/act_register_txt_cabecera"
+            android:layout_width="match_parent"
+            android:layout_height="54dp"
+            android:background="@color/naranja"
+            android:gravity="center"
+            android:textColor="@color/black"
+            android:textSize="30sp"
+            tools:text="@string/act_register_txt_cabecera" />
+    </LinearLayout>
 
     <LinearLayout
         android:id="@+id/linearLayout2"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="424dp"
         android:orientation="vertical"
         android:paddingHorizontal="32dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/act_register_txt_cabecera">
+        app:layout_constraintTop_toBottomOf="@+id/linearLayout3">
 
         <EditText
             android:id="@+id/act_register_txt_nombre"
@@ -47,7 +48,7 @@
             android:drawablePadding="12dp"
             android:ems="10"
             android:hint="@string/act_register_hint_nombre"
-            android:paddingHorizontal="12dp"/>
+            android:paddingHorizontal="12dp" />
 
         <EditText
             android:id="@+id/act_register_txt_email"
@@ -99,14 +100,22 @@
             android:id="@+id/act_register_btn_registrarse"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:layout_marginVertical="12dp"
             android:layout_marginBottom="4dp"
-            android:backgroundTint="@color/naranja"
             android:background="@drawable/fondo_input"
+            android:backgroundTint="@color/naranja"
             android:paddingHorizontal="8dp"
             android:paddingVertical="8dp"
-            android:layout_marginVertical="12dp"
             android:text="@string/act_register_btn_register"
             android:textSize="20sp" />
+
+        <Button
+            android:id="@+id/act_register_btn_login"
+            android:layout_width="match_parent"
+            android:layout_height="22dp"
+            android:layout_marginVertical="12dp"
+            android:background="@android:color/transparent"
+            android:text="@string/act_register_txt_ir_a_login" />
 
     </LinearLayout>
 

@@ -10,10 +10,13 @@
         android:id="@+id/act_login_txt_cabecera"
         android:layout_width="match_parent"
         android:layout_height="54dp"
-        style="@style/cabecera"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
+        android:gravity="center"
+        android:textSize="30sp"
+        android:textColor="@color/black"
+        android:background="@color/naranja"
         tools:text="@string/act_login_txt_cabecera" />
 
     <LinearLayout

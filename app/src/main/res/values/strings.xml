@@ -6,7 +6,7 @@
     <string name="act_inicial_txt_boton_login">Iniciar sesión</string>
     <string name="act_inicial_txt_boton_registrarse">Registrarse</string>
     <string name="act_login_txt_cabecera">Iniciar sesión</string>
-    <string name="act_login_txt_ir_a_registrarse">No tienes una cuenta? Regístrate</string>
+    <string name="act_login_txt_ir_a_registrarse">¿No tienes una cuenta? Regístrate</string>
     <string name="act_login_btn_login">Iniciar sesión</string>
     <string name="act_login_btn_recordar_pass">Recordar contraseña</string>
     <string name="act_register_txt_cabecera">Registrarse</string>
@@ -22,4 +22,5 @@
     <string name="act_register_hint_email" >Email</string>
     <string name="act_register_hint_password">Contraseña</string>
     <string name="act_register_hint_confirm_password">Repita la contraseña</string>
+    <string name="act_register_txt_ir_a_login">¿Tienes una cuenta? Iniciar sesión</string>
 </resources>

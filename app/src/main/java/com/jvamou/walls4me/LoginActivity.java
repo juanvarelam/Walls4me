@@ -22,7 +22,8 @@ public class LoginActivity extends AppCompatActivity {
 
     private EditText authEmail;
     private EditText authPassword;
-    private Button iniciarSesion;
+    private Button btnIniciarSesion;
+    private Button btnRegistrarse;
     private FirebaseAuth mAuth;
 
     @Override
@@ -32,14 +33,23 @@ public class LoginActivity extends AppCompatActivity {
 
         authEmail = findViewById(R.id.act_login_email);
         authPassword = findViewById(R.id.act_login_password);
-        iniciarSesion = findViewById(R.id.act_login_btn_login);
+        btnIniciarSesion = findViewById(R.id.act_login_btn_login);
+        btnRegistrarse = findViewById(R.id.act_login_btn_registrarse);
 
         mAuth = FirebaseAuth.getInstance();
 
-        iniciarSesion.setOnClickListener(new View.OnClickListener() {
+        btnIniciarSesion.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 validar();
+            }
+        });
+
+        btnRegistrarse.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(LoginActivity.this, RegisterActivity.class);
+                startActivity(intent);
             }
         });
     }
