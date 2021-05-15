@@ -11,7 +11,6 @@
         style="@style/cabecera"
         android:layout_width="match_parent"
         android:layout_height="54dp"
-        android:text="TextView"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
@@ -47,8 +46,8 @@
             android:drawableStart="@drawable/custom_usuario_icono"
             android:drawablePadding="12dp"
             android:ems="10"
-            android:hint="Nombre"
-            android:paddingHorizontal="12dp" />
+            android:hint="@string/act_register_hint_nombre"
+            android:paddingHorizontal="12dp"/>
 
         <EditText
             android:id="@+id/act_register_txt_email"
@@ -59,7 +58,7 @@
             android:drawableStart="@drawable/custom_correo_icono"
             android:drawablePadding="12dp"
             android:ems="10"
-            android:hint="E-mail"
+            android:hint="@string/act_register_hint_email"
             android:inputType="textEmailAddress"
             android:paddingHorizontal="12dp" />
 
@@ -72,7 +71,7 @@
             android:drawableStart="@drawable/custon_contrasena_icono"
             android:drawablePadding="12dp"
             android:ems="10"
-            android:hint="Contraseña"
+            android:hint="@string/act_register_hint_password"
             android:inputType="textPassword"
             android:paddingHorizontal="12dp" />
 
@@ -85,7 +84,7 @@
             android:drawableStart="@drawable/custon_contrasena_icono"
             android:drawablePadding="6dp"
             android:ems="10"
-            android:hint="Repita la contraseña"
+            android:hint="@string/act_register_hint_confirm_password"
             android:inputType="textPassword"
             android:paddingHorizontal="12dp" />
 
