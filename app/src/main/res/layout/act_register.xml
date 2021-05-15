@@ -89,12 +89,6 @@
             android:inputType="textPassword"
             android:paddingHorizontal="12dp" />
 
-        <CheckBox
-            android:id="@+id/act_register_cbox_pass"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="@string/act_login_btn_recordar_pass"
-            android:textSize="16sp" />
 
         <Button
             android:id="@+id/act_register_btn_registrarse"

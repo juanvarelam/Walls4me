@@ -3,6 +3,7 @@ package com.jvamou.walls4me;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.app.AlertDialog;
 import android.content.Intent;
 import android.os.Bundle;
 import android.util.Patterns;
@@ -21,6 +22,7 @@ import java.util.regex.Pattern;
 public class RegisterActivity extends AppCompatActivity {
 
     //variables para datos de registro
+    private EditText authNombre;
     private EditText authEmail;
     private EditText authPassword;
     private EditText authConfirmPassword;
@@ -35,19 +37,12 @@ public class RegisterActivity extends AppCompatActivity {
         setContentView(R.layout.act_register);
 
         //referencia a los elementos
+        authNombre = findViewById(R.id.act_register_txt_nombre);
         authEmail = findViewById(R.id.act_register_txt_email);
         authPassword = findViewById(R.id.act_register_txt_password);
         authConfirmPassword = findViewById(R.id.act_register_txt_confirm_password);
         authBtnRegistro = findViewById(R.id.act_register_btn_registrarse);
         btnIniciarSesion = findViewById(R.id.act_register_btn_login);
-
-        btnIniciarSesion.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent intent = new Intent(RegisterActivity.this, LoginActivity.class);
-                startActivity(intent);
-            }
-        });
 
         authBtnRegistro.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -59,9 +54,17 @@ public class RegisterActivity extends AppCompatActivity {
     }
 
     public void validar() {
+        String nombre = authNombre.getText().toString();
         String email = authEmail.getText().toString().trim().toLowerCase();
         String password = authPassword.getText().toString().trim();
         String confirmPassword = authConfirmPassword.getText().toString().trim();
+
+        if(nombre.isEmpty()) {
+            authNombre.setError("Introduce tu nombre");
+            return;
+        } else {
+            authNombre.setError(null);
+        }
 
         //la librería matcher comprueba que tenga estructura de email
         if(email.isEmpty() || !Patterns.EMAIL_ADDRESS.matcher(email).matches()) {
@@ -99,8 +102,15 @@ public class RegisterActivity extends AppCompatActivity {
                             Intent intent = new Intent(RegisterActivity.this, HomeActivity.class);
                             startActivity(intent);
                             finish();
+                            Toast.makeText(RegisterActivity.this, "¡Bienvenido/a a Walls4me!", Toast.LENGTH_LONG).show();
                         } else {
-                            Toast.makeText(RegisterActivity.this, "Error al registrarse", Toast.LENGTH_LONG).show();
+                            AlertDialog.Builder builder = new AlertDialog.Builder(RegisterActivity.this);
+                            builder.setTitle("Error");
+                            builder.setMessage("El correo introducido ya está en uso.");
+                            builder.setPositiveButton("Aceptar", null);
+
+                            AlertDialog dialog = builder.create();
+                            dialog.show();
                         }
                     }
                 });

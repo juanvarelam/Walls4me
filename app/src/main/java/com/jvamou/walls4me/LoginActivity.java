@@ -89,6 +89,7 @@ public class LoginActivity extends AppCompatActivity {
                             Intent intent = new Intent(LoginActivity.this, HomeActivity.class);
                             startActivity(intent);
                             finish();
+                            Toast.makeText(LoginActivity.this, "¡Bienvenido/a a Walls4me!", Toast.LENGTH_SHORT).show();
                         } else {
                             Toast.makeText(LoginActivity.this, "Email o contraseña incorrectos", Toast.LENGTH_LONG).show();
                         }
