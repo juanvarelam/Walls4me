@@ -47,13 +47,21 @@ public class LoginActivity extends AppCompatActivity {
             }
         });
 
-
+        btnRecordarPassword.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(LoginActivity.this, RecuperaPassActivity.class);
+                startActivity(intent);
+                finish();
+            }
+        });
 
         btnRegistrarse.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(LoginActivity.this, RegisterActivity.class);
                 startActivity(intent);
+                finish(); //al ir atrás vuelve a InicialActivity
             }
         });
     }
@@ -95,7 +103,7 @@ public class LoginActivity extends AppCompatActivity {
                             finish();
                             Toast.makeText(LoginActivity.this, "¡Bienvenido/a a Walls4me!", Toast.LENGTH_SHORT).show();
                         } else {
-                            Toast.makeText(LoginActivity.this, "Email o contraseña incorrectos", Toast.LENGTH_LONG).show();
+                            Toast.makeText(LoginActivity.this, "Correo o contraseña incorrectos", Toast.LENGTH_LONG).show();
                         }
                     }
                 });

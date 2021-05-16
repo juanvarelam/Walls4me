@@ -24,4 +24,9 @@
     <string name="act_register_hint_confirm_password">Repita la contraseña</string>
     <string name="act_register_txt_ir_a_login"><u>¿Tienes una cuenta? Inicia sesión</u></string>
     <string name="act_login_btn_recordar_password"><u>Olvidaste tu contraseña?</u></string>
+    <string name="act_recupera_pass_txt_cabecera">Recuperar contraseña</string>
+    <string name="act_recupera_pass_hint_email">Email</string>
+    <string name="act_recupera_pass_recuperar_pass">Recuperar contraseña</string>
+    <string name="titulo_recupera_pass">¿Has olvidado la contraseña?</string>
+    <string name="subtitulo_recupera_pass">Introduce el correo electrónico asociado a tu cuenta para restablecer la contraseña.</string>
 </resources>
