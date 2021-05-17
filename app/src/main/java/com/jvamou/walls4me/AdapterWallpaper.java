@@ -1,25 +1,37 @@
 package com.jvamou.walls4me;
 
+import android.content.Context;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageButton;
+import android.widget.ImageView;
 
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import java.util.List;
 
-public class AdapterWallpaper extends RecyclerView.Adapter<AdapterWallpaper.WallpaperViewHolder>{
+import java.util.ArrayList;
 
-    List<Wallpaper> wallpapers;
+public class AdapterWallpaper extends RecyclerView.Adapter<AdapterWallpaper.ViewHolder> {
+
+    private static final String Tag = "RecyclerView";
+    private Context mContext;
+    private ArrayList<Wallpaper> wallpaperList;
+
+    public AdapterWallpaper(Context mContext, ArrayList<Wallpaper> wallpaperList) {
+        this.mContext = mContext;
+        this.wallpaperList = wallpaperList;
+    }
 
     @NonNull
     @Override
-    public WallpaperViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-        View v = LayoutInflater.from(parent.getContext()).inflate(R.layout.item_wallpaper, parent,false);
-        WallpaperViewHolder viewHolder = new WallpaperViewHolder(v);
-        return viewHolder;
+    public ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
+        View view = LayoutInflater.from(parent.getContext())
+                .inflate(R.layout.item_wallpaper, parent, false);
+
+        return new ViewHolder(view);
     }
 
     @Override
@@ -32,13 +44,4 @@ public class AdapterWallpaper extends RecyclerView.Adapter<AdapterWallpaper.Wall
         return wallpapers.size();
     }
 
-    public static class WallpaperViewHolder extends RecyclerView.ViewHolder {
-
-        ImageButton imageButton;
-
-        public WallpaperViewHolder(@NonNull View itemView) {
-            super(itemView);
-            imageButton = itemView.findViewById(R.id.item_wallpaper_individual);
-        }
-    }
 }
