@@ -2,17 +2,20 @@ package com.jvamou.walls4me;
 
 public class Wallpaper {
 
-    int id;
+    String url;
 
-    public Wallpaper(int id) {
-        this.id = id;
+    public Wallpaper() {
     }
 
-    public int getId() {
-        return id;
+    public Wallpaper(String url) {
+        this.url = url;
     }
 
-    public void setId(int id) {
-        this.id = id;
+    public String getUrl() {
+        return url;
+    }
+
+    public void setUrl(String url) {
+        this.url = url;
     }
 }
