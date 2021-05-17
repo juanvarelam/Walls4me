@@ -1,5 +1,6 @@
 package com.jvamou.walls4me;
 
+import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageButton;
@@ -7,12 +8,18 @@ import android.widget.ImageButton;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
+import java.util.List;
+
 public class AdapterWallpaper extends RecyclerView.Adapter<AdapterWallpaper.WallpaperViewHolder>{
+
+    List<Wallpaper> wallpapers;
 
     @NonNull
     @Override
     public WallpaperViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-        return null;
+        View v = LayoutInflater.from(parent.getContext()).inflate(R.layout.item_wallpaper, parent,false);
+        WallpaperViewHolder viewHolder = new WallpaperViewHolder(v);
+        return viewHolder;
     }
 
     @Override
@@ -22,7 +29,7 @@ public class AdapterWallpaper extends RecyclerView.Adapter<AdapterWallpaper.Wall
 
     @Override
     public int getItemCount() {
-        return 0;
+        return wallpapers.size();
     }
 
     public static class WallpaperViewHolder extends RecyclerView.ViewHolder {
