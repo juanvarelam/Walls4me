@@ -10,7 +10,8 @@ import android.widget.ImageView;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
-import java.util.List;
+
+import com.bumptech.glide.Glide;
 
 import java.util.ArrayList;
 
@@ -35,8 +36,10 @@ public class AdapterWallpaper extends RecyclerView.Adapter<AdapterWallpaper.View
     }
 
     @Override
-    public void onBindViewHolder(@NonNull WallpaperViewHolder holder, int position) {
-
+    public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
+        Glide.with(mContext)
+                .load(wallpaperList.get(position).getUrl())
+                .into(holder.imageView);
     }
 
     @Override
