@@ -52,6 +52,7 @@ public class FragmentHome extends Fragment {
 
         wallpapersList = new ArrayList<>();
 
+        limpiarTodo();
 
         ObtenerDatosFirebase();
     }
@@ -82,4 +83,15 @@ public class FragmentHome extends Fragment {
         });
     }
 
+    private void limpiarTodo() {
+        if (wallpapersList != null) {
+            wallpapersList.clear();
+
+            if (adapterWallpaper != null) {
+                adapterWallpaper.notifyDataSetChanged();
+            }
+        }
+
+        wallpapersList = new ArrayList<>();
+    }
 }
