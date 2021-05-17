@@ -4,8 +4,8 @@
     android:layout_height="match_parent"
     android:orientation="vertical">
 
-    <ImageButton
-        android:id="@+id/item_wallpaper_individual"
+    <ImageView
+        android:id="@+id/item_wallpaper_imagen"
         android:layout_width="match_parent"
         android:layout_height="match_parent"/>
 
