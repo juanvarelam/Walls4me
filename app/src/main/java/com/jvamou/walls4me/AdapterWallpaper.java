@@ -44,7 +44,17 @@ public class AdapterWallpaper extends RecyclerView.Adapter<AdapterWallpaper.View
 
     @Override
     public int getItemCount() {
-        return wallpapers.size();
+        return wallpaperList.size();
+    }
+
+    public class ViewHolder extends RecyclerView.ViewHolder {
+        ImageView imageView;
+
+        public ViewHolder (View itemView) {
+            super(itemView);
+
+            imageView = itemView.findViewById(R.id.item_wallpaper_imagen);
+        }
     }
 
 }
