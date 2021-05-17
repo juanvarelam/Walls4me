@@ -50,8 +50,36 @@ public class FragmentHome extends Fragment {
 
         dbRef = FirebaseDatabase.getInstance().getReference();
 
-        recycler = recycler.findViewById(R.id.frg_home_recycler_home);
+        wallpapersList = new ArrayList<>();
 
+
+        ObtenerDatosFirebase();
+    }
+
+    private void ObtenerDatosFirebase() {
+        Query query = dbRef.child("Imagenes");
+
+        query.addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                for(DataSnapshot snapshot : dataSnapshot.getChildren()) {
+                    Wallpaper wallpapers = new Wallpaper();
+
+                    wallpapers.setUrl(snapshot.child("url").getValue().toString());
+
+                    wallpapersList.add(wallpapers);
+                }
+
+                adapterWallpaper = new AdapterWallpaper(getContext(), wallpapersList);
+                recyclerView.setAdapter(adapterWallpaper);
+                adapterWallpaper.notifyDataSetChanged();
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError error) {
+
+            }
+        });
     }
 
 }
