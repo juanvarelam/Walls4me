@@ -38,8 +38,17 @@ public class FragmentHome extends Fragment {
     private Context mContext;
 
     @Override
-    public void onCreate(Bundle savedInstanceState) {
+    public void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        setContentView(R.layout.frg_home);
+
+        recyclerView = findViewById(R.id.frg_home_recycler_home);
+
+        GridLayoutManager layoutManager = new GridLayoutManager(getContext(),2);
+        recyclerView.setLayoutManager(layoutManager);
+        recyclerView.setHasFixedSize(true);
+
+        dbRef = FirebaseDatabase.getInstance().getReference();
 
         recycler = recycler.findViewById(R.id.frg_home_recycler_home);
 
