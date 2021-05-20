@@ -19,10 +19,9 @@ public class AdapterWallpaper extends RecyclerView.Adapter<AdapterWallpaper.View
 
     private static final String Tag = "RecyclerView";
     private Context mContext;
-    private ArrayList<Wallpaper> wallpaperList;
+    ArrayList<Wallpaper> wallpaperList;
 
-    public AdapterWallpaper(Context mContext, ArrayList<Wallpaper> wallpaperList) {
-        this.mContext = mContext;
+    public AdapterWallpaper(ArrayList<Wallpaper> wallpaperList) {
         this.wallpaperList = wallpaperList;
     }
 
@@ -30,7 +29,7 @@ public class AdapterWallpaper extends RecyclerView.Adapter<AdapterWallpaper.View
     @Override
     public ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         View view = LayoutInflater.from(parent.getContext())
-                .inflate(R.layout.item_wallpaper, parent, false);
+                .inflate(R.layout.item_wallpaper, null, false);
 
         return new ViewHolder(view);
     }

@@ -33,20 +33,26 @@ public class FragmentHome extends Fragment {
 
     private DatabaseReference dbRef;
 
-    private ArrayList<Wallpaper> wallpapersList;
+    ArrayList<Wallpaper> wallpapersList;
     private AdapterWallpaper adapterWallpaper;
-    private Context mContext;
 
+
+    @Nullable
     @Override
-    public void onCreate(@Nullable Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        setContentView(R.layout.frg_home);
+    public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
+        View view = inflater.inflate(R.layout.frg_home, container, false);
 
-        recyclerView = findViewById(R.id.frg_home_recycler_home);
-
-        GridLayoutManager layoutManager = new GridLayoutManager(getContext(),2);
-        recyclerView.setLayoutManager(layoutManager);
+        wallpapersList = new ArrayList<>();
+        recyclerView = view.findViewById(R.id.frg_home_recycler_home);
+        recyclerView.setLayoutManager(new GridLayoutManager(getContext(), 2));
         recyclerView.setHasFixedSize(true);
+
+        AdapterWallpaper adapterWallpaper = new AdapterWallpaper(wallpapersList);
+        recyclerView.setAdapter(adapterWallpaper);
+        adapterWallpaper.notifyDataSetChanged();
+
+        adapterWallpaper.notifyDataSetChanged();
+
 
         dbRef = FirebaseDatabase.getInstance().getReference();
 
@@ -55,6 +61,8 @@ public class FragmentHome extends Fragment {
         limpiarTodo();
 
         ObtenerDatosFirebase();
+
+        return view;
     }
 
     private void ObtenerDatosFirebase() {
@@ -71,7 +79,7 @@ public class FragmentHome extends Fragment {
                     wallpapersList.add(wallpapers);
                 }
 
-                adapterWallpaper = new AdapterWallpaper(getContext(), wallpapersList);
+                AdapterWallpaper adapterWallpaper = new AdapterWallpaper(wallpapersList);
                 recyclerView.setAdapter(adapterWallpaper);
                 adapterWallpaper.notifyDataSetChanged();
             }
