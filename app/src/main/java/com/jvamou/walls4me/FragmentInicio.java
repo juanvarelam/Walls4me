@@ -41,20 +41,19 @@ public class FragmentInicio extends Fragment {
     public void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
+        dbRef = FirebaseDatabase.getInstance().getReference();
     }
 
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-        View v = inflater.inflate(R.layout.frg_inicio, container, false);
 
-        dbRef = FirebaseDatabase.getInstance().getReference();
+        View v = inflater.inflate(R.layout.frg_inicio, container, false);
 
         wallpapersList = new ArrayList<>();
         recyclerView = v.findViewById(R.id.frg_home_recycler_home);
 
-
-        limpiarTodo();
+        limpiarDatos();
         ObtenerDatosFirebase();
 
         adapterWallpaper = new AdapterWallpaper(wallpapersList, getContext());
@@ -72,13 +71,13 @@ public class FragmentInicio extends Fragment {
         query.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
-                limpiarTodo();
+                limpiarDatos();
                 for(DataSnapshot snapshot : dataSnapshot.getChildren()) {
-                    Wallpaper wallpapers = new Wallpaper();
+                    Wallpaper wallpaper = new Wallpaper();
 
-                    wallpapers.setUrl((snapshot.child("url").getValue().toString()));
+                    wallpaper.setUrl((snapshot.child("url").getValue().toString()));
 
-                    wallpapersList.add(wallpapers);
+                    wallpapersList.add(wallpaper);
                 }
 
                 adapterWallpaper = new AdapterWallpaper(wallpapersList, getContext());
@@ -93,7 +92,7 @@ public class FragmentInicio extends Fragment {
         });
     }
 
-    private void limpiarTodo() {
+    private void limpiarDatos() {
         if (wallpapersList != null) {
             wallpapersList.clear();
 
