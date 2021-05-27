@@ -14,9 +14,7 @@ import com.google.android.material.bottomnavigation.BottomNavigationView;
 public class HomeActivity extends AppCompatActivity {
 
     //Variables globales fragments bottomNavigation
-    FragmentHome fragmentHome = new FragmentHome();
-    FragmentCategorias fragmentCategorias = new FragmentCategorias();
-    FragmentFavoritos fragmentFavoritos = new FragmentFavoritos();
+    Fragment fragmentInicio, fragmentCategorias, fragmentFavoritos;
     View home;
 
     @Override
@@ -24,11 +22,15 @@ public class HomeActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.act_home);
 
+        fragmentInicio = new FragmentInicio();
+        fragmentCategorias = new FragmentCategorias();
+        fragmentFavoritos = new FragmentFavoritos();
+
         //Listener que recibe el fragment seleccionado por el usuario
         BottomNavigationView btnNavigaton = findViewById(R.id.act_home_botton_navigation);
         btnNavigaton.setOnNavigationItemSelectedListener(mOnNavigationItemSelectedListener);
 
-        cargarFragment(fragmentHome);
+        cargarFragment(fragmentInicio);
     }
 
     //Método que le pasa a cargarFragment() el fragment seleccionado
@@ -36,8 +38,8 @@ public class HomeActivity extends AppCompatActivity {
         @Override
         public boolean onNavigationItemSelected(@NonNull MenuItem item) {
             switch(item.getItemId()) {
-                case R.id.fragment_home:
-                    cargarFragment(fragmentHome);
+                case R.id.fragment_inicio:
+                    cargarFragment(fragmentInicio);
                     return true;
                 case R.id.fragment_categorias:
                     cargarFragment(fragmentCategorias);
@@ -53,7 +55,7 @@ public class HomeActivity extends AppCompatActivity {
     //Método que reemplaza el fragment existente por el nuevo
     public void cargarFragment(Fragment fragment) {
         FragmentTransaction transaction = getSupportFragmentManager().beginTransaction();
-        transaction.replace(R.id.act_home_frame_container, fragment);
+        transaction.replace(R.id.act_home_layout_container, fragment);
         transaction.commit();
     }
 

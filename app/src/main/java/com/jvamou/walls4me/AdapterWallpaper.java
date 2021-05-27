@@ -1,5 +1,6 @@
 package com.jvamou.walls4me;
 
+import android.app.Activity;
 import android.content.Context;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -17,27 +18,32 @@ import java.util.ArrayList;
 
 public class AdapterWallpaper extends RecyclerView.Adapter<AdapterWallpaper.ViewHolder> {
 
-    private static final String Tag = "RecyclerView";
-    private Context mContext;
     ArrayList<Wallpaper> wallpaperList;
+    Context mContext;
 
-    public AdapterWallpaper(ArrayList<Wallpaper> wallpaperList) {
+
+    public AdapterWallpaper(ArrayList<Wallpaper> wallpaperList, Context mContext) {
         this.wallpaperList = wallpaperList;
+        this.mContext = mContext;
     }
 
     @NonNull
     @Override
-    public ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-        View view = LayoutInflater.from(parent.getContext())
-                .inflate(R.layout.item_wallpaper, null, false);
+    public AdapterWallpaper.ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
 
-        return new ViewHolder(view);
+        LayoutInflater layoutInflater = LayoutInflater.from(mContext);
+        View v = layoutInflater.inflate(R.layout.item_wallpaper, parent, false);
+
+        return new ViewHolder(v);
     }
 
     @Override
     public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
-        Glide.with(mContext)
+
+        Glide.with(mContext)//
                 .load(wallpaperList.get(position).getUrl())
+                .placeholder(R.drawable.ic_imagen_ph)
+                .error(R.drawable.ic_imagen_error)
                 .into(holder.imageView);
     }
 
