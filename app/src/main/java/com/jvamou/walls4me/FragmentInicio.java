@@ -26,7 +26,6 @@ import java.util.ArrayList;
 public class FragmentInicio extends Fragment {
 
     RecyclerView recyclerView;
-    View v;
     AdapterWallpaper adapterWallpaper;
 
     ArrayList<Wallpaper> wallpapersList;
@@ -47,7 +46,7 @@ public class FragmentInicio extends Fragment {
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-        v = inflater.inflate(R.layout.frg_inicio, container, false);
+        View v = inflater.inflate(R.layout.frg_inicio, container, false);
 
         dbRef = FirebaseDatabase.getInstance().getReference();
 
@@ -82,7 +81,7 @@ public class FragmentInicio extends Fragment {
                     wallpapersList.add(wallpapers);
                 }
 
-                adapterWallpaper = new AdapterWallpaper(wallpapersList, getActivity());
+                adapterWallpaper = new AdapterWallpaper(wallpapersList, getContext());
                 recyclerView.setAdapter(adapterWallpaper);
                 adapterWallpaper.notifyDataSetChanged();
             }
