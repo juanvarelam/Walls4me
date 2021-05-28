@@ -10,10 +10,13 @@ import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
+import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.Task;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
@@ -68,10 +71,25 @@ public class FragmentInicio extends Fragment {
 
         Query query = dbRef.child("imagenes");
 
-        query.addValueEventListener(new ValueEventListener() {
+        query.get().addOnCompleteListener(new OnCompleteListener<DataSnapshot>() {
+            @Override
+            public void onComplete(@NonNull Task<DataSnapshot> task) {
+                task.isSuccessful();
+                recogerDatos();
+                if(task.isSuccessful()) {
+                    ArrayList items = (ArrayList) task.getResult().getValue();
+
+                }else{
+                    task.getException().getLocalizedMessage();
+                }
+            }
+        });
+
+        recogerDatos(Arraylist items) {
+
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
-                limpiarDatos();
+                /*limpiarDatos();
                 for(DataSnapshot snapshot : dataSnapshot.getChildren()) {
                     Wallpaper wallpaper = new Wallpaper();
 
@@ -82,12 +100,12 @@ public class FragmentInicio extends Fragment {
 
                 adapterWallpaper = new AdapterWallpaper(wallpapersList, getContext());
                 recyclerView.setAdapter(adapterWallpaper);
-                adapterWallpaper.notifyDataSetChanged();
+                adapterWallpaper.notifyDataSetChanged();*/
             }
 
             @Override
             public void onCancelled(@NonNull DatabaseError error) {
-
+                Log.e("imagen", error.getMessage());
             }
         });
     }

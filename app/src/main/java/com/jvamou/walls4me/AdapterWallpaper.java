@@ -2,6 +2,7 @@ package com.jvamou.walls4me;
 
 import android.app.Activity;
 import android.content.Context;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -20,6 +21,7 @@ public class AdapterWallpaper extends RecyclerView.Adapter<AdapterWallpaper.View
 
     ArrayList<Wallpaper> wallpaperList;
     Context mContext;
+    ArrayList<Wallpaper> lista;
 
 
     public AdapterWallpaper(ArrayList<Wallpaper> wallpaperList, Context mContext) {
@@ -40,8 +42,10 @@ public class AdapterWallpaper extends RecyclerView.Adapter<AdapterWallpaper.View
     @Override
     public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
 
+        String url = wallpaperList.get(position).getUrl();
+        Log.d("imagen", url);
         Glide.with(mContext)//
-                .load(wallpaperList.get(position).getUrl())
+                .load(url)
                 .placeholder(R.drawable.ic_imagen_ph)
                 .error(R.drawable.ic_imagen_error)
                 .into(holder.imageView);
