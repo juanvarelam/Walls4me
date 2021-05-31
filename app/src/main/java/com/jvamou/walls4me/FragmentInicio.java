@@ -75,7 +75,7 @@ public class FragmentInicio extends Fragment {
             @Override
             public void onComplete(@NonNull Task<DataSnapshot> task) {
                 task.isSuccessful();
-                recogerDatos();
+                recogerDatos(wallpapersList);
                 if(task.isSuccessful()) {
                     ArrayList items = (ArrayList) task.getResult().getValue();
 
@@ -84,12 +84,15 @@ public class FragmentInicio extends Fragment {
                 }
             }
         });
+    }
+    private void recogerDatos(ArrayList<Wallpaper> wallpapersList) {
 
-        recogerDatos(Arraylist items) {
+        Query query = dbRef.child("imagenes");
 
+        query.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
-                /*limpiarDatos();
+                limpiarDatos();
                 for(DataSnapshot snapshot : dataSnapshot.getChildren()) {
                     Wallpaper wallpaper = new Wallpaper();
 
@@ -100,16 +103,15 @@ public class FragmentInicio extends Fragment {
 
                 adapterWallpaper = new AdapterWallpaper(wallpapersList, getContext());
                 recyclerView.setAdapter(adapterWallpaper);
-                adapterWallpaper.notifyDataSetChanged();*/
+                adapterWallpaper.notifyDataSetChanged();
             }
 
             @Override
             public void onCancelled(@NonNull DatabaseError error) {
-                Log.e("imagen", error.getMessage());
+
             }
         });
     }
-
     private void limpiarDatos() {
         if (wallpapersList != null) {
             wallpapersList.clear();
