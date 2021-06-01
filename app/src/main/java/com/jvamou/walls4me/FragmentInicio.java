@@ -33,7 +33,6 @@ public class FragmentInicio extends Fragment {
     AdapterWallpaper adapterWallpaper;
 
     ArrayList<Wallpaper> wallpapersList;
-    private Context mContext;
 
     private DatabaseReference dbRef;
 
@@ -74,9 +73,25 @@ public class FragmentInicio extends Fragment {
             @Override
             public void onComplete(@NonNull Task<DataSnapshot> task) {
                 task.isSuccessful();
+
                 recogerDatos(wallpapersList);
+
                 if(task.isSuccessful()) {
-                    ArrayList items = (ArrayList) task.getResult().getValue();
+                    ArrayList items = (ArrayList) task.getResult().child("url").getValue();
+
+                    limpiarDatos();
+                    for(DataSnapshot snapshot : task.getResult().getChildren()) {
+                        Wallpaper wallpaper = new Wallpaper();
+
+                        wallpaper.setUrl((snapshot.child("url").getValue().toString()));
+
+                        wallpapersList.add(wallpaper);
+                    }
+
+                    adapterWallpaper = new AdapterWallpaper(wallpapersList, getContext());
+                    recyclerView.setAdapter(adapterWallpaper);
+                    adapterWallpaper.notifyDataSetChanged();
+                    Log.d("imagenes"," " + items.size());
 
                 }else{
                     task.getException().getLocalizedMessage();
@@ -91,18 +106,7 @@ public class FragmentInicio extends Fragment {
         query.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
-                limpiarDatos();
-                for(DataSnapshot snapshot : dataSnapshot.getChildren()) {
-                    Wallpaper wallpaper = new Wallpaper();
 
-                    wallpaper.setUrl((snapshot.child("url").getValue().toString()));
-
-                    wallpapersList.add(wallpaper);
-                }
-
-                adapterWallpaper = new AdapterWallpaper(wallpapersList, getContext());
-                recyclerView.setAdapter(adapterWallpaper);
-                adapterWallpaper.notifyDataSetChanged();
             }
 
             @Override
