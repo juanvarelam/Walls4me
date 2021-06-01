@@ -18,4 +18,11 @@ public class Wallpaper {
     public void setUrl(String url) {
         this.url = url;
     }
+
+    @Override
+    public String toString() {
+        return "Wallpaper{" +
+                "url='" + url + '\'' +
+                '}';
+    }
 }

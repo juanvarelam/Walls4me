@@ -21,7 +21,6 @@ public class AdapterWallpaper extends RecyclerView.Adapter<AdapterWallpaper.View
 
     ArrayList<Wallpaper> wallpaperList;
     Context mContext;
-    ArrayList<Wallpaper> lista;
 
 
     public AdapterWallpaper(ArrayList<Wallpaper> wallpaperList, Context mContext) {
