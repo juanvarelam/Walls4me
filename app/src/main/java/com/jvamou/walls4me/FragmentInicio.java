@@ -9,6 +9,7 @@ import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
+import androidx.recyclerview.widget.StaggeredGridLayoutManager;
 
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -24,6 +25,9 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.Query;
 import com.google.firebase.database.ValueEventListener;
+import com.google.firebase.firestore.DocumentSnapshot;
+import com.google.firebase.firestore.FirebaseFirestore;
+import com.google.firebase.firestore.QuerySnapshot;
 
 import java.util.ArrayList;
 
@@ -59,7 +63,7 @@ public class FragmentInicio extends Fragment {
 
         adapterWallpaper = new AdapterWallpaper(wallpapersList, getContext());
         recyclerView.setAdapter(adapterWallpaper);
-        recyclerView.setLayoutManager(new LinearLayoutManager(getActivity()));
+        recyclerView.setLayoutManager(new GridLayoutManager(getContext(), 2));
         recyclerView.setHasFixedSize(true);
 
         return v;
@@ -67,34 +71,25 @@ public class FragmentInicio extends Fragment {
 
     private void ObtenerDatosFirebase() {
 
-        Query query = dbRef.child("imagenes");
-
-        query.get().addOnCompleteListener(new OnCompleteListener<DataSnapshot>() {
+        FirebaseFirestore db = FirebaseFirestore.getInstance();
+        db.collection("imagenes").get().addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
             @Override
-            public void onComplete(@NonNull Task<DataSnapshot> task) {
-                task.isSuccessful();
-
-                recogerDatos(wallpapersList);
+            public void onComplete(@NonNull Task<QuerySnapshot> task) {
 
                 if(task.isSuccessful()) {
-                    ArrayList items = (ArrayList) task.getResult().child("url").getValue();
-
                     limpiarDatos();
-                    for(DataSnapshot snapshot : task.getResult().getChildren()) {
+                    for(DocumentSnapshot doc: task.getResult().getDocuments()) {
                         Wallpaper wallpaper = new Wallpaper();
-
-                        wallpaper.setUrl((snapshot.child("url").getValue().toString()));
-
+                        wallpaper.url = doc.getString("url");
                         wallpapersList.add(wallpaper);
+
+                        adapterWallpaper = new AdapterWallpaper(wallpapersList, getContext());
+                        recyclerView.setAdapter(adapterWallpaper);
+                        adapterWallpaper.notifyDataSetChanged();
                     }
-
-                    adapterWallpaper = new AdapterWallpaper(wallpapersList, getContext());
-                    recyclerView.setAdapter(adapterWallpaper);
-                    adapterWallpaper.notifyDataSetChanged();
-                    Log.d("imagenes"," " + items.size());
-
                 }else{
-                    task.getException().getLocalizedMessage();
+                    String error = task.getException().getLocalizedMessage();
+                    Log.e("FIREBASE", error);
                 }
             }
         });
