@@ -1,6 +1,8 @@
 package com.jvamou.walls4me;
 
-public class Wallpaper {
+import java.io.Serializable;
+
+public class Wallpaper implements Serializable {
 
     String url;
 

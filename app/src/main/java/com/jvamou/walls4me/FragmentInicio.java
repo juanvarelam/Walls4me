@@ -1,6 +1,7 @@
 package com.jvamou.walls4me;
 
 import android.content.Context;
+import android.content.Intent;
 import android.os.Bundle;
 
 import androidx.annotation.NonNull;
@@ -101,6 +102,7 @@ public class FragmentInicio extends Fragment {
             }
         });
     }
+
 
     private void limpiarDatos() {
         if (wallpapersList != null) {
