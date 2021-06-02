@@ -47,7 +47,24 @@ public class FragmentInicio extends Fragment {
         super.onCreate(savedInstanceState);
 
         //Instanciar Firebase
-        dbRef = FirebaseDatabase.getInstance().getReference();
+        dbRef = FirebaseDatabase.getInstance().getReference("imagenes");
+
+        dbRef.addListenerForSingleValueEvent(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot snapshot) {
+                for(DataSnapshot dataSnapshot : snapshot.getChildren()) {
+                    Wallpaper wallpaper = dataSnapshot.getValue(Wallpaper.class);
+                    wallpapersList.add(wallpaper);
+                }
+                adapterWallpaper = new AdapterWallpaper(wallpapersList);
+                recyclerView.setAdapter(adapterWallpaper);
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError error) {
+
+            }
+        });
     }
 
     @Nullable
@@ -67,12 +84,6 @@ public class FragmentInicio extends Fragment {
         recyclerView.setLayoutManager(new GridLayoutManager(getContext(), 2));
         recyclerView.setHasFixedSize(true);
 
-        adapterWallpaper.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-
-            }
-        });
 
         return v;
     }

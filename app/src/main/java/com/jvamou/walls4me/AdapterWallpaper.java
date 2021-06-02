@@ -2,6 +2,8 @@ package com.jvamou.walls4me;
 
 import android.app.Activity;
 import android.content.Context;
+import android.content.Intent;
+import android.os.Bundle;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -30,6 +32,10 @@ public class AdapterWallpaper extends RecyclerView.Adapter<AdapterWallpaper.View
         this.mContext = mContext;
     }
 
+    public AdapterWallpaper(ArrayList<Wallpaper> wallpapersList) {
+        this.wallpaperList = wallpapersList;
+    }
+
     @NonNull
     @Override
     public AdapterWallpaper.ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
@@ -52,6 +58,17 @@ public class AdapterWallpaper extends RecyclerView.Adapter<AdapterWallpaper.View
                 .placeholder(R.drawable.ic_imagen_ph)
                 .error(R.drawable.ic_imagen_error)
                 .into(holder.imageButton);
+
+        holder.itemView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(view.getContext(), WallpaperActivity.class);
+                Bundle bundle = new Bundle();
+                bundle.putSerializable("url", wallpaperList);
+                intent.putExtras(bundle);
+                view.getContext().startActivity(intent);
+            }
+        });
     }
 
     @Override
