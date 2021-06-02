@@ -94,22 +94,7 @@ public class FragmentInicio extends Fragment {
             }
         });
     }
-    private void recogerDatos(ArrayList<Wallpaper> wallpapersList) {
 
-        Query query = dbRef.child("imagenes");
-
-        query.addValueEventListener(new ValueEventListener() {
-            @Override
-            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
-
-            }
-
-            @Override
-            public void onCancelled(@NonNull DatabaseError error) {
-                Toast.makeText(getContext(), "Error", Toast.LENGTH_LONG).show();
-            }
-        });
-    }
     private void limpiarDatos() {
         if (wallpapersList != null) {
             wallpapersList.clear();
