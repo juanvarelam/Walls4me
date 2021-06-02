@@ -17,10 +17,12 @@ import com.bumptech.glide.Glide;
 
 import java.util.ArrayList;
 
-public class AdapterWallpaper extends RecyclerView.Adapter<AdapterWallpaper.ViewHolder> {
+public class AdapterWallpaper extends RecyclerView.Adapter<AdapterWallpaper.ViewHolder>
+                                implements View.OnClickListener{
 
     ArrayList<Wallpaper> wallpaperList;
     Context mContext;
+    private View.OnClickListener clickListener;
 
 
     public AdapterWallpaper(ArrayList<Wallpaper> wallpaperList, Context mContext) {
@@ -35,6 +37,8 @@ public class AdapterWallpaper extends RecyclerView.Adapter<AdapterWallpaper.View
         LayoutInflater layoutInflater = LayoutInflater.from(mContext);
         View v = layoutInflater.inflate(R.layout.item_wallpaper, parent, false);
 
+        v.setOnClickListener(this);
+
         return new ViewHolder(v);
     }
 
@@ -47,7 +51,7 @@ public class AdapterWallpaper extends RecyclerView.Adapter<AdapterWallpaper.View
                 .load(url)
                 .placeholder(R.drawable.ic_imagen_ph)
                 .error(R.drawable.ic_imagen_error)
-                .into(holder.imageView);
+                .into(holder.imageButton);
     }
 
     @Override
@@ -55,13 +59,24 @@ public class AdapterWallpaper extends RecyclerView.Adapter<AdapterWallpaper.View
         return wallpaperList.size();
     }
 
+    public void setOnClickListener (View.OnClickListener clickListener) {
+        this.clickListener = clickListener;
+    }
+
+    @Override
+    public void onClick(View v) {
+        if(clickListener != null) {
+            clickListener.onClick(v);
+        }
+    }
+
     public class ViewHolder extends RecyclerView.ViewHolder {
-        ImageView imageView;
+        ImageButton imageButton;
 
         public ViewHolder (View itemView) {
             super(itemView);
 
-            imageView = itemView.findViewById(R.id.item_wallpaper_imagen);
+            imageButton = itemView.findViewById(R.id.item_wallpaper_imagen);
         }
     }
 
