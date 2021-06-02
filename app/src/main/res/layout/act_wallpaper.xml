@@ -1,0 +1,94 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/prueba"
+    tools:context=".WallpaperActivity">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="54dp"
+        android:background="@drawable/fondo_wallpaper_options_top"
+        android:backgroundTint="#A9FFFFFF"
+        android:orientation="horizontal"
+        android:weightSum="100"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <ImageButton
+            android:id="@+id/act_wallpaper_btn_cerrar"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_weight="20"
+            android:backgroundTint="#00FFFFFF"
+            android:scaleX="1.3"
+            android:scaleY="1.3"
+            app:srcCompat="@drawable/ic_cerrar" />
+
+        <TextView
+            android:id="@+id/textView"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_weight="60"
+            android:text="@string/app_name"
+            android:textAlignment="center"
+            android:textColor="@color/black"
+            android:textSize="24sp" />
+
+        <ImageButton
+            android:id="@+id/act_wallpaper_btn_favorito"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_weight="20"
+            android:backgroundTint="#00FFFFFF"
+            android:scaleX="1.1"
+            android:scaleY="1.1"
+            app:srcCompat="@drawable/ic_favoritos" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="60dp"
+        android:orientation="horizontal"
+        android:background="@drawable/fondo_wallpaper_options_botton"
+        android:backgroundTint="#A9FFFFFF"
+        android:gravity="center"
+        android:weightSum="100"
+        android:paddingHorizontal="12dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent">
+
+        <Button
+            android:id="@+id/act_wallpaper_btn_establecer_fondo"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="50"
+            android:textSize="15sp"
+            android:layout_marginHorizontal="12dp"
+            android:background="@drawable/fondo_wallpaper_options_botones"
+            android:backgroundTint="@color/gris_claro"
+            android:drawableStart="@drawable/ic_establecer_fondo"
+            android:paddingStart="8dp"
+            android:text="@string/act_wallpaper_btn_establecer_fondo" />
+
+        <Button
+            android:id="@+id/act_wallpaper_btn_descargar"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="50"
+            android:textSize="15sp"
+            android:layout_marginHorizontal="12dp"
+            android:background="@drawable/fondo_wallpaper_options_botones"
+            android:backgroundTint="@color/gris_claro"
+            android:drawableStart="@drawable/ic_descargar"
+            android:paddingStart="8dp"
+            android:text="@string/act_wallpaper_btn_descargar" />
+    </LinearLayout>
+</androidx.constraintlayout.widget.ConstraintLayout>
