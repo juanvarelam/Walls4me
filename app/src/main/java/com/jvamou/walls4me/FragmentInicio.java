@@ -1,22 +1,17 @@
 package com.jvamou.walls4me;
 
-import android.content.Context;
-import android.content.Intent;
 import android.os.Bundle;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.GridLayoutManager;
-import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
-import androidx.recyclerview.widget.StaggeredGridLayoutManager;
 
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.Toast;
 
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
@@ -24,7 +19,6 @@ import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
-import com.google.firebase.database.Query;
 import com.google.firebase.database.ValueEventListener;
 import com.google.firebase.firestore.DocumentSnapshot;
 import com.google.firebase.firestore.FirebaseFirestore;
@@ -56,7 +50,7 @@ public class FragmentInicio extends Fragment {
                     Wallpaper wallpaper = dataSnapshot.getValue(Wallpaper.class);
                     wallpapersList.add(wallpaper);
                 }
-                adapterWallpaper = new AdapterWallpaper(wallpapersList);
+                adapterWallpaper = new AdapterWallpaper(wallpapersList, getContext());
                 recyclerView.setAdapter(adapterWallpaper);
             }
 
@@ -74,7 +68,7 @@ public class FragmentInicio extends Fragment {
         View v = inflater.inflate(R.layout.frg_inicio, container, false);
 
         wallpapersList = new ArrayList<>();
-        recyclerView = v.findViewById(R.id.frg_home_recycler_home);
+        recyclerView = v.findViewById(R.id.frg_inicio_recycler_inicio);
 
         limpiarDatos();
         ObtenerDatosFirebase();
