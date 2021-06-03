@@ -11,7 +11,7 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.Walls4me">
-        <activity android:name=".WallpaperActivity"></activity>
+        <activity android:name=".WallpaperActivity" />
         <activity android:name=".RecuperaPassActivity" />
         <activity android:name=".InicialActivity" />
         <activity android:name=".LoginActivity" />
@@ -19,7 +19,6 @@
         <activity android:name=".HomeActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
-
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
