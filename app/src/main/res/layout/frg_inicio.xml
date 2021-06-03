@@ -8,7 +8,7 @@
     tools:context=".FragmentInicio">
 
     <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/frg_home_recycler_home"
+        android:id="@+id/frg_inicio_recycler_inicio"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         app:layout_constraintBottom_toBottomOf="parent"
