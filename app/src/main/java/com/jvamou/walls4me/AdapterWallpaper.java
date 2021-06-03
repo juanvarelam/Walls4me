@@ -9,6 +9,8 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageButton;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
+import android.widget.RelativeLayout;
 
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
@@ -66,24 +68,15 @@ public class AdapterWallpaper extends RecyclerView.Adapter<AdapterWallpaper.View
         return wallpaperList.size();
     }
 
-    public void setOnClickListener (View.OnClickListener clickListener) {
-        this.clickListener = clickListener;
-    }
-
-    @Override
-    public void onClick(View v) {
-        if(clickListener != null) {
-            clickListener.onClick(v);
-        }
-    }
-
     public class ViewHolder extends RecyclerView.ViewHolder {
-        ImageButton imageButton;
+        ImageView imageView;
+        LinearLayout linearLayout;
 
         public ViewHolder (View itemView) {
             super(itemView);
 
-            imageButton = itemView.findViewById(R.id.item_wallpaper_imagen);
+            imageView = itemView.findViewById(R.id.item_wallpaper_imagen);
+            linearLayout = itemView.findViewById(R.id.item_wallpaper_layout);
         }
     }
 
