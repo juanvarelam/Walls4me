@@ -45,7 +45,6 @@ public class AdapterWallpaper extends RecyclerView.Adapter<AdapterWallpaper.View
     public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
 
         String url = wallpaperList.get(position).getUrl();
-        Log.d("imagen", url);
         Glide.with(mContext)
                 .load(url)
                 .placeholder(R.drawable.ic_imagen_ph)
@@ -56,7 +55,7 @@ public class AdapterWallpaper extends RecyclerView.Adapter<AdapterWallpaper.View
             @Override
             public void onClick(View view) {
                 Intent intent = new Intent(mContext, WallpaperActivity.class);
-                intent.putExtra("url", wallpaperList.get(position).getUrl());
+                intent.putExtra("url", url);
                 mContext.startActivity(intent);
             }
         });
