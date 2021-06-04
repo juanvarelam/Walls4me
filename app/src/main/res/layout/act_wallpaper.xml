@@ -65,24 +65,22 @@
     <LinearLayout
         android:id="@+id/act_wallpaper_layout_inferior"
         android:layout_width="match_parent"
-        android:layout_height="60dp"
+        android:layout_height="wrap_content"
         android:orientation="horizontal"
         android:background="@drawable/fondo_wallpaper_options_botton"
         android:backgroundTint="#A9FFFFFF"
         android:gravity="center"
-        android:weightSum="100"
-        android:paddingHorizontal="12dp"
+        android:paddingVertical="12dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent">
 
         <Button
             android:id="@+id/act_wallpaper_btn_establecer_fondo"
-            android:layout_width="0dp"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_weight="50"
             android:textSize="15sp"
-            android:layout_marginHorizontal="12dp"
+            android:layout_marginHorizontal="6dp"
             android:background="@drawable/fondo_wallpaper_options_botones"
             android:backgroundTint="@color/gris_claro"
             android:drawableStart="@drawable/ic_establecer_fondo"
@@ -90,16 +88,29 @@
             android:text="@string/act_wallpaper_btn_establecer_fondo" />
 
         <Button
-            android:id="@+id/act_wallpaper_btn_descargar"
-            android:layout_width="0dp"
+            android:id="@+id/act_wallpaper_btn_ver_wallpaper"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_weight="50"
+            android:textSize="16sp"
+            android:layout_marginHorizontal="6dp"
+            android:background="@drawable/fondo_wallpaper_options_botones"
+            android:backgroundTint="@color/gris_claro"
+            android:drawableStart="@drawable/ic_aumentar"
+            android:paddingStart="8dp"
+            android:text="@string/act_wallpaper_btn_ver_wallpaper" />
+
+        <Button
+            android:id="@+id/act_wallpaper_btn_descargar"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
             android:textSize="15sp"
-            android:layout_marginHorizontal="12dp"
+            android:layout_marginHorizontal="6dp"
             android:background="@drawable/fondo_wallpaper_options_botones"
             android:backgroundTint="@color/gris_claro"
             android:drawableStart="@drawable/ic_descargar"
             android:paddingStart="8dp"
             android:text="@string/act_wallpaper_btn_descargar" />
+
+
     </LinearLayout>
 </androidx.constraintlayout.widget.ConstraintLayout>
