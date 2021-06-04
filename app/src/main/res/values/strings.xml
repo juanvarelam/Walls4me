@@ -29,6 +29,7 @@
     <string name="act_recupera_pass_recuperar_pass">Recuperar contraseña</string>
     <string name="titulo_recupera_pass">¿Has olvidado la contraseña?</string>
     <string name="subtitulo_recupera_pass">Introduce el correo electrónico asociado a tu cuenta para restablecer la contraseña.</string>
-    <string name="act_wallpaper_btn_establecer_fondo">Establecer fondo</string>
+    <string name="act_wallpaper_btn_establecer_fondo">Establecer</string>
     <string name="act_wallpaper_btn_descargar">Descargar</string>
+    <string name="act_wallpaper_btn_ver_wallpaper">Ver</string>
 </resources>
