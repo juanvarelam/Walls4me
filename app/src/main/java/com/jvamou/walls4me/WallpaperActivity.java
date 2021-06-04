@@ -6,8 +6,12 @@ import android.graphics.drawable.Drawable;
 import android.net.Uri;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.Button;
 import android.widget.ImageButton;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
+
+import com.bumptech.glide.Glide;
 
 public class WallpaperActivity extends AppCompatActivity {
 
@@ -32,7 +36,10 @@ public class WallpaperActivity extends AppCompatActivity {
         Bundle bundle = getIntent().getExtras();
         String url = bundle.getString("url");
 
-        imgFondo.setImageDrawable(Drawable.createFromPath(url));
-
+        Glide.with(this)
+                .load(url)
+                .placeholder(R.drawable.ic_imagen_ph)
+                .error(R.drawable.ic_imagen_error)
+                .into(imgFondo);
     }
 }
