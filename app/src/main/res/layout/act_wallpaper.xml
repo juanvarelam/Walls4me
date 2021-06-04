@@ -10,12 +10,14 @@
         android:id="@+id/act_wallpaper_fondo"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
+        android:scaleType="center"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"/>
 
     <LinearLayout
+        android:id="@+id/act_wallpaper_layout_superior"
         android:layout_width="match_parent"
         android:layout_height="54dp"
         android:background="@drawable/fondo_wallpaper_options_top"
@@ -61,6 +63,7 @@
     </LinearLayout>
 
     <LinearLayout
+        android:id="@+id/act_wallpaper_layout_inferior"
         android:layout_width="match_parent"
         android:layout_height="60dp"
         android:orientation="horizontal"
