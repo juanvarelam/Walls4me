@@ -16,7 +16,6 @@
         android:gravity="center"
         android:textSize="30sp"
         android:textColor="@color/black"
-        android:background="@color/naranja"
         tools:text="@string/act_login_txt_cabecera" />
 
     <LinearLayout
@@ -61,7 +60,7 @@
             android:layout_width="wrap_content"
             android:layout_height="22dp"
             android:layout_gravity="end"
-            android:layout_marginVertical="10dp"
+            android:layout_marginVertical="14dp"
             android:background="@android:color/transparent"
             android:text="@string/act_login_btn_recordar_password"
             android:textSize="16sp" />
@@ -71,7 +70,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginBottom="4dp"
-            android:backgroundTint="@color/naranja"
+            android:backgroundTint="@color/azul"
             android:paddingHorizontal="8dp"
             android:background="@drawable/fondo_input"
             android:paddingVertical="8dp"

@@ -16,7 +16,7 @@
         android:gravity="center"
         android:textSize="30sp"
         android:textColor="@color/black"
-        android:background="@color/naranja"
+        android:background="@color/azul"
         tools:text="@string/act_recupera_pass_txt_cabecera" />
 
     <LinearLayout
@@ -71,7 +71,7 @@
             android:layout_height="wrap_content"
             android:layout_marginBottom="4dp"
             android:background="@drawable/fondo_input"
-            android:backgroundTint="@color/naranja"
+            android:backgroundTint="@color/azul"
             android:paddingHorizontal="8dp"
             android:paddingVertical="8dp"
             android:text="@string/act_recupera_pass_recuperar_pass"
