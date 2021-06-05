@@ -5,9 +5,12 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.text.method.PasswordTransformationMethod;
 import android.util.Patterns;
 import android.view.View;
 import android.widget.Button;
+import android.widget.CheckBox;
+import android.widget.CompoundButton;
 import android.widget.EditText;
 import android.widget.Toast;
 
@@ -27,6 +30,8 @@ public class LoginActivity extends AppCompatActivity {
     private Button btnRecordarPassword;
     private FirebaseAuth mAuth;
 
+    CheckBox cboxMostrarPassword;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -37,6 +42,7 @@ public class LoginActivity extends AppCompatActivity {
         btnIniciarSesion = findViewById(R.id.act_login_btn_login);
         btnRegistrarse = findViewById(R.id.act_login_btn_registrarse);
         btnRecordarPassword = findViewById(R.id.act_login_btn_recordar_password);
+        cboxMostrarPassword = findViewById(R.id.act_login_cbox_mostrar_password);
 
         mAuth = FirebaseAuth.getInstance();
 
@@ -62,6 +68,17 @@ public class LoginActivity extends AppCompatActivity {
                 Intent intent = new Intent(LoginActivity.this, RegisterActivity.class);
                 startActivity(intent);
                 finish(); //al ir atrás vuelve a InicialActivity
+            }
+        });
+
+        cboxMostrarPassword.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+            @Override
+            public void onCheckedChanged(CompoundButton compoundButton, boolean isChecked) {
+                if (isChecked) {
+                    authPassword.setTransformationMethod(null);
+                } else {
+                    authPassword.setTransformationMethod(new PasswordTransformationMethod());
+                }
             }
         });
     }
