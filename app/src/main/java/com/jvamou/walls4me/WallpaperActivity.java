@@ -4,6 +4,7 @@ import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.os.Bundle;
+import android.os.CountDownTimer;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageButton;
@@ -44,16 +45,15 @@ public class WallpaperActivity extends AppCompatActivity {
         layoutInferior.setVisibility(View.VISIBLE);
         btnMostrarOpciones.setVisibility(View.GONE);
 
-        btnCerrar.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                AlertDialog.Builder builder = new AlertDialog.Builder(WallpaperActivity.this);
-                builder.setTitle("Esta función estará disponible muy pronto!");
-                builder.setPositiveButton("OK", null);
+        btnCerrar.setOnClickListener(view -> finish());
 
-                AlertDialog dialog = builder.create();
-                dialog.show();
-            }
+        btnFavoritos.setOnClickListener(view -> {
+            AlertDialog.Builder builder = new AlertDialog.Builder(WallpaperActivity.this);
+            builder.setTitle("Esta función estará disponible muy pronto!");
+            builder.setPositiveButton("OK", null);
+
+            AlertDialog dialog = builder.create();
+            dialog.show();
         });
 
         btnVer.setOnClickListener(view -> {
