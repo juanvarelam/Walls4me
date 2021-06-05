@@ -36,6 +36,9 @@ public class WallpaperActivity extends AppCompatActivity {
         layoutSuperior = findViewById(R.id.act_wallpaper_layout_superior);
         layoutInferior = findViewById(R.id.act_wallpaper_layout_inferior);
 
+        layoutSuperior.setVisibility(View.VISIBLE);
+        layoutInferior.setVisibility(View.VISIBLE);
+        btnMostrarOpciones.setVisibility(View.GONE);
 
         btnCerrar.setOnClickListener(new View.OnClickListener() {
             @Override
