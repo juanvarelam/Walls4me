@@ -10,7 +10,7 @@ import android.widget.Button;
 import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
-import android.widget.Toast;
+import android.widget.TextView;
 
 import com.bumptech.glide.Glide;
 
@@ -18,13 +18,12 @@ public class WallpaperActivity extends AppCompatActivity {
 
     ImageView imgFondo;
     ImageButton btnCerrar;
+    TextView texto;
     ImageButton btnFavoritos;
     Button btnEstablecerFondo;
     Button btnVer;
     Button btnDescargar;
     Button btnMostrarOpciones;
-    LinearLayout layoutSuperior;
-    LinearLayout layoutInferior;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -33,16 +32,16 @@ public class WallpaperActivity extends AppCompatActivity {
 
         imgFondo = findViewById(R.id.act_wallpaper_fondo);
         btnCerrar = findViewById(R.id.act_wallpaper_btn_cerrar);
+        texto = findViewById(R.id.act_wallpaper_texto);
         btnFavoritos = findViewById(R.id.act_wallpaper_btn_favorito);
         btnEstablecerFondo = findViewById(R.id.act_wallpaper_btn_establecer_fondo);
         btnVer = findViewById(R.id.act_wallpaper_btn_ver_wallpaper);
         btnDescargar = findViewById(R.id.act_wallpaper_btn_descargar);
         btnMostrarOpciones = findViewById(R.id.act_wallpaper_btn_mostrar_opciones);
-        layoutSuperior = findViewById(R.id.act_wallpaper_layout_superior);
-        layoutInferior = findViewById(R.id.act_wallpaper_layout_inferior);
 
-        layoutSuperior.setVisibility(View.VISIBLE);
-        layoutInferior.setVisibility(View.VISIBLE);
+        btnCerrar.setVisibility(View.VISIBLE);
+        texto.setVisibility(View.VISIBLE);
+        btnFavoritos.setVisibility(View.VISIBLE);
         btnMostrarOpciones.setVisibility(View.GONE);
 
         btnCerrar.setOnClickListener(view -> finish());
@@ -58,8 +57,12 @@ public class WallpaperActivity extends AppCompatActivity {
 
         btnVer.setOnClickListener(view -> {
 
-            layoutSuperior.setVisibility(View.GONE);
-            layoutInferior.setVisibility(View.GONE);
+            btnCerrar.setVisibility(View.GONE);
+            texto.setVisibility(View.GONE);
+            btnFavoritos.setVisibility(View.GONE);
+            btnEstablecerFondo.setVisibility(View.GONE);
+            btnVer.setVisibility(View.GONE);
+            btnDescargar.setVisibility(View.GONE);
 
             new CountDownTimer(3000, 1000) {
 
@@ -75,8 +78,12 @@ public class WallpaperActivity extends AppCompatActivity {
             }.start();
 
             imgFondo.setOnClickListener(view1 -> {
-                layoutSuperior.setVisibility(View.VISIBLE);
-                layoutInferior.setVisibility(View.VISIBLE);
+                btnCerrar.setVisibility(View.VISIBLE);
+                texto.setVisibility(View.VISIBLE);
+                btnFavoritos.setVisibility(View.VISIBLE);
+                btnEstablecerFondo.setVisibility(View.VISIBLE);
+                btnVer.setVisibility(View.VISIBLE);
+                btnDescargar.setVisibility(View.VISIBLE);
                 btnMostrarOpciones.setVisibility(View.GONE);
             });
         });
