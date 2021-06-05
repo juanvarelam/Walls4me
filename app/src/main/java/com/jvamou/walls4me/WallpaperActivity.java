@@ -8,6 +8,7 @@ import android.widget.Button;
 import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
+import android.widget.Toast;
 
 import com.bumptech.glide.Glide;
 
@@ -15,6 +16,7 @@ public class WallpaperActivity extends AppCompatActivity {
 
     ImageView imgFondo;
     ImageButton btnCerrar;
+    ImageButton btnFavoritos;
     Button btnEstablecerFondo;
     Button btnVer;
     Button btnDescargar;
@@ -29,6 +31,7 @@ public class WallpaperActivity extends AppCompatActivity {
 
         imgFondo = findViewById(R.id.act_wallpaper_fondo);
         btnCerrar = findViewById(R.id.act_wallpaper_btn_cerrar);
+        btnFavoritos = findViewById(R.id.act_wallpaper_btn_favorito);
         btnEstablecerFondo = findViewById(R.id.act_wallpaper_btn_establecer_fondo);
         btnVer = findViewById(R.id.act_wallpaper_btn_ver_wallpaper);
         btnDescargar = findViewById(R.id.act_wallpaper_btn_descargar);
