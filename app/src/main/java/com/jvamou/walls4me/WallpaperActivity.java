@@ -16,7 +16,9 @@ public class WallpaperActivity extends AppCompatActivity {
     ImageView imgFondo;
     ImageButton btnCerrar;
     Button btnEstablecerFondo;
+    Button btnVer;
     Button btnDescargar;
+    Button btnMostrarOpciones;
     LinearLayout layoutSuperior;
     LinearLayout layoutInferior;
 
@@ -28,7 +30,9 @@ public class WallpaperActivity extends AppCompatActivity {
         imgFondo = findViewById(R.id.act_wallpaper_fondo);
         btnCerrar = findViewById(R.id.act_wallpaper_btn_cerrar);
         btnEstablecerFondo = findViewById(R.id.act_wallpaper_btn_establecer_fondo);
+        btnVer = findViewById(R.id.act_wallpaper_btn_ver_wallpaper);
         btnDescargar = findViewById(R.id.act_wallpaper_btn_descargar);
+        btnMostrarOpciones = findViewById(R.id.act_wallpaper_btn_mostrar_opciones);
         layoutSuperior = findViewById(R.id.act_wallpaper_layout_superior);
         layoutInferior = findViewById(R.id.act_wallpaper_layout_inferior);
 
