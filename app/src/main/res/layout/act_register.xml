@@ -35,8 +35,10 @@
         android:paddingHorizontal="32dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/linearLayout3">
+        app:layout_constraintTop_toBottomOf="@+id/linearLayout3"
+        app:layout_constraintVertical_bias="0.343">
 
         <EditText
             android:id="@+id/act_register_txt_nombre"
@@ -89,6 +91,12 @@
             android:inputType="textPassword"
             android:paddingHorizontal="12dp" />
 
+        <CheckBox
+            android:id="@+id/act_register_cbox_mostrar_password"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            tools:text="@string/act_login_mostrar_password" />
+
 
         <Button
             android:id="@+id/act_register_btn_registrarse"
@@ -107,9 +115,9 @@
             android:id="@+id/act_register_btn_login"
             android:layout_width="match_parent"
             android:layout_height="22dp"
-            android:textSize="16sp"
             android:background="@android:color/transparent"
-            android:text="@string/act_register_txt_ir_a_login" />
+            android:text="@string/act_register_txt_ir_a_login"
+            android:textSize="16sp" />
 
     </LinearLayout>
 

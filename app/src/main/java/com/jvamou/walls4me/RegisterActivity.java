@@ -6,9 +6,12 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.app.AlertDialog;
 import android.content.Intent;
 import android.os.Bundle;
+import android.text.method.PasswordTransformationMethod;
 import android.util.Patterns;
 import android.view.View;
 import android.widget.Button;
+import android.widget.CheckBox;
+import android.widget.CompoundButton;
 import android.widget.EditText;
 import android.widget.Toast;
 
@@ -26,6 +29,7 @@ public class RegisterActivity extends AppCompatActivity {
     private EditText authEmail;
     private EditText authPassword;
     private EditText authConfirmPassword;
+    private CheckBox cboxMostrarPassword;
     private Button authBtnRegistro;
     private Button btnIniciarSesion;
 
@@ -41,6 +45,7 @@ public class RegisterActivity extends AppCompatActivity {
         authEmail = findViewById(R.id.act_register_txt_email);
         authPassword = findViewById(R.id.act_register_txt_password);
         authConfirmPassword = findViewById(R.id.act_register_txt_confirm_password);
+        cboxMostrarPassword = findViewById(R.id.act_register_cbox_mostrar_password);
         authBtnRegistro = findViewById(R.id.act_register_btn_registrarse);
         btnIniciarSesion = findViewById(R.id.act_register_btn_login);
 
@@ -59,6 +64,20 @@ public class RegisterActivity extends AppCompatActivity {
                 validar();
             }
         });
+
+        cboxMostrarPassword.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+            @Override
+            public void onCheckedChanged(CompoundButton compoundButton, boolean isChecked) {
+                if (isChecked) {
+                    authPassword.setTransformationMethod(null);
+                    authConfirmPassword.setTransformationMethod(null);
+                } else {
+                    authPassword.setTransformationMethod(new PasswordTransformationMethod());
+                    authConfirmPassword.setTransformationMethod(new PasswordTransformationMethod());
+                }
+            }
+        });
+
         mAuth = FirebaseAuth.getInstance();
     }
 
