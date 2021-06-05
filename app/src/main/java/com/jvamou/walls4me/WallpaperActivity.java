@@ -1,5 +1,6 @@
 package com.jvamou.walls4me;
 
+import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.os.Bundle;
@@ -46,9 +47,40 @@ public class WallpaperActivity extends AppCompatActivity {
         btnCerrar.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                finish();
+                AlertDialog.Builder builder = new AlertDialog.Builder(WallpaperActivity.this);
+                builder.setTitle("Esta función estará disponible muy pronto!");
+                builder.setPositiveButton("OK", null);
+
+                AlertDialog dialog = builder.create();
+                dialog.show();
             }
         });
+
+        btnVer.setOnClickListener(view -> {
+
+            layoutSuperior.setVisibility(View.GONE);
+            layoutInferior.setVisibility(View.GONE);
+
+            new CountDownTimer(3000, 1000) {
+
+                public void onTick(long millisUntilFinished) {
+                    btnMostrarOpciones.setVisibility(View.VISIBLE);
+                }
+
+                public void onFinish() {
+
+                    btnMostrarOpciones.setVisibility(View.GONE);
+                }
+
+            }.start();
+
+            imgFondo.setOnClickListener(view1 -> {
+                layoutSuperior.setVisibility(View.VISIBLE);
+                layoutInferior.setVisibility(View.VISIBLE);
+                btnMostrarOpciones.setVisibility(View.GONE);
+            });
+        });
+
 
         Bundle bundle = getIntent().getExtras();
         String url = bundle.getString("url");
