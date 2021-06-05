@@ -10,11 +10,11 @@
         android:id="@+id/act_wallpaper_fondo"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:scaleType="center"
+        android:scaleType="fitXY"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"/>
+        app:layout_constraintTop_toTopOf="parent" />
 
     <LinearLayout
         android:id="@+id/act_wallpaper_layout_superior"
@@ -68,49 +68,70 @@
         android:layout_height="wrap_content"
         android:orientation="horizontal"
         android:background="@drawable/fondo_wallpaper_options_botton"
-        android:backgroundTint="#A9FFFFFF"
         android:gravity="center"
+        android:weightSum="100"
         android:paddingVertical="12dp"
+        android:paddingHorizontal="12dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent">
 
         <Button
             android:id="@+id/act_wallpaper_btn_establecer_fondo"
-            android:layout_width="wrap_content"
+            android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:textSize="15sp"
+            android:layout_weight="38"
             android:layout_marginHorizontal="6dp"
             android:background="@drawable/fondo_wallpaper_options_botones"
             android:backgroundTint="@color/gris_claro"
             android:drawableStart="@drawable/ic_establecer_fondo"
-            android:paddingStart="8dp"
+            android:paddingHorizontal="8dp"
             android:text="@string/act_wallpaper_btn_establecer_fondo" />
 
         <Button
             android:id="@+id/act_wallpaper_btn_ver_wallpaper"
-            android:layout_width="wrap_content"
+            android:layout_width="0dp"
             android:layout_height="wrap_content"
+            android:layout_weight="24"
             android:textSize="16sp"
             android:layout_marginHorizontal="6dp"
             android:background="@drawable/fondo_wallpaper_options_botones"
             android:backgroundTint="@color/gris_claro"
             android:drawableStart="@drawable/ic_aumentar"
-            android:paddingStart="8dp"
+            android:paddingHorizontal="8dp"
             android:text="@string/act_wallpaper_btn_ver_wallpaper" />
 
         <Button
             android:id="@+id/act_wallpaper_btn_descargar"
-            android:layout_width="wrap_content"
+            android:layout_width="0dp"
             android:layout_height="wrap_content"
+            android:layout_weight="38"
             android:textSize="15sp"
             android:layout_marginHorizontal="6dp"
             android:background="@drawable/fondo_wallpaper_options_botones"
             android:backgroundTint="@color/gris_claro"
             android:drawableStart="@drawable/ic_descargar"
-            android:paddingStart="8dp"
+            android:paddingHorizontal="8dp"
             android:text="@string/act_wallpaper_btn_descargar" />
 
 
     </LinearLayout>
+
+    <Button
+        android:id="@+id/act_wallpaper_btn_mostrar_opciones"
+        android:layout_width="wrap_content"
+        android:layout_height="24dp"
+        android:background="@drawable/fondo_btn_mostrar_opciones"
+        android:backgroundTint="@color/gris_claro"
+        android:drawableStart="@drawable/ic_info"
+        android:drawablePadding="8dp"
+        android:paddingHorizontal="12dp"
+        android:layout_marginBottom="24dp"
+        android:text="@string/act_wallpaper_btn_mostrar_opciones"
+        android:textSize="16sp"
+        app:layout_constraintBottom_toTopOf="@+id/act_wallpaper_layout_inferior"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
+
 </androidx.constraintlayout.widget.ConstraintLayout>
