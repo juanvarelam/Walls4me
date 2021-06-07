@@ -18,7 +18,7 @@ import com.google.firebase.auth.FirebaseAuth;
 public class RecuperaPassActivity extends AppCompatActivity {
 
     private EditText email;
-    private Button btnRecuperaPass;
+    private Button btnRecuperaPass, btnVolver;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -27,6 +27,15 @@ public class RecuperaPassActivity extends AppCompatActivity {
 
         email = findViewById(R.id.act_recupera_pass_email);
         btnRecuperaPass = findViewById(R.id.act_recupera_pass_btn_recuperar_pass);
+        btnVolver = findViewById(R.id.act_recupera_pass_volver);
+
+        btnVolver.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(RecuperaPassActivity.this, LoginActivity.class);
+                startActivity(intent);
+            }
+        });
 
         btnRecuperaPass.setOnClickListener(new View.OnClickListener() {
             @Override
