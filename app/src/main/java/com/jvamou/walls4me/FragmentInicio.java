@@ -29,7 +29,7 @@ import java.util.ArrayList;
 public class FragmentInicio extends Fragment {
 
     RecyclerView recyclerView;
-    AdapterWallpaper adapterWallpaper;
+    AdapterFrgInicio adapterFrgInicio;
 
     ArrayList<Wallpaper> wallpapersList;
 
@@ -50,8 +50,8 @@ public class FragmentInicio extends Fragment {
                     Wallpaper wallpaper = dataSnapshot.getValue(Wallpaper.class);
                     wallpapersList.add(wallpaper);
                 }
-                adapterWallpaper = new AdapterWallpaper(wallpapersList, getContext());
-                recyclerView.setAdapter(adapterWallpaper);
+                adapterFrgInicio = new AdapterFrgInicio(wallpapersList, getContext());
+                recyclerView.setAdapter(adapterFrgInicio);
             }
 
             @Override
@@ -72,8 +72,8 @@ public class FragmentInicio extends Fragment {
 
         ObtenerDatosFirebase();
 
-        adapterWallpaper = new AdapterWallpaper(wallpapersList, getContext());
-        recyclerView.setAdapter(adapterWallpaper);
+        adapterFrgInicio = new AdapterFrgInicio(wallpapersList, getContext());
+        recyclerView.setAdapter(adapterFrgInicio);
         recyclerView.setLayoutManager(new GridLayoutManager(getContext(), 2));
         recyclerView.setHasFixedSize(true);
 
@@ -95,9 +95,9 @@ public class FragmentInicio extends Fragment {
                         wallpaper.url = doc.getString("url");
                         wallpapersList.add(wallpaper);
 
-                        adapterWallpaper = new AdapterWallpaper(wallpapersList, getContext());
-                        recyclerView.setAdapter(adapterWallpaper);
-                        adapterWallpaper.notifyDataSetChanged();
+                        adapterFrgInicio = new AdapterFrgInicio(wallpapersList, getContext());
+                        recyclerView.setAdapter(adapterFrgInicio);
+                        adapterFrgInicio.notifyDataSetChanged();
                     }
                 }else{
                     String error = task.getException().getLocalizedMessage();
@@ -112,8 +112,8 @@ public class FragmentInicio extends Fragment {
         if (wallpapersList != null) {
             wallpapersList.clear();
 
-            if (adapterWallpaper != null) {
-                adapterWallpaper.notifyDataSetChanged();
+            if (adapterFrgInicio != null) {
+                adapterFrgInicio.notifyDataSetChanged();
             }
         }
 
