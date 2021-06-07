@@ -2,45 +2,122 @@ package com.jvamou.walls4me;
 
 import android.os.Bundle;
 
+import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
+import androidx.recyclerview.widget.GridLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
-/**
- * A simple {@link Fragment} subclass.
- * Use the {@link FragmentAbstracto#newInstance} factory method to
- * create an instance of this fragment.
- */
+import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.Task;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
+import com.google.firebase.firestore.DocumentSnapshot;
+import com.google.firebase.firestore.FirebaseFirestore;
+import com.google.firebase.firestore.QuerySnapshot;
+
+import java.util.ArrayList;
+
+
 public class FragmentAbstracto extends Fragment {
 
+    RecyclerView recyclerView;
+    AdapterFrgAbstracto adapterFrgAbstracto;
 
+    ArrayList<Wallpaper> wallpapersList;
 
-    public FragmentAbstracto() {
-        // Required empty public constructor
-    }
+    private DatabaseReference dbRef;
 
-
-    public static FragmentAbstracto newInstance(String param1, String param2) {
-        FragmentAbstracto fragment = new FragmentAbstracto();
-        Bundle args = new Bundle();
-        fragment.setArguments(args);
-        return fragment;
-    }
 
     @Override
-    public void onCreate(Bundle savedInstanceState) {
+    public void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        if (getArguments() != null) {
 
-        }
+        //Instanciar Firebase
+        dbRef = FirebaseDatabase.getInstance().getReference("abstracto");
+
+        dbRef.addListenerForSingleValueEvent(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot snapshot) {
+                for(DataSnapshot dataSnapshot : snapshot.getChildren()) {
+                    Wallpaper wallpaper = dataSnapshot.getValue(Wallpaper.class);
+                    wallpapersList.add(wallpaper);
+                }
+                adapterFrgAbstracto = new AdapterFrgAbstracto(wallpapersList, getContext());
+                recyclerView.setAdapter(adapterFrgAbstracto);
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError error) {
+
+            }
+        });
     }
 
+    @Nullable
     @Override
-    public View onCreateView(LayoutInflater inflater, ViewGroup container,
-                             Bundle savedInstanceState) {
-        // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.frg_abstracto, container, false);
+    public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
+
+        View v = inflater.inflate(R.layout.frg_abstracto, container, false);
+
+        wallpapersList = new ArrayList<>();
+        recyclerView = v.findViewById(R.id.frg_abstracto_recycler_abstracto);
+
+        ObtenerDatosFirebase();
+
+        adapterFrgAbstracto = new AdapterFrgAbstracto(wallpapersList, getContext());
+        recyclerView.setAdapter(adapterFrgAbstracto);
+        recyclerView.setLayoutManager(new GridLayoutManager(getContext(), 2));
+        recyclerView.setHasFixedSize(true);
+
+
+        return v;
+    }
+
+    private void ObtenerDatosFirebase() {
+
+        FirebaseFirestore db = FirebaseFirestore.getInstance();
+        db.collection("abstracto").get().addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
+            @Override
+            public void onComplete(@NonNull Task<QuerySnapshot> task) {
+
+                if(task.isSuccessful()) {
+                    limpiarDatos();
+                    for(DocumentSnapshot doc: task.getResult().getDocuments()) {
+                        Wallpaper wallpaper = new Wallpaper();
+                        wallpaper.url = doc.getString("url");
+                        wallpapersList.add(wallpaper);
+
+                        adapterFrgAbstracto = new AdapterFrgAbstracto(wallpapersList, getContext());
+                        recyclerView.setAdapter(adapterFrgAbstracto);
+                        adapterFrgAbstracto.notifyDataSetChanged();
+                    }
+                }else{
+                    String error = task.getException().getLocalizedMessage();
+                    Log.e("FIREBASE", error);
+                }
+            }
+        });
+    }
+
+
+    private void limpiarDatos() {
+        if (wallpapersList != null) {
+            wallpapersList.clear();
+
+            if (adapterFrgAbstracto != null) {
+                adapterFrgAbstracto.notifyDataSetChanged();
+            }
+        }
+
+        wallpapersList = new ArrayList<>();
     }
 }
