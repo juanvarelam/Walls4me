@@ -7,7 +7,6 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.GridLayout;
 import android.widget.ImageView;
-import android.widget.LinearLayout;
 
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
@@ -17,20 +16,20 @@ import com.bumptech.glide.Glide;
 
 import java.util.ArrayList;
 
-public class AdapterWallpaper extends RecyclerView.Adapter<AdapterWallpaper.ViewHolder> {
+public class AdapterFrgInicio extends RecyclerView.Adapter<AdapterFrgInicio.ViewHolder> {
 
     ArrayList<Wallpaper> wallpaperList;
     Context mContext;
 
 
-    public AdapterWallpaper(ArrayList<Wallpaper> wallpaperList, Context mContext) {
+    public AdapterFrgInicio(ArrayList<Wallpaper> wallpaperList, Context mContext) {
         this.wallpaperList = wallpaperList;
         this.mContext = mContext;
     }
 
     @NonNull
     @Override
-    public AdapterWallpaper.ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
+    public AdapterFrgInicio.ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
 
         LayoutInflater layoutInflater = LayoutInflater.from(mContext);
         View v = layoutInflater.inflate(R.layout.item_wallpaper, parent, false);
