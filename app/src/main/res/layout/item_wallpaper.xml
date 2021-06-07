@@ -4,7 +4,7 @@
     android:layout_height="350dp"
     android:orientation="vertical">
 
-    <LinearLayout
+    <GridLayout
         android:id="@+id/item_wallpaper_layout"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
@@ -16,6 +16,6 @@
             android:layout_height="match_parent"
             android:padding="1dp"
             android:scaleType="center" />
-    </LinearLayout>
+    </GridLayout>
 
 </RelativeLayout>

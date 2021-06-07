@@ -5,6 +5,7 @@ import android.content.Intent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.GridLayout;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 
@@ -47,7 +48,7 @@ public class AdapterWallpaper extends RecyclerView.Adapter<AdapterWallpaper.View
                 .error(R.drawable.ic_imagen_error)
                 .into(holder.imageView);
 
-        holder.linearLayout.setOnClickListener(new View.OnClickListener() {
+        holder.gridLayout.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 Intent intent = new Intent(mContext, WallpaperActivity.class);
@@ -65,13 +66,13 @@ public class AdapterWallpaper extends RecyclerView.Adapter<AdapterWallpaper.View
 
     public class ViewHolder extends RecyclerView.ViewHolder {
         ImageView imageView;
-        LinearLayout linearLayout;
+        GridLayout gridLayout;
 
         public ViewHolder (View itemView) {
             super(itemView);
 
             imageView = itemView.findViewById(R.id.item_wallpaper_imagen);
-            linearLayout = itemView.findViewById(R.id.item_wallpaper_layout);
+            gridLayout = itemView.findViewById(R.id.item_wallpaper_layout);
         }
     }
 
