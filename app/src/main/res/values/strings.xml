@@ -34,5 +34,5 @@
     <string name="act_wallpaper_btn_ver_wallpaper">Ver</string>
     <string name="act_wallpaper_btn_tocar">Toque la imagen para ver las opciones</string>
     <string name="act_wallpaper_btn_mostrar_opciones">Toque la imagen para mostrar las opciones</string>
-    <string name="act_login_mostrar_password">Mostrar contraseña</string>
+    <string name="act_login_mostrar_password">Mostrar</string>
 </resources>
