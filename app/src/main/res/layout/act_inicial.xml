@@ -15,8 +15,8 @@
         android:layout_marginTop="54dp"
         android:fontFamily="@font/dohyeon_regular"
         android:text="@string/act_inicial_nombre"
-        android:textColor="@color/azul_texto"
-        android:textSize="56sp"
+        android:textColor="@color/azul_botones"
+        android:textSize="60sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
@@ -25,7 +25,7 @@
         android:id="@+id/imageView"
         android:layout_width="283dp"
         android:layout_height="322dp"
-        android:layout_marginEnd="16dp"
+        android:layout_marginEnd="24dp"
         app:layout_constraintBottom_toTopOf="@+id/linearLayout4"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -48,7 +48,7 @@
             android:layout_marginVertical="12dp"
             android:background="@drawable/fondo_input"
             android:backgroundTint="@color/azul_botones"
-            android:paddingHorizontal="54dp"
+            android:paddingHorizontal="32dp"
             android:text="@string/act_inicial_txt_boton_login"
             android:textSize="20sp" />
 

@@ -4,25 +4,26 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@color/azul_base"
     tools:context=".LoginActivity">
 
-    <TextView
-        android:id="@+id/act_login_txt_cabecera"
-        android:layout_width="match_parent"
-        android:layout_height="54dp"
+    <ImageView
+        android:id="@+id/imageView2"
+        android:layout_width="200dp"
+        android:layout_height="240dp"
+        android:layout_marginTop="16dp"
+        android:layout_marginEnd="24dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        android:gravity="center"
-        android:textSize="30sp"
-        android:textColor="@color/black"
-        tools:text="@string/act_login_txt_cabecera" />
+        app:srcCompat="@drawable/logo_app" />
 
     <LinearLayout
         android:id="@+id/linearLayout"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="252dp"
+        android:layout_marginTop="24dp"
+        android:layout_marginBottom="104dp"
         android:gravity="center"
         android:orientation="vertical"
         android:paddingHorizontal="28dp"
@@ -30,7 +31,8 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="parent">
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/imageView2">
 
         <EditText
             android:id="@+id/act_login_email"
@@ -57,30 +59,44 @@
             android:inputType="textPassword"
             android:paddingHorizontal="12dp" />
 
-        <CheckBox
-            android:id="@+id/act_login_cbox_mostrar_password"
+        <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            tools:text="@string/act_login_mostrar_password" />
+            android:weightSum="100"
+            android:layout_marginTop="4dp"
+            android:layout_marginBottom="12dp"
+            android:orientation="horizontal">
 
-        <Button
-            android:id="@+id/act_login_btn_recordar_password"
-            android:layout_width="wrap_content"
-            android:layout_height="22dp"
-            android:layout_gravity="end"
-            android:layout_marginVertical="14dp"
-            android:background="@android:color/transparent"
-            android:text="@string/act_login_btn_recordar_password"
-            android:textSize="16sp" />
+            <CheckBox
+                android:id="@+id/act_login_cbox_mostrar_password"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:textSize="16sp"
+                android:layout_weight="34"
+                android:textColor="@color/black"
+                android:buttonTint="@color/white"
+                tools:text="@string/act_login_mostrar_password" />
+
+            <Button
+                android:id="@+id/act_login_btn_recordar_password"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="66"
+                android:gravity="center"
+                android:background="@android:color/transparent"
+                android:text="@string/act_login_btn_recordar_password"
+                android:textSize="16sp" />
+        </LinearLayout>
 
         <Button
             android:id="@+id/act_login_btn_login"
-            android:layout_width="match_parent"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginBottom="4dp"
             android:background="@drawable/fondo_input"
-            android:backgroundTint="@color/azul"
-            android:paddingHorizontal="8dp"
+            android:backgroundTint="@color/azul_botones"
+            android:paddingHorizontal="32dp"
             android:paddingVertical="8dp"
             android:text="@string/act_login_btn_login"
             android:textSize="20sp" />
