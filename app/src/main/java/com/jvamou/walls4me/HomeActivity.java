@@ -15,7 +15,6 @@ public class HomeActivity extends AppCompatActivity {
 
     //Variables globales fragments bottomNavigation
     Fragment fragmentInicio, fragmentCategorias, fragmentFavoritos;
-    View home;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

@@ -70,7 +70,6 @@ public class FragmentInicio extends Fragment {
         wallpapersList = new ArrayList<>();
         recyclerView = v.findViewById(R.id.frg_inicio_recycler_inicio);
 
-        limpiarDatos();
         ObtenerDatosFirebase();
 
         adapterWallpaper = new AdapterWallpaper(wallpapersList, getContext());
