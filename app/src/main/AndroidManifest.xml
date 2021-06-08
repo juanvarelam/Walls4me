@@ -17,9 +17,9 @@
         <activity android:name=".WallpaperActivity" />
         <activity android:name=".RecuperaPassActivity" />
         <activity android:name=".InicialActivity" />
-        <activity android:name=".LoginActivity" />
+        <activity android:name=".HomeActivity" />
         <activity android:name=".RegisterActivity" />
-        <activity android:name=".HomeActivity">
+        <activity android:name=".LoginActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 

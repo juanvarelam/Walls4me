@@ -17,6 +17,8 @@
         android:text="@string/act_inicial_nombre"
         android:textColor="@color/azul_botones"
         android:textSize="60sp"
+        android:shadowColor="@color/black"
+        android:shadowRadius="2"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
