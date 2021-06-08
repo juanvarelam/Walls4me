@@ -18,26 +18,29 @@ import java.util.ArrayList;
 public class AdapterActAnimales extends RecyclerView.Adapter<AdapterActAnimales.ViewHolder> {
 
     ArrayList<Wallpaper> wallpaperList;
-    Context context;
+    Context mContext;
 
-    public AdapterActAnimales(ArrayList<Wallpaper> wallpaperList, Context context) {
+
+    public AdapterActAnimales(ArrayList<Wallpaper> wallpaperList, Context mContext) {
         this.wallpaperList = wallpaperList;
-        this.context = context;
+        this.mContext = mContext;
     }
 
     @NonNull
     @Override
-    public ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
+    public AdapterActAnimales.ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
 
-        View v = LayoutInflater.from(parent.getContext()).inflate(R.layout.item_wallpaper, null, false);
+        LayoutInflater layoutInflater = LayoutInflater.from(mContext);
+        View v = layoutInflater.inflate(R.layout.item_wallpaper, parent, false);
 
         return new ViewHolder(v);
     }
 
     @Override
     public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
+
         String url = wallpaperList.get(position).getUrl();
-        Glide.with(context)
+        Glide.with(mContext)
                 .load(url)
                 .placeholder(R.drawable.ic_imagen_ph)
                 .error(R.drawable.ic_imagen_error)
@@ -46,11 +49,14 @@ public class AdapterActAnimales extends RecyclerView.Adapter<AdapterActAnimales.
         holder.gridLayout.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(context, WallpaperActivity.class);
+                Intent intent = new Intent(mContext, WallpaperActivity.class);
+
+                intent.setAction(Intent.ACTION_SEND);
                 intent.putExtra("url", url);
-                context.startActivity(intent);
-            }
+                intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+                mContext.startActivity(intent);            }
         });
+
     }
 
     @Override
@@ -59,14 +65,15 @@ public class AdapterActAnimales extends RecyclerView.Adapter<AdapterActAnimales.
     }
 
     public class ViewHolder extends RecyclerView.ViewHolder {
-
         ImageView imageView;
         GridLayout gridLayout;
 
-        public ViewHolder(@NonNull View itemView) {
+        public ViewHolder (View itemView) {
             super(itemView);
+
             imageView = itemView.findViewById(R.id.item_wallpaper_imagen);
             gridLayout = itemView.findViewById(R.id.item_wallpaper_layout);
         }
     }
+
 }
