@@ -36,4 +36,5 @@
     <string name="act_wallpaper_btn_mostrar_opciones">Toque la imagen para mostrar las opciones</string>
     <string name="act_login_mostrar_password">Mostrar</string>
     <string name="act_recupera_pass_volver"><u>Ir a inicio de sesión</u></string>
+    <string name="frg_favoritos_disponobilidad">En breves podrás guardar tus fondos favoritos!</string>
 </resources>
