@@ -1,6 +1,7 @@
 package com.jvamou.walls4me;
 
 import android.content.Context;
+import android.content.Intent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -38,7 +39,7 @@ public class AdapterCategorias extends RecyclerView.Adapter<AdapterCategorias.Vi
         LayoutInflater layoutInflater = LayoutInflater.from(mContext);
         View v = layoutInflater.inflate(R.layout.item_categoria, parent, false);
 
-        fragmentAbstracto = new FragmentAbstracto();
+        homeActivity = new HomeActivity();
 
         return new ViewHolder(v);
     }
@@ -57,10 +58,14 @@ public class AdapterCategorias extends RecyclerView.Adapter<AdapterCategorias.Vi
             @Override
             public void onClick(View view) {
 
+                int posicion = Integer.parseInt(String.valueOf(holder.getAdapterPosition()));
 
+                if(posicion == 0) {
+                    Intent intent = new Intent(mContext, AbstractoActivity.class);
+                    mContext.startActivity(intent);
+                }
             }
         });
-
     }
 
     @Override
