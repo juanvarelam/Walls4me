@@ -13,7 +13,8 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.Walls4me">
-        <activity android:name=".AbstractoActivity"></activity>
+        <activity android:name=".AjustesActivity"></activity>
+        <activity android:name=".AbstractoActivity" />
         <activity android:name=".WallpaperActivity" />
         <activity android:name=".RecuperaPassActivity" />
         <activity android:name=".InicialActivity" />
