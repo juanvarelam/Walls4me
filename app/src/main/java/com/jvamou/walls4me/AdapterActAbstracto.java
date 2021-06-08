@@ -7,40 +7,42 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.GridLayout;
 import android.widget.ImageView;
+import android.widget.TextView;
 
 import androidx.annotation.NonNull;
+import androidx.core.app.ActivityCompat;
+import androidx.core.content.ContextCompat;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.bumptech.glide.Glide;
 
 import java.util.ArrayList;
 
+import static androidx.core.app.ActivityCompat.startActivityForResult;
+
 public class AdapterActAbstracto extends RecyclerView.Adapter<AdapterActAbstracto.ViewHolder> {
 
     ArrayList<Wallpaper> wallpaperList;
-    Context mContext;
+    Context context;
 
-
-    public AdapterActAbstracto(ArrayList<Wallpaper> wallpaperList, Context mContext) {
+    public AdapterActAbstracto(ArrayList<Wallpaper> wallpaperList, Context context) {
         this.wallpaperList = wallpaperList;
-        this.mContext = mContext;
+        this.context = context;
     }
 
     @NonNull
     @Override
-    public AdapterActAbstracto.ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
+    public ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
 
-        LayoutInflater layoutInflater = LayoutInflater.from(mContext);
-        View v = layoutInflater.inflate(R.layout.item_wallpaper, parent, false);
+        View v = LayoutInflater.from(parent.getContext()).inflate(R.layout.item_wallpaper, null, false);
 
         return new ViewHolder(v);
     }
 
     @Override
     public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
-
         String url = wallpaperList.get(position).getUrl();
-        Glide.with(mContext)
+        Glide.with(context)
                 .load(url)
                 .placeholder(R.drawable.ic_imagen_ph)
                 .error(R.drawable.ic_imagen_error)
@@ -49,12 +51,11 @@ public class AdapterActAbstracto extends RecyclerView.Adapter<AdapterActAbstract
         holder.gridLayout.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(mContext, WallpaperActivity.class);
+                Intent intent = new Intent(context, WallpaperActivity.class);
                 intent.putExtra("url", url);
-                mContext.startActivity(intent);
+                context.startActivity(intent);
             }
         });
-
     }
 
     @Override
@@ -63,16 +64,14 @@ public class AdapterActAbstracto extends RecyclerView.Adapter<AdapterActAbstract
     }
 
     public class ViewHolder extends RecyclerView.ViewHolder {
+
         ImageView imageView;
         GridLayout gridLayout;
 
-        public ViewHolder (View itemView) {
+        public ViewHolder(@NonNull View itemView) {
             super(itemView);
-
             imageView = itemView.findViewById(R.id.item_wallpaper_imagen);
             gridLayout = itemView.findViewById(R.id.item_wallpaper_layout);
         }
     }
-
 }
-
