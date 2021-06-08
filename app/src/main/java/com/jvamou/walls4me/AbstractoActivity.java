@@ -1,16 +1,14 @@
-package com.jvamou.walls4me.Auth;
+package com.jvamou.walls4me;
 
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.os.Bundle;
 
-import com.jvamou.walls4me.R;
-
-public class Aaaaa extends AppCompatActivity {
+public class AbstractoActivity extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.act_inicial);
+        setContentView(R.layout.act_abstracto);
     }
 }
