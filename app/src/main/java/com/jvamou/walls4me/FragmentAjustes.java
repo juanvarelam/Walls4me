@@ -53,7 +53,7 @@ public class FragmentAjustes extends Fragment {
                 FirebaseAuth.getInstance().signOut();
                 Intent intent = new Intent(getContext(), InicialActivity.class);
                 startActivity(intent);
-
+                getActivity().finishAffinity();  //al darle a retroceder sale de la aplicación
             }
         });
 
