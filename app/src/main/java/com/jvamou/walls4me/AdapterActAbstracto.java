@@ -15,20 +15,20 @@ import com.bumptech.glide.Glide;
 
 import java.util.ArrayList;
 
-public class AdapterFrgAbstracto extends RecyclerView.Adapter<AdapterFrgAbstracto.ViewHolder> {
+public class AdapterActAbstracto extends RecyclerView.Adapter<AdapterActAbstracto.ViewHolder> {
 
     ArrayList<Wallpaper> wallpaperList;
     Context mContext;
 
 
-    public AdapterFrgAbstracto(ArrayList<Wallpaper> wallpaperList, Context mContext) {
+    public AdapterActAbstracto(ArrayList<Wallpaper> wallpaperList, Context mContext) {
         this.wallpaperList = wallpaperList;
         this.mContext = mContext;
     }
 
     @NonNull
     @Override
-    public AdapterFrgAbstracto.ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
+    public AdapterActAbstracto.ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
 
         LayoutInflater layoutInflater = LayoutInflater.from(mContext);
         View v = layoutInflater.inflate(R.layout.item_wallpaper, parent, false);
