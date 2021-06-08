@@ -32,9 +32,8 @@ public class WallpaperActivity extends AppCompatActivity {
 
     ImageView imgFondo;
     TextView texto;
-    ImageButton btnCerrar, btnFavoritos;
-    Button btnEstablecerFondo, btnVer, btnDescargar, btnMostrarOpciones;
-    Bitmap bitmap = null;
+    ImageButton btnVer, btnCerrar, btnFavoritos;
+    Button btnEstablecerFondo, btnDescargar, btnMostrarOpciones;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -122,17 +121,13 @@ public class WallpaperActivity extends AppCompatActivity {
 
     public void establecerFondo() {
 
-        /*Bundle bundle = getIntent().getExtras();
-        String url = bundle.getString("url");*/
-
         Bitmap bitmap = ((BitmapDrawable) imgFondo.getDrawable()).getBitmap();
-        //Bitmap bitmap = BitmapFactory.decodeResource(getResources(), Integer.parseInt(url));
         WallpaperManager wallpaperManager = WallpaperManager.getInstance(getApplicationContext());
 
 
         try {
             wallpaperManager.setBitmap(bitmap);
-            Toast.makeText(this, "Fondo de pantalla actualizado", Toast.LENGTH_LONG).show();
+            Toast.makeText(this, "Fondo de pantalla actualizado!", Toast.LENGTH_SHORT).show();
         }
 
         catch (IOException e) {
