@@ -44,7 +44,7 @@ public class FragmentAjustes extends Fragment {
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         View v = inflater.inflate(R.layout.frg_ajustes, container, false);
 
-        email = v.findViewById(R.id.act_ajustes_txt_email);
+        email = v.findViewById(R.id.frg_ajustes_email);
         btnCerrarSesion = v.findViewById(R.id.act_ajustes_btn_cerrar_sesion);
 
         btnCerrarSesion.setOnClickListener(new View.OnClickListener() {
