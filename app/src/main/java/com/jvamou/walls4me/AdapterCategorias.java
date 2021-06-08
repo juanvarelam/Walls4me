@@ -21,7 +21,6 @@ public class AdapterCategorias extends RecyclerView.Adapter<AdapterCategorias.Vi
     ArrayList<Categoria> listaCategorias;
     Context mContext;
 
-    Fragment fragmentAbstracto;
     HomeActivity homeActivity;
 
 
@@ -60,9 +59,11 @@ public class AdapterCategorias extends RecyclerView.Adapter<AdapterCategorias.Vi
 
                 int posicion = Integer.parseInt(String.valueOf(holder.getAdapterPosition()));
 
-                if(posicion == 0) {
-                    Intent intent = new Intent(mContext, AbstractoActivity.class);
-                    mContext.startActivity(intent);
+                switch(posicion) {
+                    case 0:
+                        Intent intent = new Intent(mContext, AbstractoActivity.class);
+                        mContext.startActivity(intent);
+                        break;
                 }
             }
         });
