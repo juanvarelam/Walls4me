@@ -40,4 +40,9 @@
     <string name="act_ajustes_txt_cerrar_sesion">Cerrar sesión</string>
     <string name="usuario">Usuario</string>
     <string name="bottom_navigation_ajustes">Ajustes</string>
+    <string name="act_aanimales_txt_cabecera">Animales</string>
+    <string name="act_deportes_txt_cabecera">Deportes</string>
+    <string name="act_paisajes_txt_cabecera">Paisajes</string>
+    <string name="act_texturas_txt_cabecera">Texturas</string>
+    <string name="act_vehiculos_txt_cabecera">Vehiculos</string>
 </resources>
