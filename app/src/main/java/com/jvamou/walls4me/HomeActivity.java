@@ -5,16 +5,18 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentTransaction;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.ImageButton;
 
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 
 public class HomeActivity extends AppCompatActivity {
 
     //Variables globales fragments bottomNavigation
-    Fragment fragmentInicio, fragmentCategorias, fragmentFavoritos;
+    Fragment fragmentInicio, fragmentCategorias, fragmentFavoritos, fragmentAjustes;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -24,12 +26,14 @@ public class HomeActivity extends AppCompatActivity {
         fragmentInicio = new FragmentInicio();
         fragmentCategorias = new FragmentCategorias();
         fragmentFavoritos = new FragmentFavoritos();
+        fragmentAjustes = new FragmentAjustes();
 
         //Listener que recibe el fragment seleccionado por el usuario
         BottomNavigationView btnNavigaton = findViewById(R.id.act_home_botton_navigation);
         btnNavigaton.setOnNavigationItemSelectedListener(mOnNavigationItemSelectedListener);
 
         cargarFragment(fragmentInicio);
+
     }
 
     //Método que le pasa a cargarFragment() el fragment seleccionado
@@ -45,6 +49,9 @@ public class HomeActivity extends AppCompatActivity {
                     return true;
                 case R.id.fragment_favoritos:
                     cargarFragment(fragmentFavoritos);
+                    return true;
+                case R.id.fragment_ajustes:
+                    cargarFragment(fragmentAjustes);
                     return true;
             }
             return true;
