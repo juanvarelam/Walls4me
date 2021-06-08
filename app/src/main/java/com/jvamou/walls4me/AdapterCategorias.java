@@ -58,10 +58,31 @@ public class AdapterCategorias extends RecyclerView.Adapter<AdapterCategorias.Vi
             public void onClick(View view) {
 
                 int posicion = Integer.parseInt(String.valueOf(holder.getAdapterPosition()));
+                Intent intent;
 
                 switch(posicion) {
                     case 0:
-                        Intent intent = new Intent(mContext, AbstractoActivity.class);
+                        intent = new Intent(mContext, AbstractoActivity.class);
+                        mContext.startActivity(intent);
+                        break;
+                    case 1:
+                        intent = new Intent(mContext, AnimalesActivity.class);
+                        mContext.startActivity(intent);
+                        break;
+                    case 2:
+                        intent = new Intent(mContext, DeportesActivity.class);
+                        mContext.startActivity(intent);
+                        break;
+                    case 3:
+                        intent = new Intent(mContext, PaisajesActivity.class);
+                        mContext.startActivity(intent);
+                        break;
+                    case 4:
+                        intent = new Intent(mContext, TexturasActivity.class);
+                        mContext.startActivity(intent);
+                        break;
+                    case 5:
+                        intent = new Intent(mContext, VehiculosActivity.class);
                         mContext.startActivity(intent);
                         break;
                 }
