@@ -36,4 +36,8 @@
     <string name="act_login_mostrar_password">Mostrar</string>
     <string name="act_recupera_pass_volver"><u>Ir a inicio de sesión</u></string>
     <string name="frg_favoritos_disponobilidad">En breves podrás guardar tus fondos favoritos!</string>
+    <string name="act_abstracto_txt_cabecera">Abstracto</string>
+    <string name="act_ajustes_txt_cerrar_sesion">Cerrar sesión</string>
+    <string name="usuario">Usuario</string>
+    <string name="bottom_navigation_ajustes">Ajustes</string>
 </resources>
