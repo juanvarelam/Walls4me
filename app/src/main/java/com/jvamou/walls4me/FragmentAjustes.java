@@ -30,13 +30,6 @@ public class FragmentAjustes extends Fragment {
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
-        FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
-
-        if(user != null) {
-            email.setText(user.getEmail());
-        }
-
-
     }
 
     @Nullable
@@ -44,8 +37,14 @@ public class FragmentAjustes extends Fragment {
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         View v = inflater.inflate(R.layout.frg_ajustes, container, false);
 
+        FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
+
         email = v.findViewById(R.id.frg_ajustes_email);
-        btnCerrarSesion = v.findViewById(R.id.act_ajustes_btn_cerrar_sesion);
+        btnCerrarSesion = v.findViewById(R.id.frg_ajustes_btn_cerrar_sesion);
+
+        if(user != null) {
+            email.setText(user.getEmail());
+        }
 
         btnCerrarSesion.setOnClickListener(new View.OnClickListener() {
             @Override
