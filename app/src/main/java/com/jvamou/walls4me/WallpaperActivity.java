@@ -1,13 +1,18 @@
 package com.jvamou.walls4me;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.Manifest;
 import android.annotation.SuppressLint;
 import android.app.WallpaperManager;
+import android.content.pm.PackageManager;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.graphics.drawable.BitmapDrawable;
+import android.graphics.drawable.Drawable;
+import android.os.Build;
 import android.os.Bundle;
 import android.os.CountDownTimer;
 import android.os.Environment;
@@ -24,16 +29,27 @@ import com.bumptech.glide.Glide;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.firestore.FirebaseFirestore;
+import com.google.firebase.storage.FirebaseStorage;
+import com.google.firebase.storage.StorageReference;
+import com.google.gson.internal.$Gson$Preconditions;
 
 import java.io.File;
+import java.io.FileNotFoundException;
+import java.io.FileOutputStream;
 import java.io.IOException;
+import java.io.OutputStream;
+import java.net.URL;
+import java.text.SimpleDateFormat;
+import java.util.Locale;
 
 public class WallpaperActivity extends AppCompatActivity {
 
     ImageView imgFondo;
     TextView texto;
-    ImageButton btnVer, btnCerrar, btnFavoritos;
-    Button btnEstablecerFondo, btnDescargar, btnMostrarOpciones;
+    ImageButton btnCerrar, btnFavoritos;
+    Button btnEstablecerFondo, btnVer, btnMostrarOpciones;
+
+    OutputStream outputStream;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -45,8 +61,7 @@ public class WallpaperActivity extends AppCompatActivity {
         texto = findViewById(R.id.act_wallpaper_texto);
         btnFavoritos = findViewById(R.id.act_wallpaper_btn_favorito);
         btnEstablecerFondo = findViewById(R.id.act_wallpaper_btn_establecer_fondo);
-        btnVer = findViewById(R.id.act_wallpaper_btn_ver_wallpaper);
-        btnDescargar = findViewById(R.id.act_wallpaper_btn_descargar);
+        btnVer = findViewById(R.id.act_wallpaper_btn_visualizar);
         btnMostrarOpciones = findViewById(R.id.act_wallpaper_btn_mostrar_opciones);
 
         Bundle bundle = getIntent().getExtras();
@@ -81,20 +96,8 @@ public class WallpaperActivity extends AppCompatActivity {
             btnFavoritos.setVisibility(View.GONE);
             btnEstablecerFondo.setVisibility(View.GONE);
             btnVer.setVisibility(View.GONE);
-            btnDescargar.setVisibility(View.GONE);
 
-            new CountDownTimer(3000, 1000) {
-
-                public void onTick(long millisUntilFinished) {
-                    btnMostrarOpciones.setVisibility(View.VISIBLE);
-                }
-
-                public void onFinish() {
-
-                    btnMostrarOpciones.setVisibility(View.GONE);
-                }
-
-            }.start();
+            Toast.makeText(this, "Toque la imagen para ver las opciones", Toast.LENGTH_SHORT).show();
 
             imgFondo.setOnClickListener(view1 -> {
                 btnCerrar.setVisibility(View.VISIBLE);
@@ -102,12 +105,8 @@ public class WallpaperActivity extends AppCompatActivity {
                 btnFavoritos.setVisibility(View.VISIBLE);
                 btnEstablecerFondo.setVisibility(View.VISIBLE);
                 btnVer.setVisibility(View.VISIBLE);
-                btnDescargar.setVisibility(View.VISIBLE);
-                btnMostrarOpciones.setVisibility(View.GONE);
             });
         });
-
-        WallpaperManager wallpaperManager = WallpaperManager.getInstance(WallpaperActivity.this);
 
         btnEstablecerFondo.setOnClickListener(new View.OnClickListener() {
             @SuppressLint("ResourceType")
@@ -136,4 +135,7 @@ public class WallpaperActivity extends AppCompatActivity {
 
 
     }
+
+
+
 }
