@@ -1,6 +1,7 @@
 package com.jvamou.walls4me;
 
 import androidx.annotation.NonNull;
+import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
@@ -80,7 +81,12 @@ public class RecuperaPassActivity extends AppCompatActivity {
                             startActivity(intent);
                             finish();
                         } else {
-                            Toast.makeText(RecuperaPassActivity.this, "Correo inválido!", Toast.LENGTH_SHORT).show();
+                            AlertDialog.Builder builder = new AlertDialog.Builder(RecuperaPassActivity.this);
+                            builder.setTitle("Correo inválido.");
+                            builder.setPositiveButton("OK", null);
+
+                            AlertDialog dialog = builder.create();
+                            dialog.show();
                         }
                     }
                 });
