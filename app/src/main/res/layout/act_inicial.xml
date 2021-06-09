@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/azul_base"
+    android:background="@color/base"
     android:backgroundTintMode="src_over"
     tools:context=".InicialActivity">
 
@@ -15,7 +15,7 @@
         android:layout_marginTop="54dp"
         android:fontFamily="@font/dohyeon_regular"
         android:text="@string/act_inicial_nombre"
-        android:textColor="@color/azul_botones"
+        android:textColor="@color/botones"
         android:textSize="60sp"
         android:shadowColor="@color/black"
         android:shadowRadius="2"
@@ -49,7 +49,7 @@
             android:layout_height="wrap_content"
             android:layout_marginVertical="12dp"
             android:background="@drawable/fondo_input"
-            android:backgroundTint="@color/azul_botones"
+            android:backgroundTint="@color/botones"
             android:paddingHorizontal="32dp"
             android:text="@string/act_inicial_txt_boton_login"
             android:textSize="20sp" />
@@ -60,7 +60,7 @@
             android:layout_height="wrap_content"
             android:layout_marginBottom="28dp"
             android:background="@drawable/fondo_input"
-            android:backgroundTint="@color/azul_botones"
+            android:backgroundTint="@color/botones"
             android:text="@string/act_inicial_txt_boton_registrarse"
             android:textSize="20sp" />
     </LinearLayout>

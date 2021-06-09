@@ -11,7 +11,7 @@
         android:id="@+id/linearLayout3"
         android:layout_width="match_parent"
         android:layout_height="54dp"
-        android:background="@color/azul_base"
+        android:background="@color/base"
         android:orientation="horizontal"
         android:weightSum="100"
         app:layout_constraintEnd_toEndOf="parent"
@@ -26,7 +26,7 @@
             android:layout_weight="16"
             android:scaleX="1.6"
             android:scaleY="1.6"
-            android:background="@color/azul_base"
+            android:background="@color/base"
             app:srcCompat="@drawable/ic_retroceder" />
 
         <TextView

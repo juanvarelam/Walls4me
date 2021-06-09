@@ -2,7 +2,7 @@
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    android:background="@color/azul_base"
+    android:background="@color/base"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".FragmentAjustes">
@@ -39,12 +39,12 @@
     </LinearLayout>
 
     <Button
-        android:id="@+id/act_ajustes_btn_cerrar_sesion"
+        android:id="@+id/frg_ajustes_btn_cerrar_sesion"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="48dp"
         android:background="@drawable/fondo_input"
-        android:backgroundTint="@color/azul_botones"
+        android:backgroundTint="@color/botones"
         android:paddingHorizontal="32dp"
         android:text="@string/act_ajustes_txt_cerrar_sesion"
         android:textSize="20sp"

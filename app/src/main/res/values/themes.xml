@@ -17,7 +17,7 @@
     <style name="BottomNavigation">
         <item name="itemTextAppearanceActive">@color/white</item>
         <item name="labelVisibilityMode">labeled</item>
-        <item name="backgroundTint">@color/azul_base</item>
+        <item name="backgroundTint">@color/base</item>
     </style>
 
 </resources>

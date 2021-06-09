@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/azul_base"
+    android:background="@color/base"
     tools:context=".LoginActivity">
 
     <ImageView
@@ -95,7 +95,7 @@
             android:layout_height="wrap_content"
             android:layout_marginBottom="4dp"
             android:background="@drawable/fondo_input"
-            android:backgroundTint="@color/azul_botones"
+            android:backgroundTint="@color/botones"
             android:paddingHorizontal="32dp"
             android:paddingVertical="8dp"
             android:text="@string/act_login_btn_login"
