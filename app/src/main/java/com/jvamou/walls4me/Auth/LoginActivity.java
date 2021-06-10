@@ -25,14 +25,14 @@ import java.util.regex.Pattern;
 
 public class LoginActivity extends AppCompatActivity {
 
+    //Vars globales
     private EditText authEmail;
     private EditText authPassword;
     private Button btnIniciarSesion;
     private Button btnRegistrarse;
     private Button btnRecordarPassword;
     private FirebaseAuth mAuth;
-
-    CheckBox cboxMostrarPassword;
+    private CheckBox cboxMostrarPassword;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -43,11 +43,13 @@ public class LoginActivity extends AppCompatActivity {
         authPassword = findViewById(R.id.act_login_password);
         btnIniciarSesion = findViewById(R.id.act_login_btn_login);
         btnRegistrarse = findViewById(R.id.act_login_btn_registrarse);
-        btnRecordarPassword = findViewById(R.id.act_login_btn_recordar_password);
+        btnRecordarPassword = findViewById(R.id.act_login_btn_pass_olvidada);
         cboxMostrarPassword = findViewById(R.id.act_login_cbox_mostrar_password);
 
+        //Se inicializa Firebase
         mAuth = FirebaseAuth.getInstance();
 
+        //Listener que llama al método validar()
         btnIniciarSesion.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -55,6 +57,7 @@ public class LoginActivity extends AppCompatActivity {
             }
         });
 
+        //Listener que redirige a la activity RecuperaPassActivity
         btnRecordarPassword.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -64,6 +67,7 @@ public class LoginActivity extends AppCompatActivity {
             }
         });
 
+        //Listener que redirige a la activity RegisterActivity
         btnRegistrarse.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -73,6 +77,7 @@ public class LoginActivity extends AppCompatActivity {
             }
         });
 
+        //Listener que muestra u oculta el contenido del campo contraseña
         cboxMostrarPassword.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
             @Override
             public void onCheckedChanged(CompoundButton compoundButton, boolean isChecked) {
@@ -85,19 +90,20 @@ public class LoginActivity extends AppCompatActivity {
         });
     }
 
+    //Método que comprueba los campos de inicio de sesión
     public void validar() {
         String email = authEmail.getText().toString().trim().toLowerCase();
         String password = authPassword.getText().toString().trim();
 
-        //la librería matcher comprueba que tenga estructura de email
-        if(email.isEmpty() || !Patterns.EMAIL_ADDRESS.matcher(email).matches()) {
-            authEmail.setError("Correo  inválido");
+        //.matcher comprueba que tenga estructura de email
+        if (email.isEmpty() || !Patterns.EMAIL_ADDRESS.matcher(email).matches()) {
+            authEmail.setError("Correo  inválido");  //muestra un aviso en ese campo
             return;
         } else {  //continúa, no muestra  nada en el mensaje de error
             authEmail.setError(null);
         }
 
-        if(password.isEmpty() ||  password.length() < 8 ) {
+        if (password.isEmpty() ||  password.length() < 8 ) {
             authPassword.setError("La longitud mínima es de 8 caracteres");
             return;
         } else if (!Pattern.compile("[0-9]").matcher(password).find())  {
@@ -111,12 +117,13 @@ public class LoginActivity extends AppCompatActivity {
         iniciarSesion(email, password);
     }
 
+    //Método que realiza el inicio de sesión con los datos recogidos
     public void iniciarSesion(String email, String password) {
         mAuth.signInWithEmailAndPassword(email, password)
                 .addOnCompleteListener(this, new OnCompleteListener<AuthResult>() {
                     @Override
                     public void onComplete(@NonNull Task<AuthResult> task) {
-                        if (task.isSuccessful()) {
+                        if (task.isSuccessful()) {  //si los datos son válidos continúa
                             Intent intent = new Intent(LoginActivity.this, HomeActivity.class);
                             startActivity(intent);
                             finishAffinity();

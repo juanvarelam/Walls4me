@@ -26,7 +26,7 @@ import java.util.regex.Pattern;
 
 public class RegisterActivity extends AppCompatActivity {
 
-    //variables para datos de registro
+    //Vars globales
     private EditText authNombre;
     private EditText authEmail;
     private EditText authPassword;
@@ -34,7 +34,6 @@ public class RegisterActivity extends AppCompatActivity {
     private CheckBox cboxMostrarPassword;
     private Button authBtnRegistro;
     private Button btnIniciarSesion;
-
     private FirebaseAuth mAuth;
 
     @Override
@@ -42,7 +41,9 @@ public class RegisterActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.act_register);
 
-        //referencia a los elementos
+        //Se obtiene instancia de Firebase
+        mAuth = FirebaseAuth.getInstance();
+
         authNombre = findViewById(R.id.act_register_txt_nombre);
         authEmail = findViewById(R.id.act_register_txt_email);
         authPassword = findViewById(R.id.act_register_txt_password);
@@ -51,6 +52,7 @@ public class RegisterActivity extends AppCompatActivity {
         authBtnRegistro = findViewById(R.id.act_register_btn_registrarse);
         btnIniciarSesion = findViewById(R.id.act_register_btn_login);
 
+        //Listener que redirecciona a LoginActivity
         btnIniciarSesion.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -60,6 +62,8 @@ public class RegisterActivity extends AppCompatActivity {
             }
         });
 
+
+        //Listener que llama al método validar()
         authBtnRegistro.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -67,6 +71,7 @@ public class RegisterActivity extends AppCompatActivity {
             }
         });
 
+        //Listener que muestra u oculta el contenido de los campos contraseña y confirmar contraseña
         cboxMostrarPassword.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
             @Override
             public void onCheckedChanged(CompoundButton compoundButton, boolean isChecked) {
@@ -79,8 +84,6 @@ public class RegisterActivity extends AppCompatActivity {
                 }
             }
         });
-
-        mAuth = FirebaseAuth.getInstance();
     }
 
     public void validar() {
@@ -118,12 +121,14 @@ public class RegisterActivity extends AppCompatActivity {
         if(!confirmPassword.equals(password)) {
             authPassword.setError("Las contraseñas deben coincidir");
             return;
-        } else {
+        } else {  //después de comprobar todos los campos llama al método registrar()
             registrar(email, password);
         }
     }
 
     public void registrar(String email, String password) {
+
+        //Se crea un usuario con el email y la contraseña previamente introducidas
         mAuth.createUserWithEmailAndPassword(email, password)
                 .addOnCompleteListener(this, new OnCompleteListener<AuthResult>() {
                     @Override

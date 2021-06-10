@@ -14,6 +14,7 @@ import com.jvamou.walls4me.R;
 
 public class InicialActivity extends AppCompatActivity {
 
+    //Vars globales
     private Button btnIniciarSesion;
     private Button btnRegistrarse;
 
@@ -22,18 +23,21 @@ public class InicialActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.act_inicial);
 
-        FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
-
-        if(user != null) {
-            Intent intent = new Intent(this, HomeActivity.class);
-            startActivity(intent);
-            finish();
-        }
-
         btnIniciarSesion = findViewById(R.id.act_inicial_btn_login);
         btnRegistrarse = findViewById(R.id.act_inicial_btn_registrase);
 
-        //listener que al pulsar botón de iniciar sesión redirecciona a activity correspondiente
+        //Se obtiene el usuario con sesión activa
+        FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
+
+        //Se comprueba si hay un usuario logueado
+        if (user != null) {
+            //se redirige a HomeActivity
+            Intent intent = new Intent(this, HomeActivity.class);
+            startActivity(intent);
+            finish();  //destruye la actividad, al ir atrás se sale de la app
+        }
+
+        //Listener que al pulsar botón de iniciar sesión redirecciona a su activity correspondiente
         btnIniciarSesion.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -42,7 +46,7 @@ public class InicialActivity extends AppCompatActivity {
             }
         });
 
-        //listener que al pulsar botón de registrarse redirecciona a activity correspondiente
+        //Listener que al pulsar botón de registrarse redirecciona a su activity correspondiente
         btnRegistrarse.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {

@@ -19,6 +19,7 @@ import com.jvamou.walls4me.R;
 
 public class RecuperaPassActivity extends AppCompatActivity {
 
+    //Vars globales
     private EditText email;
     private Button btnRecuperaPass, btnVolver;
 
@@ -31,6 +32,7 @@ public class RecuperaPassActivity extends AppCompatActivity {
         btnRecuperaPass = findViewById(R.id.act_recupera_pass_btn_recuperar_pass);
         btnVolver = findViewById(R.id.act_recupera_pass_volver);
 
+        //Listener que redirige a LoginActivity
         btnVolver.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -39,6 +41,7 @@ public class RecuperaPassActivity extends AppCompatActivity {
             }
         });
 
+        //Listener que llama al método validarEmail()
         btnRecuperaPass.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -47,6 +50,7 @@ public class RecuperaPassActivity extends AppCompatActivity {
         });
     }
 
+    //Método que comprueba que el formato del correo sea válido
     private void validarEmail() {
         String correo = email.getText().toString().trim();
 
@@ -58,20 +62,15 @@ public class RecuperaPassActivity extends AppCompatActivity {
         enviarCorreo(correo);
     }
 
-    //método que al hacer click en ir atrás nos redirecciona a LoginActivity
-    @Override
-    public void onBackPressed() {
-        super.onBackPressed();
-
-        Intent intent = new Intent(RecuperaPassActivity.this, LoginActivity.class);
-        startActivity(intent);
-        finish();
-    }
 
     public void enviarCorreo(String correo) {
+
+        //Se inicializa Firebase
         FirebaseAuth auth = FirebaseAuth.getInstance();
+
         String direccionCorreo = correo;
 
+        //Método que envía el correo al usuario
         auth.sendPasswordResetEmail(direccionCorreo)
                 .addOnCompleteListener(new OnCompleteListener<Void>() {
                     @Override
@@ -91,5 +90,15 @@ public class RecuperaPassActivity extends AppCompatActivity {
                         }
                     }
                 });
+    }
+
+    //Método que al hacer click en ir atrás nos redirecciona a LoginActivity
+    @Override
+    public void onBackPressed() {
+        super.onBackPressed();
+
+        Intent intent = new Intent(RecuperaPassActivity.this, LoginActivity.class);
+        startActivity(intent);
+        finish();
     }
 }
