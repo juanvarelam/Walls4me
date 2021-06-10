@@ -6,8 +6,11 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
-import android.widget.ImageView;
-import android.widget.TextView;
+
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
+import com.jvamou.walls4me.Home.HomeActivity;
+import com.jvamou.walls4me.R;
 
 public class InicialActivity extends AppCompatActivity {
 
@@ -18,6 +21,14 @@ public class InicialActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.act_inicial);
+
+        FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
+
+        if(user != null) {
+            Intent intent = new Intent(this, HomeActivity.class);
+            startActivity(intent);
+            finish();
+        }
 
         btnIniciarSesion = findViewById(R.id.act_inicial_btn_login);
         btnRegistrarse = findViewById(R.id.act_inicial_btn_registrase);
