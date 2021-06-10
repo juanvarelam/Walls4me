@@ -26,12 +26,12 @@ import java.util.ArrayList;
 
 public class AdapterCategorias extends RecyclerView.Adapter<AdapterCategorias.ViewHolder> {
 
+    //Vars globales
     ArrayList<Categoria> listaCategorias;
     Context mContext;
-
     HomeActivity homeActivity;
 
-
+    //Constructor
     public AdapterCategorias(ArrayList<Categoria> listaCategorias, Context mContext) {
         this.listaCategorias = listaCategorias;
         this.mContext = mContext;

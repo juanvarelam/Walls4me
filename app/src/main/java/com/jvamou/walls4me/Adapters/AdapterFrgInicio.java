@@ -21,10 +21,11 @@ import java.util.ArrayList;
 
 public class AdapterFrgInicio extends RecyclerView.Adapter<AdapterFrgInicio.ViewHolder> {
 
+    //Vars globales
     ArrayList<Wallpaper> wallpaperList;
     Context mContext;
 
-
+    //Constructor
     public AdapterFrgInicio(ArrayList<Wallpaper> wallpaperList, Context mContext) {
         this.wallpaperList = wallpaperList;
         this.mContext = mContext;
@@ -44,21 +45,23 @@ public class AdapterFrgInicio extends RecyclerView.Adapter<AdapterFrgInicio.View
     public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
 
         String url = wallpaperList.get(position).getUrl();
+
+        //Librería Glide que carga las imágenes en -> into()
         Glide.with(mContext)
                 .load(url)
-                .placeholder(R.drawable.ic_imagen_ph)
-                .error(R.drawable.ic_imagen_error)
+                .placeholder(R.drawable.ic_imagen_ph)  //imagen mientras carga
+                .error(R.drawable.ic_imagen_error)  //imagen en caso de no poder
                 .into(holder.imageView);
 
         holder.gridLayout.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                //envía a WallpaperActivity la imagen a mostrar
                 Intent intent = new Intent(mContext, WallpaperActivity.class);
                 intent.putExtra("url", url);
                 mContext.startActivity(intent);
             }
         });
-
     }
 
     @Override
@@ -77,5 +80,4 @@ public class AdapterFrgInicio extends RecyclerView.Adapter<AdapterFrgInicio.View
             gridLayout = itemView.findViewById(R.id.item_wallpaper_layout);
         }
     }
-
 }
