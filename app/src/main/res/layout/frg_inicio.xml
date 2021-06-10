@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:background="@color/base_oscuro"
-    tools:context=".FragmentInicio">
+    tools:context=".Home.FragmentInicio">
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/frg_inicio_recycler_inicio"

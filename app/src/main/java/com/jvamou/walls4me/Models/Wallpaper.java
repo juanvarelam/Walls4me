@@ -1,8 +1,8 @@
-package com.jvamou.walls4me;
+package com.jvamou.walls4me.Models;
 
 public class Wallpaper {
 
-    String url;
+    public String url;
 
     public Wallpaper() {
     }

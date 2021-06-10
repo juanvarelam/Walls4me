@@ -1,4 +1,4 @@
-package com.jvamou.walls4me;
+package com.jvamou.walls4me.Categorias;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -20,14 +20,17 @@ import com.google.firebase.database.ValueEventListener;
 import com.google.firebase.firestore.DocumentSnapshot;
 import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.firestore.QuerySnapshot;
+import com.jvamou.walls4me.Adapters.AdapterActAnimales;
+import com.jvamou.walls4me.R;
+import com.jvamou.walls4me.Models.Wallpaper;
 
 import java.util.ArrayList;
 
-public class PaisajesActivity extends AppCompatActivity {
+public class AnimalesActivity extends AppCompatActivity {
 
     RecyclerView recyclerView;
     ImageButton btnRetroceder;
-    AdapterActPaisajes adapterActPaisajes;
+    AdapterActAnimales adapterActAnimales;
 
     ArrayList<Wallpaper> wallpapersList;
 
@@ -37,19 +40,19 @@ public class PaisajesActivity extends AppCompatActivity {
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.act_paisajes);
+        setContentView(R.layout.act_animales);
 
-        btnRetroceder = findViewById(R.id.act_paisajes_btn_retroceder);
-        recyclerView = findViewById(R.id.act_paisajes_recycler_paisajes);
+        btnRetroceder = findViewById(R.id.act_animales_btn_retroceder);
+        recyclerView = findViewById(R.id.act_animales_recycler_animales);
         recyclerView.setLayoutManager(new GridLayoutManager(this, 2));
 
         wallpapersList = new ArrayList<>();
 
         //Instanciar Firebase
-        dbRef = FirebaseDatabase.getInstance().getReference("paisajes");
+        dbRef = FirebaseDatabase.getInstance().getReference("animales");
 
-        adapterActPaisajes = new AdapterActPaisajes(wallpapersList, getApplicationContext());
-        recyclerView.setAdapter(adapterActPaisajes);
+        adapterActAnimales = new AdapterActAnimales(wallpapersList, getApplicationContext());
+        recyclerView.setAdapter(adapterActAnimales);
 
         dbRef.addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
@@ -80,7 +83,7 @@ public class PaisajesActivity extends AppCompatActivity {
     private void obtenerDatosFirebase() {
 
         FirebaseFirestore db = FirebaseFirestore.getInstance();
-        db.collection("paisajes").get().addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
+        db.collection("animales").get().addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
             @Override
             public void onComplete(@NonNull Task<QuerySnapshot> task) {
 
@@ -91,9 +94,9 @@ public class PaisajesActivity extends AppCompatActivity {
                         wallpaper.url = doc.getString("url");
                         wallpapersList.add(wallpaper);
 
-                        adapterActPaisajes = new AdapterActPaisajes(wallpapersList, getApplicationContext());
-                        recyclerView.setAdapter(adapterActPaisajes);
-                        adapterActPaisajes.notifyDataSetChanged();
+                        adapterActAnimales = new AdapterActAnimales(wallpapersList, getApplicationContext());
+                        recyclerView.setAdapter(adapterActAnimales);
+                        adapterActAnimales.notifyDataSetChanged();
                     }
                 }else{
                     String error = task.getException().getLocalizedMessage();
@@ -107,8 +110,8 @@ public class PaisajesActivity extends AppCompatActivity {
         if (wallpapersList != null) {
             wallpapersList.clear();
 
-            if (adapterActPaisajes != null) {
-                adapterActPaisajes.notifyDataSetChanged();
+            if (adapterActAnimales != null) {
+                adapterActAnimales.notifyDataSetChanged();
             }
         }
 

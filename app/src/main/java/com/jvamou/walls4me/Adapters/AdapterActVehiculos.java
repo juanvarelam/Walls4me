@@ -1,4 +1,4 @@
-package com.jvamou.walls4me;
+package com.jvamou.walls4me.Adapters;
 
 import android.content.Context;
 import android.content.Intent;
@@ -12,6 +12,9 @@ import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.bumptech.glide.Glide;
+import com.jvamou.walls4me.R;
+import com.jvamou.walls4me.Models.Wallpaper;
+import com.jvamou.walls4me.Models.WallpaperActivity;
 
 import java.util.ArrayList;
 

@@ -1,4 +1,4 @@
-package com.jvamou.walls4me;
+package com.jvamou.walls4me.Home;
 
 import android.os.Bundle;
 
@@ -23,17 +23,24 @@ import com.google.firebase.database.ValueEventListener;
 import com.google.firebase.firestore.DocumentSnapshot;
 import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.firestore.QuerySnapshot;
+import com.jvamou.walls4me.Adapters.AdapterCategorias;
+import com.jvamou.walls4me.Models.Categoria;
+import com.jvamou.walls4me.R;
 
 import java.util.ArrayList;
 
-public class FragmentInicio extends Fragment {
 
-    RecyclerView recyclerView;
-    AdapterFrgInicio adapterFrgInicio;
+public class FragmentCategorias extends Fragment {
 
-    ArrayList<Wallpaper> wallpapersList;
+    RecyclerView recyclerCategorias;
+    ArrayList<Categoria> listaCategorias;
+    AdapterCategorias adapterCategorias;
 
     private DatabaseReference dbRef;
+
+    public FragmentCategorias() {
+        // Required empty public constructor
+    }
 
 
     @Override
@@ -41,17 +48,17 @@ public class FragmentInicio extends Fragment {
         super.onCreate(savedInstanceState);
 
         //Instanciar Firebase
-        dbRef = FirebaseDatabase.getInstance().getReference("imagenes");
+        dbRef = FirebaseDatabase.getInstance().getReference("categorias");
 
         dbRef.addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
                 for(DataSnapshot dataSnapshot : snapshot.getChildren()) {
-                    Wallpaper wallpaper = dataSnapshot.getValue(Wallpaper.class);
-                    wallpapersList.add(wallpaper);
+                    Categoria categoria = dataSnapshot.getValue(Categoria.class);
+                    listaCategorias.add(categoria);
                 }
-                adapterFrgInicio = new AdapterFrgInicio(wallpapersList, getContext());
-                recyclerView.setAdapter(adapterFrgInicio);
+                adapterCategorias = new AdapterCategorias(listaCategorias, getContext());
+                recyclerCategorias.setAdapter(adapterCategorias);
             }
 
             @Override
@@ -61,22 +68,20 @@ public class FragmentInicio extends Fragment {
         });
     }
 
-    @Nullable
     @Override
-    public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
+    public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
 
-        View v = inflater.inflate(R.layout.frg_inicio, container, false);
+        View v = inflater.inflate(R.layout.frg_categorias, container, false);
 
-        wallpapersList = new ArrayList<>();
-        recyclerView = v.findViewById(R.id.frg_inicio_recycler_inicio);
+        listaCategorias = new ArrayList<>();
+        recyclerCategorias = v.findViewById(R.id.frg_categorias_recycler_categorias);
+
+        adapterCategorias = new AdapterCategorias(listaCategorias, getContext());
+        recyclerCategorias.setAdapter(adapterCategorias);
+        recyclerCategorias.setLayoutManager(new GridLayoutManager(getContext(), 2));
+        recyclerCategorias.setHasFixedSize(true);
 
         ObtenerDatosFirebase();
-
-        adapterFrgInicio = new AdapterFrgInicio(wallpapersList, getContext());
-        recyclerView.setAdapter(adapterFrgInicio);
-        recyclerView.setLayoutManager(new GridLayoutManager(getContext(), 2));
-        recyclerView.setHasFixedSize(true);
-
 
         return v;
     }
@@ -84,20 +89,20 @@ public class FragmentInicio extends Fragment {
     private void ObtenerDatosFirebase() {
 
         FirebaseFirestore db = FirebaseFirestore.getInstance();
-        db.collection("imagenes").get().addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
+        db.collection("categorias").get().addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
             @Override
             public void onComplete(@NonNull Task<QuerySnapshot> task) {
 
                 if(task.isSuccessful()) {
                     limpiarDatos();
                     for(DocumentSnapshot doc: task.getResult().getDocuments()) {
-                        Wallpaper wallpaper = new Wallpaper();
-                        wallpaper.url = doc.getString("url");
-                        wallpapersList.add(wallpaper);
+                        Categoria categoria = new Categoria();
+                        categoria.url = doc.getString("url");
+                        listaCategorias.add(categoria);
 
-                        adapterFrgInicio = new AdapterFrgInicio(wallpapersList, getContext());
-                        recyclerView.setAdapter(adapterFrgInicio);
-                        adapterFrgInicio.notifyDataSetChanged();
+                        adapterCategorias = new AdapterCategorias(listaCategorias, getContext());
+                        recyclerCategorias.setAdapter(adapterCategorias);
+                        adapterCategorias.notifyDataSetChanged();
                     }
                 }else{
                     String error = task.getException().getLocalizedMessage();
@@ -109,14 +114,14 @@ public class FragmentInicio extends Fragment {
 
 
     private void limpiarDatos() {
-        if (wallpapersList != null) {
-            wallpapersList.clear();
+        if (listaCategorias != null) {
+            listaCategorias.clear();
 
-            if (adapterFrgInicio != null) {
-                adapterFrgInicio.notifyDataSetChanged();
+            if (adapterCategorias != null) {
+                adapterCategorias.notifyDataSetChanged();
             }
         }
 
-        wallpapersList = new ArrayList<>();
+        listaCategorias = new ArrayList<>();
     }
 }

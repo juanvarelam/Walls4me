@@ -1,4 +1,4 @@
-package com.jvamou.walls4me;
+package com.jvamou.walls4me.Categorias;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -20,14 +20,17 @@ import com.google.firebase.database.ValueEventListener;
 import com.google.firebase.firestore.DocumentSnapshot;
 import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.firestore.QuerySnapshot;
+import com.jvamou.walls4me.Adapters.AdapterActVehiculos;
+import com.jvamou.walls4me.R;
+import com.jvamou.walls4me.Models.Wallpaper;
 
 import java.util.ArrayList;
 
-public class DeportesActivity extends AppCompatActivity {
+public class VehiculosActivity extends AppCompatActivity {
 
     RecyclerView recyclerView;
     ImageButton btnRetroceder;
-    AdapterActDeportes adapterActDeportes;
+    AdapterActVehiculos adapterActVehiculos;
 
     ArrayList<Wallpaper> wallpapersList;
 
@@ -37,19 +40,19 @@ public class DeportesActivity extends AppCompatActivity {
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.act_deportes);
+        setContentView(R.layout.act_vehiculos);
 
-        btnRetroceder = findViewById(R.id.act_deportes_btn_retroceder);
-        recyclerView = findViewById(R.id.act_deportes_recycler_deportes);
+        btnRetroceder = findViewById(R.id.act_vehiculos_btn_retroceder);
+        recyclerView = findViewById(R.id.act_vehiculos_recycler_vehiculos);
         recyclerView.setLayoutManager(new GridLayoutManager(this, 2));
 
         wallpapersList = new ArrayList<>();
 
         //Instanciar Firebase
-        dbRef = FirebaseDatabase.getInstance().getReference("deportes");
+        dbRef = FirebaseDatabase.getInstance().getReference("vehiculos");
 
-        adapterActDeportes = new AdapterActDeportes(wallpapersList, getApplicationContext());
-        recyclerView.setAdapter(adapterActDeportes);
+        adapterActVehiculos = new AdapterActVehiculos(wallpapersList, getApplicationContext());
+        recyclerView.setAdapter(adapterActVehiculos);
 
         dbRef.addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
@@ -80,7 +83,7 @@ public class DeportesActivity extends AppCompatActivity {
     private void obtenerDatosFirebase() {
 
         FirebaseFirestore db = FirebaseFirestore.getInstance();
-        db.collection("deportes").get().addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
+        db.collection("vehiculos").get().addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
             @Override
             public void onComplete(@NonNull Task<QuerySnapshot> task) {
 
@@ -91,9 +94,9 @@ public class DeportesActivity extends AppCompatActivity {
                         wallpaper.url = doc.getString("url");
                         wallpapersList.add(wallpaper);
 
-                        adapterActDeportes = new AdapterActDeportes(wallpapersList, getApplicationContext());
-                        recyclerView.setAdapter(adapterActDeportes);
-                        adapterActDeportes.notifyDataSetChanged();
+                        adapterActVehiculos = new AdapterActVehiculos(wallpapersList, getApplicationContext());
+                        recyclerView.setAdapter(adapterActVehiculos);
+                        adapterActVehiculos.notifyDataSetChanged();
                     }
                 }else{
                     String error = task.getException().getLocalizedMessage();
@@ -107,8 +110,8 @@ public class DeportesActivity extends AppCompatActivity {
         if (wallpapersList != null) {
             wallpapersList.clear();
 
-            if (adapterActDeportes != null) {
-                adapterActDeportes.notifyDataSetChanged();
+            if (adapterActVehiculos != null) {
+                adapterActVehiculos.notifyDataSetChanged();
             }
         }
 

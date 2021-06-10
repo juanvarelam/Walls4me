@@ -1,4 +1,4 @@
-package com.jvamou.walls4me;
+package com.jvamou.walls4me.Adapters;
 
 import android.content.Context;
 import android.content.Intent;
@@ -12,23 +12,26 @@ import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.bumptech.glide.Glide;
+import com.jvamou.walls4me.R;
+import com.jvamou.walls4me.Models.Wallpaper;
+import com.jvamou.walls4me.Models.WallpaperActivity;
 
 import java.util.ArrayList;
 
-public class AdapterActPaisajes extends RecyclerView.Adapter<AdapterActPaisajes.ViewHolder> {
+public class AdapterActAbstracto extends RecyclerView.Adapter<AdapterActAbstracto.ViewHolder> {
 
     ArrayList<Wallpaper> wallpaperList;
     Context mContext;
 
 
-    public AdapterActPaisajes(ArrayList<Wallpaper> wallpaperList, Context mContext) {
+    public AdapterActAbstracto(ArrayList<Wallpaper> wallpaperList, Context mContext) {
         this.wallpaperList = wallpaperList;
         this.mContext = mContext;
     }
 
     @NonNull
     @Override
-    public AdapterActPaisajes.ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
+    public AdapterActAbstracto.ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
 
         LayoutInflater layoutInflater = LayoutInflater.from(mContext);
         View v = layoutInflater.inflate(R.layout.item_wallpaper, parent, false);

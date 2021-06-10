@@ -5,7 +5,7 @@
     android:background="@color/base"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".FragmentInfo">
+    tools:context=".Home.FragmentInfo">
 
     <LinearLayout
         android:id="@+id/linearLayout6"

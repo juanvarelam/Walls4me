@@ -1,4 +1,4 @@
-package com.jvamou.walls4me;
+package com.jvamou.walls4me.Adapters;
 
 import android.content.Context;
 import android.content.Intent;
@@ -11,24 +11,28 @@ import android.widget.ImageView;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
+
 import com.bumptech.glide.Glide;
+import com.jvamou.walls4me.R;
+import com.jvamou.walls4me.Models.Wallpaper;
+import com.jvamou.walls4me.Models.WallpaperActivity;
 
 import java.util.ArrayList;
 
-public class AdapterActTexturas extends RecyclerView.Adapter<AdapterActTexturas.ViewHolder> {
+public class AdapterFrgInicio extends RecyclerView.Adapter<AdapterFrgInicio.ViewHolder> {
 
     ArrayList<Wallpaper> wallpaperList;
     Context mContext;
 
 
-    public AdapterActTexturas(ArrayList<Wallpaper> wallpaperList, Context mContext) {
+    public AdapterFrgInicio(ArrayList<Wallpaper> wallpaperList, Context mContext) {
         this.wallpaperList = wallpaperList;
         this.mContext = mContext;
     }
 
     @NonNull
     @Override
-    public AdapterActTexturas.ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
+    public AdapterFrgInicio.ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
 
         LayoutInflater layoutInflater = LayoutInflater.from(mContext);
         View v = layoutInflater.inflate(R.layout.item_wallpaper, parent, false);
@@ -50,11 +54,9 @@ public class AdapterActTexturas extends RecyclerView.Adapter<AdapterActTexturas.
             @Override
             public void onClick(View view) {
                 Intent intent = new Intent(mContext, WallpaperActivity.class);
-
-                intent.setAction(Intent.ACTION_SEND);
                 intent.putExtra("url", url);
-                intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
-                mContext.startActivity(intent);            }
+                mContext.startActivity(intent);
+            }
         });
 
     }

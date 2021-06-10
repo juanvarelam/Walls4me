@@ -1,4 +1,4 @@
-package com.jvamou.walls4me;
+package com.jvamou.walls4me.Adapters;
 
 import android.content.Context;
 import android.content.Intent;
@@ -7,33 +7,31 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.GridLayout;
 import android.widget.ImageView;
-import android.widget.TextView;
 
 import androidx.annotation.NonNull;
-import androidx.core.app.ActivityCompat;
-import androidx.core.content.ContextCompat;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.bumptech.glide.Glide;
+import com.jvamou.walls4me.R;
+import com.jvamou.walls4me.Models.Wallpaper;
+import com.jvamou.walls4me.Models.WallpaperActivity;
 
 import java.util.ArrayList;
 
-import static androidx.core.app.ActivityCompat.startActivityForResult;
-
-public class AdapterActAbstracto extends RecyclerView.Adapter<AdapterActAbstracto.ViewHolder> {
+public class AdapterActTexturas extends RecyclerView.Adapter<AdapterActTexturas.ViewHolder> {
 
     ArrayList<Wallpaper> wallpaperList;
     Context mContext;
 
 
-    public AdapterActAbstracto(ArrayList<Wallpaper> wallpaperList, Context mContext) {
+    public AdapterActTexturas(ArrayList<Wallpaper> wallpaperList, Context mContext) {
         this.wallpaperList = wallpaperList;
         this.mContext = mContext;
     }
 
     @NonNull
     @Override
-    public AdapterActAbstracto.ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
+    public AdapterActTexturas.ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
 
         LayoutInflater layoutInflater = LayoutInflater.from(mContext);
         View v = layoutInflater.inflate(R.layout.item_wallpaper, parent, false);

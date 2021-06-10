@@ -1,20 +1,13 @@
-package com.jvamou.walls4me;
+package com.jvamou.walls4me.Categorias;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.GridLayoutManager;
-import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
-import android.content.Context;
 import android.os.Bundle;
-import android.util.AttributeSet;
-import android.util.Log;
-import android.view.LayoutInflater;
 import android.view.View;
-import android.view.ViewGroup;
 import android.widget.ImageButton;
 
 import com.google.android.gms.tasks.OnCompleteListener;
@@ -27,14 +20,17 @@ import com.google.firebase.database.ValueEventListener;
 import com.google.firebase.firestore.DocumentSnapshot;
 import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.firestore.QuerySnapshot;
+import com.jvamou.walls4me.Adapters.AdapterActDeportes;
+import com.jvamou.walls4me.R;
+import com.jvamou.walls4me.Models.Wallpaper;
 
 import java.util.ArrayList;
 
-public class AbstractoActivity extends AppCompatActivity {
+public class DeportesActivity extends AppCompatActivity {
 
     RecyclerView recyclerView;
     ImageButton btnRetroceder;
-    AdapterActAbstracto adapterActAbstracto;
+    AdapterActDeportes adapterActDeportes;
 
     ArrayList<Wallpaper> wallpapersList;
 
@@ -44,19 +40,19 @@ public class AbstractoActivity extends AppCompatActivity {
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.act_abstracto);
+        setContentView(R.layout.act_deportes);
 
-        btnRetroceder = findViewById(R.id.act_abstracto_btn_retroceder);
-        recyclerView = findViewById(R.id.act_abstracto_recycler_abstracto);
+        btnRetroceder = findViewById(R.id.act_deportes_btn_retroceder);
+        recyclerView = findViewById(R.id.act_deportes_recycler_deportes);
         recyclerView.setLayoutManager(new GridLayoutManager(this, 2));
 
         wallpapersList = new ArrayList<>();
 
         //Instanciar Firebase
-        dbRef = FirebaseDatabase.getInstance().getReference("abstracto");
+        dbRef = FirebaseDatabase.getInstance().getReference("deportes");
 
-        adapterActAbstracto = new AdapterActAbstracto(wallpapersList, getApplicationContext());
-        recyclerView.setAdapter(adapterActAbstracto);
+        adapterActDeportes = new AdapterActDeportes(wallpapersList, getApplicationContext());
+        recyclerView.setAdapter(adapterActDeportes);
 
         dbRef.addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
@@ -87,7 +83,7 @@ public class AbstractoActivity extends AppCompatActivity {
     private void obtenerDatosFirebase() {
 
         FirebaseFirestore db = FirebaseFirestore.getInstance();
-        db.collection("abstracto").get().addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
+        db.collection("deportes").get().addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
             @Override
             public void onComplete(@NonNull Task<QuerySnapshot> task) {
 
@@ -98,9 +94,9 @@ public class AbstractoActivity extends AppCompatActivity {
                         wallpaper.url = doc.getString("url");
                         wallpapersList.add(wallpaper);
 
-                        adapterActAbstracto = new AdapterActAbstracto(wallpapersList, getApplicationContext());
-                        recyclerView.setAdapter(adapterActAbstracto);
-                        adapterActAbstracto.notifyDataSetChanged();
+                        adapterActDeportes = new AdapterActDeportes(wallpapersList, getApplicationContext());
+                        recyclerView.setAdapter(adapterActDeportes);
+                        adapterActDeportes.notifyDataSetChanged();
                     }
                 }else{
                     String error = task.getException().getLocalizedMessage();
@@ -114,8 +110,8 @@ public class AbstractoActivity extends AppCompatActivity {
         if (wallpapersList != null) {
             wallpapersList.clear();
 
-            if (adapterActAbstracto != null) {
-                adapterActAbstracto.notifyDataSetChanged();
+            if (adapterActDeportes != null) {
+                adapterActDeportes.notifyDataSetChanged();
             }
         }
 

@@ -1,4 +1,4 @@
-package com.jvamou.walls4me;
+package com.jvamou.walls4me.Home;
 
 import android.annotation.SuppressLint;
 import android.content.Intent;
@@ -17,6 +17,8 @@ import android.widget.TextView;
 
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
+import com.jvamou.walls4me.Auth.InicialActivity;
+import com.jvamou.walls4me.R;
 
 
 public class FragmentInfo extends Fragment {

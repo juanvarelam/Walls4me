@@ -1,9 +1,8 @@
-package com.jvamou.walls4me;
+package com.jvamou.walls4me.Auth;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
-import android.app.AlertDialog;
 import android.content.Intent;
 import android.os.Bundle;
 import android.text.method.PasswordTransformationMethod;
@@ -19,49 +18,58 @@ import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
+import com.jvamou.walls4me.Home.HomeActivity;
+import com.jvamou.walls4me.R;
 
 import java.util.regex.Pattern;
 
-public class RegisterActivity extends AppCompatActivity {
+public class LoginActivity extends AppCompatActivity {
 
-    //variables para datos de registro
-    private EditText authNombre;
     private EditText authEmail;
     private EditText authPassword;
-    private EditText authConfirmPassword;
-    private CheckBox cboxMostrarPassword;
-    private Button authBtnRegistro;
     private Button btnIniciarSesion;
-
+    private Button btnRegistrarse;
+    private Button btnRecordarPassword;
     private FirebaseAuth mAuth;
+
+    CheckBox cboxMostrarPassword;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.act_register);
+        setContentView(R.layout.act_login);
 
-        //referencia a los elementos
-        authNombre = findViewById(R.id.act_register_txt_nombre);
-        authEmail = findViewById(R.id.act_register_txt_email);
-        authPassword = findViewById(R.id.act_register_txt_password);
-        authConfirmPassword = findViewById(R.id.act_register_txt_confirm_password);
-        cboxMostrarPassword = findViewById(R.id.act_register_cbox_mostrar_password);
-        authBtnRegistro = findViewById(R.id.act_register_btn_registrarse);
-        btnIniciarSesion = findViewById(R.id.act_register_btn_login);
+        authEmail = findViewById(R.id.act_login_email);
+        authPassword = findViewById(R.id.act_login_password);
+        btnIniciarSesion = findViewById(R.id.act_login_btn_login);
+        btnRegistrarse = findViewById(R.id.act_login_btn_registrarse);
+        btnRecordarPassword = findViewById(R.id.act_login_btn_recordar_password);
+        cboxMostrarPassword = findViewById(R.id.act_login_cbox_mostrar_password);
+
+        mAuth = FirebaseAuth.getInstance();
 
         btnIniciarSesion.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(RegisterActivity.this, LoginActivity.class);
-                startActivity(intent);
-                finish(); //al ir atrás vuelve a InicialActivity
+                validar();
             }
         });
 
-        authBtnRegistro.setOnClickListener(new View.OnClickListener() {
+        btnRecordarPassword.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                validar();
+                Intent intent = new Intent(LoginActivity.this, RecuperaPassActivity.class);
+                startActivity(intent);
+                finish();
+            }
+        });
+
+        btnRegistrarse.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(LoginActivity.this, RegisterActivity.class);
+                startActivity(intent);
+                finish(); //al ir atrás vuelve a InicialActivity
             }
         });
 
@@ -70,29 +78,16 @@ public class RegisterActivity extends AppCompatActivity {
             public void onCheckedChanged(CompoundButton compoundButton, boolean isChecked) {
                 if (isChecked) {
                     authPassword.setTransformationMethod(null);
-                    authConfirmPassword.setTransformationMethod(null);
                 } else {
                     authPassword.setTransformationMethod(new PasswordTransformationMethod());
-                    authConfirmPassword.setTransformationMethod(new PasswordTransformationMethod());
                 }
             }
         });
-
-        mAuth = FirebaseAuth.getInstance();
     }
 
     public void validar() {
-        String nombre = authNombre.getText().toString();
         String email = authEmail.getText().toString().trim().toLowerCase();
         String password = authPassword.getText().toString().trim();
-        String confirmPassword = authConfirmPassword.getText().toString().trim();
-
-        if(nombre.isEmpty()) {
-            authNombre.setError("Introduce tu nombre");
-            return;
-        } else {
-            authNombre.setError(null);
-        }
 
         //la librería matcher comprueba que tenga estructura de email
         if(email.isEmpty() || !Patterns.EMAIL_ADDRESS.matcher(email).matches()) {
@@ -113,32 +108,21 @@ public class RegisterActivity extends AppCompatActivity {
             authPassword.setError(null);
         }
 
-        if(!confirmPassword.equals(password)) {
-            authPassword.setError("Las contraseñas deben coincidir");
-            return;
-        } else {
-            registrar(email, password);
-        }
+        iniciarSesion(email, password);
     }
 
-    public void registrar(String email, String password) {
-        mAuth.createUserWithEmailAndPassword(email, password)
+    public void iniciarSesion(String email, String password) {
+        mAuth.signInWithEmailAndPassword(email, password)
                 .addOnCompleteListener(this, new OnCompleteListener<AuthResult>() {
                     @Override
                     public void onComplete(@NonNull Task<AuthResult> task) {
-                        if(task.isSuccessful()) {
-                            Intent intent = new Intent(RegisterActivity.this, HomeActivity.class);
+                        if (task.isSuccessful()) {
+                            Intent intent = new Intent(LoginActivity.this, HomeActivity.class);
                             startActivity(intent);
                             finishAffinity();
-                            Toast.makeText(RegisterActivity.this, "¡Bienvenido/a a Walls4me!", Toast.LENGTH_LONG).show();
+                            Toast.makeText(LoginActivity.this, "¡Bienvenido/a a Walls4me!", Toast.LENGTH_SHORT).show();
                         } else {
-                            AlertDialog.Builder builder = new AlertDialog.Builder(RegisterActivity.this);
-                            builder.setTitle("Error");
-                            builder.setMessage("El correo introducido ya está en uso.");
-                            builder.setPositiveButton("Aceptar", null);
-
-                            AlertDialog dialog = builder.create();
-                            dialog.show();
+                            Toast.makeText(LoginActivity.this, "Correo o contraseña incorrectos", Toast.LENGTH_LONG).show();
                         }
                     }
                 });

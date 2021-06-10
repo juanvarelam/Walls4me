@@ -1,4 +1,4 @@
-package com.jvamou.walls4me;
+package com.jvamou.walls4me.Adapters;
 
 import android.content.Context;
 import android.content.Intent;
@@ -9,10 +9,18 @@ import android.widget.GridLayout;
 import android.widget.ImageView;
 
 import androidx.annotation.NonNull;
-import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.bumptech.glide.Glide;
+import com.jvamou.walls4me.Categorias.AbstractoActivity;
+import com.jvamou.walls4me.Categorias.AnimalesActivity;
+import com.jvamou.walls4me.Models.Categoria;
+import com.jvamou.walls4me.Categorias.DeportesActivity;
+import com.jvamou.walls4me.Home.HomeActivity;
+import com.jvamou.walls4me.Categorias.PaisajesActivity;
+import com.jvamou.walls4me.R;
+import com.jvamou.walls4me.Categorias.TexturasActivity;
+import com.jvamou.walls4me.Categorias.VehiculosActivity;
 
 import java.util.ArrayList;
 

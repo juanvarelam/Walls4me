@@ -10,22 +10,22 @@
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
         android:label="@string/app_name"
-        android:roundIcon="@mipmap/ic_launcher"
+        android:roundIcon="@mipmap/ic_launcher_foreground"
         android:supportsRtl="true"
         android:theme="@style/Theme.Walls4me">
         <activity android:name=".AvisoLegalActivity"></activity>
-        <activity android:name=".VehiculosActivity" />
-        <activity android:name=".TexturasActivity" />
-        <activity android:name=".PaisajesActivity" />
-        <activity android:name=".DeportesActivity" />
-        <activity android:name=".AnimalesActivity" />
-        <activity android:name=".AbstractoActivity" />
-        <activity android:name=".WallpaperActivity" />
-        <activity android:name=".RecuperaPassActivity" />
-        <activity android:name=".InicialActivity" />
-        <activity android:name=".LoginActivity" />
-        <activity android:name=".RegisterActivity" />
-        <activity android:name=".HomeActivity">
+        <activity android:name=".Categorias.VehiculosActivity" />
+        <activity android:name=".Categorias.TexturasActivity" />
+        <activity android:name=".Categorias.PaisajesActivity" />
+        <activity android:name=".Categorias.DeportesActivity" />
+        <activity android:name=".Categorias.AnimalesActivity" />
+        <activity android:name=".Categorias.AbstractoActivity" />
+        <activity android:name=".Models.WallpaperActivity" />
+        <activity android:name=".Auth.RecuperaPassActivity" />
+        <activity android:name=".Home.HomeActivity" />
+        <activity android:name=".Auth.LoginActivity" />
+        <activity android:name=".Auth.RegisterActivity" />
+        <activity android:name=".Auth.InicialActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 

@@ -1,4 +1,4 @@
-package com.jvamou.walls4me;
+package com.jvamou.walls4me.Categorias;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -20,14 +20,17 @@ import com.google.firebase.database.ValueEventListener;
 import com.google.firebase.firestore.DocumentSnapshot;
 import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.firestore.QuerySnapshot;
+import com.jvamou.walls4me.Adapters.AdapterActAbstracto;
+import com.jvamou.walls4me.R;
+import com.jvamou.walls4me.Models.Wallpaper;
 
 import java.util.ArrayList;
 
-public class AnimalesActivity extends AppCompatActivity {
+public class AbstractoActivity extends AppCompatActivity {
 
     RecyclerView recyclerView;
     ImageButton btnRetroceder;
-    AdapterActAnimales adapterActAnimales;
+    AdapterActAbstracto adapterActAbstracto;
 
     ArrayList<Wallpaper> wallpapersList;
 
@@ -37,19 +40,19 @@ public class AnimalesActivity extends AppCompatActivity {
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.act_animales);
+        setContentView(R.layout.act_abstracto);
 
-        btnRetroceder = findViewById(R.id.act_animales_btn_retroceder);
-        recyclerView = findViewById(R.id.act_animales_recycler_animales);
+        btnRetroceder = findViewById(R.id.act_abstracto_btn_retroceder);
+        recyclerView = findViewById(R.id.act_abstracto_recycler_abstracto);
         recyclerView.setLayoutManager(new GridLayoutManager(this, 2));
 
         wallpapersList = new ArrayList<>();
 
         //Instanciar Firebase
-        dbRef = FirebaseDatabase.getInstance().getReference("animales");
+        dbRef = FirebaseDatabase.getInstance().getReference("abstracto");
 
-        adapterActAnimales = new AdapterActAnimales(wallpapersList, getApplicationContext());
-        recyclerView.setAdapter(adapterActAnimales);
+        adapterActAbstracto = new AdapterActAbstracto(wallpapersList, getApplicationContext());
+        recyclerView.setAdapter(adapterActAbstracto);
 
         dbRef.addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
@@ -80,7 +83,7 @@ public class AnimalesActivity extends AppCompatActivity {
     private void obtenerDatosFirebase() {
 
         FirebaseFirestore db = FirebaseFirestore.getInstance();
-        db.collection("animales").get().addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
+        db.collection("abstracto").get().addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
             @Override
             public void onComplete(@NonNull Task<QuerySnapshot> task) {
 
@@ -91,9 +94,9 @@ public class AnimalesActivity extends AppCompatActivity {
                         wallpaper.url = doc.getString("url");
                         wallpapersList.add(wallpaper);
 
-                        adapterActAnimales = new AdapterActAnimales(wallpapersList, getApplicationContext());
-                        recyclerView.setAdapter(adapterActAnimales);
-                        adapterActAnimales.notifyDataSetChanged();
+                        adapterActAbstracto = new AdapterActAbstracto(wallpapersList, getApplicationContext());
+                        recyclerView.setAdapter(adapterActAbstracto);
+                        adapterActAbstracto.notifyDataSetChanged();
                     }
                 }else{
                     String error = task.getException().getLocalizedMessage();
@@ -107,8 +110,8 @@ public class AnimalesActivity extends AppCompatActivity {
         if (wallpapersList != null) {
             wallpapersList.clear();
 
-            if (adapterActAnimales != null) {
-                adapterActAnimales.notifyDataSetChanged();
+            if (adapterActAbstracto != null) {
+                adapterActAbstracto.notifyDataSetChanged();
             }
         }
 

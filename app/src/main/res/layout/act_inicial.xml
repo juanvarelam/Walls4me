@@ -6,7 +6,7 @@
     android:layout_height="match_parent"
     android:background="@color/base"
     android:backgroundTintMode="src_over"
-    tools:context=".InicialActivity">
+    tools:context=".Auth.InicialActivity">
 
     <TextView
         android:id="@+id/act_inicial_txt_nombre"
