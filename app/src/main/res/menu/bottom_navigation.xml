@@ -16,7 +16,7 @@
         android:icon="@drawable/ic_favorito_home"
         android:title="@string/bottom_navigation_favoritos"/>
     <item
-        android:id="@+id/fragment_ajustes"
-        android:icon="@drawable/ic_ajustes"
-        android:title="@string/bottom_navigation_ajustes"/>
+        android:id="@+id/fragment_info"
+        android:icon="@drawable/ic_acerca_de"
+        android:title="@string/bottom_navigation_info"/>
 </menu>
