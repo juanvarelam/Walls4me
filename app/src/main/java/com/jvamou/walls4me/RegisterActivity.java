@@ -129,7 +129,7 @@ public class RegisterActivity extends AppCompatActivity {
                         if(task.isSuccessful()) {
                             Intent intent = new Intent(RegisterActivity.this, HomeActivity.class);
                             startActivity(intent);
-                            finish();
+                            finishAffinity();
                             Toast.makeText(RegisterActivity.this, "¡Bienvenido/a a Walls4me!", Toast.LENGTH_LONG).show();
                         } else {
                             AlertDialog.Builder builder = new AlertDialog.Builder(RegisterActivity.this);
