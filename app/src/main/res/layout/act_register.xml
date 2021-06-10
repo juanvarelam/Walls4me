@@ -85,8 +85,7 @@
             android:id="@+id/act_register_cbox_mostrar_password"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:buttonTint="@color/white"
-            tools:text="@string/act_login_mostrar_password" />
+            android:text="@string/act_login_mostrar_password" />
 
 
         <Button
