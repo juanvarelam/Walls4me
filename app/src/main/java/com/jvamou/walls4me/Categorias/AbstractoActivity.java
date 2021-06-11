@@ -28,10 +28,10 @@ import java.util.ArrayList;
 
 public class AbstractoActivity extends AppCompatActivity {
 
+    //Vars globales
     RecyclerView recyclerView;
     ImageButton btnRetroceder;
     AdapterActAbstracto adapterActAbstracto;
-
     ArrayList<Wallpaper> wallpapersList;
 
     private DatabaseReference dbRef;
@@ -48,12 +48,14 @@ public class AbstractoActivity extends AppCompatActivity {
 
         wallpapersList = new ArrayList<>();
 
-        //Instanciar Firebase
+        //Instanciar Firebase en el directorio "abstracto" de la base de datos
         dbRef = FirebaseDatabase.getInstance().getReference("abstracto");
 
         adapterActAbstracto = new AdapterActAbstracto(wallpapersList, getApplicationContext());
         recyclerView.setAdapter(adapterActAbstracto);
 
+        //Por cada wallpaper encontrado se añade al ArrayList "wallpaperList" para mostrarse en el
+        //recyclerView correspondiente
         dbRef.addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
@@ -71,13 +73,13 @@ public class AbstractoActivity extends AppCompatActivity {
 
         obtenerDatosFirebase();
 
+        //Listener que redirige a la activity anterior en la que estuvo el usuario
         btnRetroceder.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 onBackPressed();
             }
         });
-
     }
 
     private void obtenerDatosFirebase() {
@@ -89,6 +91,8 @@ public class AbstractoActivity extends AppCompatActivity {
 
                 if(task.isSuccessful()) {
                     limpiarDatos();
+
+                    //Se obtiene la url de los archivos y se añaden a la arrayList
                     for(DocumentSnapshot doc: task.getResult().getDocuments()) {
                         Wallpaper wallpaper = new Wallpaper();
                         wallpaper.url = doc.getString("url");
@@ -106,6 +110,7 @@ public class AbstractoActivity extends AppCompatActivity {
     }
 
 
+    //Método que eliminar el contenido del arrayList y crea uno vacío
     private void limpiarDatos() {
         if (wallpapersList != null) {
             wallpapersList.clear();

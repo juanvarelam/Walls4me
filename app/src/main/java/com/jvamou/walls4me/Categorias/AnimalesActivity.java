@@ -28,12 +28,11 @@ import java.util.ArrayList;
 
 public class AnimalesActivity extends AppCompatActivity {
 
+    //Vars globales
     RecyclerView recyclerView;
     ImageButton btnRetroceder;
     AdapterActAnimales adapterActAnimales;
-
     ArrayList<Wallpaper> wallpapersList;
-
     private DatabaseReference dbRef;
 
 
@@ -89,6 +88,8 @@ public class AnimalesActivity extends AppCompatActivity {
 
                 if(task.isSuccessful()) {
                     limpiarDatos();
+
+                    //Se obtiene la url de los archivos y se añaden a la arrayList
                     for(DocumentSnapshot doc: task.getResult().getDocuments()) {
                         Wallpaper wallpaper = new Wallpaper();
                         wallpaper.url = doc.getString("url");
@@ -105,7 +106,7 @@ public class AnimalesActivity extends AppCompatActivity {
         });
     }
 
-
+    //Método que eliminar el contenido del arrayList y crea uno vacío
     private void limpiarDatos() {
         if (wallpapersList != null) {
             wallpapersList.clear();

@@ -28,12 +28,11 @@ import java.util.ArrayList;
 
 public class TexturasActivity extends AppCompatActivity {
 
+    //Vars globales
     RecyclerView recyclerView;
     ImageButton btnRetroceder;
     AdapterActTexturas adapterActTexturas;
-
     ArrayList<Wallpaper> wallpapersList;
-
     private DatabaseReference dbRef;
 
 
@@ -71,6 +70,7 @@ public class TexturasActivity extends AppCompatActivity {
 
         obtenerDatosFirebase();
 
+        //Listener que al darle ir atrás vuelve al activity anterior
         btnRetroceder.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -89,6 +89,8 @@ public class TexturasActivity extends AppCompatActivity {
 
                 if(task.isSuccessful()) {
                     limpiarDatos();
+
+                    //Se obtiene la url de los archivos y se añaden a la arrayList
                     for(DocumentSnapshot doc: task.getResult().getDocuments()) {
                         Wallpaper wallpaper = new Wallpaper();
                         wallpaper.url = doc.getString("url");
@@ -105,7 +107,7 @@ public class TexturasActivity extends AppCompatActivity {
         });
     }
 
-
+    //Método que eliminar el contenido del arrayList y crea uno vacío
     private void limpiarDatos() {
         if (wallpapersList != null) {
             wallpapersList.clear();
