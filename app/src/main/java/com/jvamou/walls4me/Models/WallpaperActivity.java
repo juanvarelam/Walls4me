@@ -113,11 +113,13 @@ public class WallpaperActivity extends AppCompatActivity {
 
         try {
             wallpaperManager.setBitmap(bitmap);
-            Toast.makeText(this, "Fondo de pantalla actualizado!", Toast.LENGTH_SHORT).show();
+            String msg = getApplicationContext().getResources().getString(R.string.act_wallpaper_fondo_actualizado);
+            Toast.makeText(this, msg, Toast.LENGTH_SHORT).show();
         }
 
         catch (IOException e) {
-            Toast.makeText(this, "Ha ocurrido un problema", Toast.LENGTH_SHORT).show();
+            String msg = getApplicationContext().getResources().getString(R.string.act_wallpaper_problema);
+            Toast.makeText(this, msg, Toast.LENGTH_SHORT).show();
         }
 
 
