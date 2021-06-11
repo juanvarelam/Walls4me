@@ -2,8 +2,10 @@ package com.jvamou.walls4me.Models;
 
 public class Wallpaper {
 
+    //Vars
     public String url;
 
+    //Constructores
     public Wallpaper() {
     }
 
@@ -11,6 +13,7 @@ public class Wallpaper {
         this.url = url;
     }
 
+    //Getters & Setters
     public String getUrl() {
         return url;
     }

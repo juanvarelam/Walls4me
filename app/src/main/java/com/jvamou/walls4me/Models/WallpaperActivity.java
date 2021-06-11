@@ -23,12 +23,11 @@ import java.io.OutputStream;
 
 public class WallpaperActivity extends AppCompatActivity {
 
+    //Vars globales
     ImageView imgFondo;
     TextView texto;
     ImageButton btnCerrar, btnFavoritos;
     Button btnEstablecerFondo, btnVer, btnMostrarOpciones;
-
-    OutputStream outputStream;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -43,22 +42,27 @@ public class WallpaperActivity extends AppCompatActivity {
         btnVer = findViewById(R.id.act_wallpaper_btn_visualizar);
         btnMostrarOpciones = findViewById(R.id.act_wallpaper_btn_mostrar_opciones);
 
+        //Se obtiene la url de la imagen a mostrar que llega en el Bundle
         Bundle bundle = getIntent().getExtras();
         String url = bundle.getString("url");
 
+        //Librería Glide que carga las imágenes en -> into()
         Glide.with(this)
                 .load(url)
                 .placeholder(R.drawable.ic_imagen_ph)
                 .error(R.drawable.ic_imagen_error)
                 .into(imgFondo);
 
+        //Por defecto se establece esta visibilidad a los componentes
         btnCerrar.setVisibility(View.VISIBLE);
         texto.setVisibility(View.VISIBLE);
         btnFavoritos.setVisibility(View.VISIBLE);
         btnMostrarOpciones.setVisibility(View.GONE);
 
+        //Listener que cierra el acticity actual y vuelve al anterior
         btnCerrar.setOnClickListener(view -> finish());
 
+        //Listener que muestra cuadro de diálogo al pulsar en botón favoritos
         btnFavoritos.setOnClickListener(view -> {
             AlertDialog.Builder builder = new AlertDialog.Builder(WallpaperActivity.this);
             builder.setTitle("Esta función estará disponible muy pronto!");
@@ -68,6 +72,7 @@ public class WallpaperActivity extends AppCompatActivity {
             dialog.show();
         });
 
+        //Listener que oculta los componentes para ver la imagen completa
         btnVer.setOnClickListener(view -> {
 
             btnCerrar.setVisibility(View.GONE);
@@ -78,6 +83,7 @@ public class WallpaperActivity extends AppCompatActivity {
 
             Toast.makeText(this, "Toque la imagen para ver las opciones", Toast.LENGTH_SHORT).show();
 
+            //Listener que hace visible todos los componentes al hacer click en la imagen
             imgFondo.setOnClickListener(view1 -> {
                 btnCerrar.setVisibility(View.VISIBLE);
                 texto.setVisibility(View.VISIBLE);
@@ -87,6 +93,7 @@ public class WallpaperActivity extends AppCompatActivity {
             });
         });
 
+        //Listener que llama al método establecerFondo()
         btnEstablecerFondo.setOnClickListener(new View.OnClickListener() {
             @SuppressLint("ResourceType")
             @Override
@@ -99,6 +106,7 @@ public class WallpaperActivity extends AppCompatActivity {
 
     public void establecerFondo() {
 
+        //Se crea un Bitmap a partir de la imagen de fondo
         Bitmap bitmap = ((BitmapDrawable) imgFondo.getDrawable()).getBitmap();
         WallpaperManager wallpaperManager = WallpaperManager.getInstance(getApplicationContext());
 

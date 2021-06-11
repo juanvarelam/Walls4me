@@ -2,8 +2,10 @@ package com.jvamou.walls4me.Models;
 
 public class Categoria {
 
+    //Vars
     public String url;
 
+    //Constructorres
     public Categoria() {
     }
 
@@ -11,6 +13,7 @@ public class Categoria {
         this.url = url;
     }
 
+    //Getters & Setters
     public String getUrl() {
         return url;
     }
