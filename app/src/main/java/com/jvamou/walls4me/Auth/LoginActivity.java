@@ -97,18 +97,21 @@ public class LoginActivity extends AppCompatActivity {
 
         //.matcher comprueba que tenga estructura de email
         if (email.isEmpty() || !Patterns.EMAIL_ADDRESS.matcher(email).matches()) {
-            authEmail.setError("Correo  inválido");  //muestra un aviso en ese campo
+            String msg = getApplicationContext().getResources().getString(R.string.act_login_correo_invalido);
+            authEmail.setError(msg);  //muestra un aviso en ese campo
             return;
         } else {  //continúa, no muestra  nada en el mensaje de error
             authEmail.setError(null);
         }
 
         if (password.isEmpty() ||  password.length() < 8 ) {
-            authPassword.setError("La longitud mínima es de 8 caracteres");
+            String msg = getApplicationContext().getResources().getString(R.string.act_login_longitud_password);
+            authPassword.setError(msg);
             return;
         } else if (!Pattern.compile("[0-9]").matcher(password).find())  {
             //comprueba que tenga un número
-            authPassword.setError("Debe contener un número");
+            String msg = getApplicationContext().getResources().getString(R.string.act_login_numero_password);
+            authPassword.setError(msg);
             return;
         } else {
             authPassword.setError(null);
@@ -127,9 +130,12 @@ public class LoginActivity extends AppCompatActivity {
                             Intent intent = new Intent(LoginActivity.this, HomeActivity.class);
                             startActivity(intent);
                             finishAffinity();
-                            Toast.makeText(LoginActivity.this, "¡Bienvenido/a a Walls4me!", Toast.LENGTH_SHORT).show();
+
+                            String msg = getApplicationContext().getResources().getString(R.string.act_login_mensaje_bienvenida);
+                            Toast.makeText(LoginActivity.this, msg, Toast.LENGTH_SHORT).show();
                         } else {
-                            Toast.makeText(LoginActivity.this, "Correo o contraseña incorrectos", Toast.LENGTH_LONG).show();
+                            String msg = getApplicationContext().getResources().getString(R.string.act_login_mensaje_error);
+                            Toast.makeText(LoginActivity.this, msg, Toast.LENGTH_LONG).show();
                         }
                     }
                 });

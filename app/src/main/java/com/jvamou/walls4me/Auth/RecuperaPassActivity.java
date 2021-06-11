@@ -55,7 +55,8 @@ public class RecuperaPassActivity extends AppCompatActivity {
         String correo = email.getText().toString().trim();
 
         if(correo.isEmpty() || !Patterns.EMAIL_ADDRESS.matcher(correo).matches()) {
-            email.setError("Correo inválido");
+            String msg = getApplicationContext().getResources().getString(R.string.act_recupera_pass_correo_invalido);
+            email.setError(msg);
             return;
         }
 
@@ -76,13 +77,15 @@ public class RecuperaPassActivity extends AppCompatActivity {
                     @Override
                     public void onComplete(@NonNull Task<Void> task) {
                         if (task.isSuccessful()) {
-                            Toast.makeText(RecuperaPassActivity.this, "Correo enviado!", Toast.LENGTH_SHORT).show();
+                            String msg = getApplicationContext().getResources().getString(R.string.act_recupera_pass_correo_enviado);
+                            Toast.makeText(RecuperaPassActivity.this, msg, Toast.LENGTH_SHORT).show();
                             Intent intent = new Intent(RecuperaPassActivity.this, LoginActivity.class);
                             startActivity(intent);
                             finish();
                         } else {
+                            String msg = getApplicationContext().getResources().getString(R.string.act_recupera_pass_correo_invalido);
                             AlertDialog.Builder builder = new AlertDialog.Builder(RecuperaPassActivity.this);
-                            builder.setTitle("Correo inválido.");
+                            builder.setTitle(msg);
                             builder.setPositiveButton("OK", null);
 
                             AlertDialog dialog = builder.create();

@@ -45,4 +45,13 @@
     <string name="act_login_numero_password">Debe contener un número</string>
     <string name="act_login_mensaje_bienvenida">¡Bienvenido/a a Walls4me!</string>
     <string name="act_login_mensaje_error">Correo o contraseña incorrectos</string>
+    <string name="act_recupera_pass_correo_invalido">Correo inválido</string>
+    <string name="act_recupera_pass_correo_enviado">Correo enviado</string>
+    <string name="act_register_introducir_nombre">Introduce tu nombre</string>
+    <string name="act_register_correo_invalido">Correo inválido</string>
+    <string name="act_register_longitud_password">La longitud mínima es de 8 caracteres</string>
+    <string name="act_register_numero">Debe contener un número</string>
+    <string name="act_register_passwords">Las contraseñas deben coincidir</string>
+    <string name="act_register_bienvenida">¡Bienvenido/a a Walls4me!</string>
+    <string name="act_register_correo_uso">El correo introducido ya está en uso.</string>
 </resources>

@@ -93,7 +93,8 @@ public class RegisterActivity extends AppCompatActivity {
         String confirmPassword = authConfirmPassword.getText().toString().trim();
 
         if(nombre.isEmpty()) {
-            authNombre.setError("Introduce tu nombre");
+            String msg = getApplicationContext().getResources().getString(R.string.act_register_introducir_nombre);
+            authNombre.setError(msg);
             return;
         } else {
             authNombre.setError(null);
@@ -101,25 +102,30 @@ public class RegisterActivity extends AppCompatActivity {
 
         //la librería matcher comprueba que tenga estructura de email
         if(email.isEmpty() || !Patterns.EMAIL_ADDRESS.matcher(email).matches()) {
-            authEmail.setError("Correo  inválido");
+            String msg = getApplicationContext().getResources().getString(R.string.act_register_correo_invalido);
+            authEmail.setError(msg);
             return;
         } else {  //continúa, no muestra  nada en el mensaje de error
             authEmail.setError(null);
         }
 
         if(password.isEmpty() ||  password.length() < 8 ) {
-            authPassword.setError("La longitud mínima es de 8 caracteres");
+            String msg = getApplicationContext().getResources().getString(R.string.act_register_longitud_password);
+            authPassword.setError(msg);
             return;
-        } else if (!Pattern.compile("[0-9]").matcher(password).find())  {
+
             //comprueba que tenga un número
-            authPassword.setError("Debe contener un número");
+        } else if (!Pattern.compile("[0-9]").matcher(password).find())  {
+            String msg = getApplicationContext().getResources().getString(R.string.act_register_numero);
+            authPassword.setError(msg);
             return;
         } else {
             authPassword.setError(null);
         }
 
         if(!confirmPassword.equals(password)) {
-            authPassword.setError("Las contraseñas deben coincidir");
+            String msg = getApplicationContext().getResources().getString(R.string.act_register_passwords);
+            authPassword.setError(msg);
             return;
         } else {  //después de comprobar todos los campos llama al método registrar()
             registrar(email, password);
@@ -137,12 +143,15 @@ public class RegisterActivity extends AppCompatActivity {
                             Intent intent = new Intent(RegisterActivity.this, HomeActivity.class);
                             startActivity(intent);
                             finishAffinity();
-                            Toast.makeText(RegisterActivity.this, "¡Bienvenido/a a Walls4me!", Toast.LENGTH_LONG).show();
+
+                            String msg = getApplicationContext().getResources().getString(R.string.act_register_bienvenida);
+                            Toast.makeText(RegisterActivity.this, msg, Toast.LENGTH_LONG).show();
                         } else {
                             AlertDialog.Builder builder = new AlertDialog.Builder(RegisterActivity.this);
                             builder.setTitle("Error");
-                            builder.setMessage("El correo introducido ya está en uso.");
-                            builder.setPositiveButton("Aceptar", null);
+                            String msg = getApplicationContext().getResources().getString(R.string.act_register_correo_uso);
+                            builder.setMessage(msg);
+                            builder.setPositiveButton("OK", null);
 
                             AlertDialog dialog = builder.create();
                             dialog.show();
