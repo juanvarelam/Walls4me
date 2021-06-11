@@ -43,4 +43,16 @@
     <string name="act_login_numero_password">Must contain a number</string>
     <string name="act_login_mensaje_bienvenida">Welcome to Walls4me!</string>
     <string name="act_login_mensaje_error">"Invalid email or password "</string>
+    <string name="act_recupera_pass_correo_invalido">Invalid email</string>
+    <string name="act_recupera_pass_correo_enviado">Email sent</string>
+    <string name="act_register_introducir_nombre">Enter your name</string>
+    <string name="act_register_correo_invalido">Invalid email</string>
+    <string name="act_register_longitud_password">The minimum length is 8 characters</string>
+    <string name="act_register_numero">Must contain a number</string>
+    <string name="act_register_passwords">Passwords must match</string>
+    <string name="act_register_bienvenida">Welcome to Walls4me!</string>
+    <string name="act_register_correo_uso">The mail is already in use.</string>
+    <string name="frg_categorias_error_obtener_datos">Check the connection and try again</string>
+    <string name="act_wallpaper_fondo_actualizado">Updated wallpaper!</string>
+    <string name="act_wallpaper_problema">A problem has occurred</string>
 </resources>

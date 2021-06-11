@@ -53,7 +53,7 @@
     <string name="act_register_numero">Debe contener un número</string>
     <string name="act_register_passwords">Las contraseñas deben coincidir</string>
     <string name="act_register_bienvenida">¡Bienvenido/a a Walls4me!</string>
-    <string name="act_register_correo_uso">El correo introducido ya está en uso.</string>
+    <string name="act_register_correo_uso">El correo ya está en uso.</string>
     <string name="frg_categorias_error_obtener_datos">Compruebe la conexión y vuelva a intentarlo</string>
     <string name="act_wallpaper_fondo_actualizado">Fondo de pantalla actualizado!</string>
     <string name="act_wallpaper_problema">Ha ocurrido un problema</string>

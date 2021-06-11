@@ -14,7 +14,6 @@
         android:roundIcon="@mipmap/ic_launcher_foreground"
         android:supportsRtl="true"
         android:theme="@style/Theme.Walls4me">
-        <activity android:name=".AvisoLegalActivity"></activity>
         <activity android:name=".Categorias.VehiculosActivity" />
         <activity android:name=".Categorias.TexturasActivity" />
         <activity android:name=".Categorias.PaisajesActivity" />
