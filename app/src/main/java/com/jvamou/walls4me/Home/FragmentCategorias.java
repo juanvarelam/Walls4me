@@ -12,6 +12,7 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Toast;
 
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
@@ -32,12 +33,13 @@ import java.util.ArrayList;
 
 public class FragmentCategorias extends Fragment {
 
+    //Vars globales
     RecyclerView recyclerCategorias;
     ArrayList<Categoria> listaCategorias;
     AdapterCategorias adapterCategorias;
-
     private DatabaseReference dbRef;
 
+    //Constructor
     public FragmentCategorias() {
         // Required empty public constructor
     }
@@ -95,6 +97,8 @@ public class FragmentCategorias extends Fragment {
 
                 if(task.isSuccessful()) {
                     limpiarDatos();
+
+                    //Se obtiene la url de los archivos y se añaden a la arrayList
                     for(DocumentSnapshot doc: task.getResult().getDocuments()) {
                         Categoria categoria = new Categoria();
                         categoria.url = doc.getString("url");
@@ -105,8 +109,8 @@ public class FragmentCategorias extends Fragment {
                         adapterCategorias.notifyDataSetChanged();
                     }
                 }else{
-                    String error = task.getException().getLocalizedMessage();
-                    Log.e("FIREBASE", error);
+                    String msg = getContext().getResources().getString(R.string.frg_categorias_error_obtener_datos);
+                    Toast.makeText(getContext(), msg, Toast.LENGTH_SHORT).show();
                 }
             }
         });

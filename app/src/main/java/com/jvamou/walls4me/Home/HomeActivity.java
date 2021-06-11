@@ -13,9 +13,8 @@ import com.jvamou.walls4me.R;
 
 public class HomeActivity extends AppCompatActivity {
 
-    //Variables globales fragments bottomNavigation
+    //Vars globales
     Fragment fragmentInicio, fragmentCategorias, fragmentFavoritos, fragmentAjustes;
-
     BottomNavigationView btnNavigaton;
 
     @Override
@@ -63,11 +62,10 @@ public class HomeActivity extends AppCompatActivity {
 
         if(btnNavigaton.getSelectedItemId() == R.id.fragment_inicio) {
             super.onBackPressed();
-            finish();  //se sale de la app
+            finish();  //se sale de la app al ir atrás
         }else{
             btnNavigaton.setSelectedItemId(R.id.fragment_inicio);
         }
-
     }
 
     //Método que reemplaza el fragment existente por el nuevo

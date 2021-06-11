@@ -23,7 +23,7 @@ import com.jvamou.walls4me.R;
 
 public class FragmentInfo extends Fragment {
 
-
+    //Vars globales
     TextView email;
     Button btnAvisoLegal, btnCerrarSesion;
     private final static String avisoLegal = "https://firebasestorage.googleapis.com/v0/b/walls4me-56a6b.appspot.com/o/aviso_legal_walls4me.html?alt=media&token=3a1b4277-3de0-4383-ad74-771d2cead171";
@@ -40,6 +40,7 @@ public class FragmentInfo extends Fragment {
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         View v = inflater.inflate(R.layout.frg_info, container, false);
 
+        //Se obtiene al usuario actualmente logueado
         FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
 
         email = v.findViewById(R.id.frg_info_email);
@@ -50,6 +51,7 @@ public class FragmentInfo extends Fragment {
             email.setText(user.getEmail());
         }
 
+        //Listener que abre en el navegador la url que contiene el String avisoLegal
         btnAvisoLegal.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -59,6 +61,7 @@ public class FragmentInfo extends Fragment {
             }
         });
 
+        //Listener que cierra sesión y redirige a InicialActivity
         btnCerrarSesion.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {

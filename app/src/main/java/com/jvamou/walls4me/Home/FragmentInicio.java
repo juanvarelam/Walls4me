@@ -12,6 +12,7 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Toast;
 
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
@@ -31,11 +32,10 @@ import java.util.ArrayList;
 
 public class FragmentInicio extends Fragment {
 
+    //Vars globales
     RecyclerView recyclerView;
     AdapterFrgInicio adapterFrgInicio;
-
     ArrayList<Wallpaper> wallpapersList;
-
     private DatabaseReference dbRef;
 
 
@@ -93,6 +93,8 @@ public class FragmentInicio extends Fragment {
 
                 if(task.isSuccessful()) {
                     limpiarDatos();
+
+                    //Se obtiene la url de los archivos y se añaden a la arrayList
                     for(DocumentSnapshot doc: task.getResult().getDocuments()) {
                         Wallpaper wallpaper = new Wallpaper();
                         wallpaper.url = doc.getString("url");
@@ -103,14 +105,13 @@ public class FragmentInicio extends Fragment {
                         adapterFrgInicio.notifyDataSetChanged();
                     }
                 }else{
-                    String error = task.getException().getLocalizedMessage();
-                    Log.e("FIREBASE", error);
+                    Toast.makeText(getContext(), "Error", Toast.LENGTH_LONG).show();
                 }
             }
         });
     }
 
-
+    //Método que eliminar el contenido del arrayList y crea uno vacío
     private void limpiarDatos() {
         if (wallpapersList != null) {
             wallpapersList.clear();
