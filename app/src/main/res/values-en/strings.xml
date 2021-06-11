@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="act_inicial_txt_boton_login">Log in</string>
+    <string name="act_inicial_txt_boton_registrarse">Sign up</string>
+    <string name="act_login_txt_ir_a_registrarse">Do not have an account? Sign up!</string>
+    <string name="act_login_btn_login">Log in</string>
+    <string name="act_login_btn_recordar_pass">Remember password</string>
+    <string name="act_register_btn_register">Sign up</string>
+    <string name="bottom_navigation_categorias">Categories</string>
+    <string name="bottom_navigation_favoritos">Favourites</string>
+    <string name="bottom_navigation_home">Home</string>
+    <string name="act_login_hint_email">Email</string>
+    <string name="act_login_hint_password">Password</string>
+    <string name="act_register_hint_nombre">Name</string>
+    <string name="act_register_hint_email">Email</string>
+    <string name="act_register_hint_password">Password</string>
+    <string name="act_register_hint_confirm_password">Confirm password</string>
+    <string name="act_register_txt_ir_a_login">Do you have an account? Log in!</string>
+    <string name="act_login_btn_recordar_password">Forgot password?</string>
+    <string name="act_recupera_pass_hint_email">Email</string>
+    <string name="act_recupera_pass_recuperar_pass">Recover password</string>
+    <string name="titulo_recupera_pass">Did you forgot the password?</string>
+    <string name="subtitulo_recupera_pass">Enter the email address associated with your account to reset your password.</string>
+    <string name="act_wallpaper_btn_establecer_fondo">Set</string>
+    <string name="act_wallpaper_btn_mostrar_opciones">Touch the image to show the options</string>
+    <string name="act_login_mostrar_password">Show</string>
+    <string name="frg_favoritos_disponobilidad">You will soon be able to save your favorite backgrounds!</string>
+    <string name="act_abstracto_txt_cabecera">Abstract</string>
+    <string name="act_ajustes_txt_cerrar_sesion">Log out</string>
+    <string name="act_recupera_pass_volver">Go to login</string>
+    <string name="bottom_navigation_info">Info</string>
+    <string name="act_aanimales_txt_cabecera">Animals</string>
+    <string name="act_deportes_txt_cabecera">Sports</string>
+    <string name="act_paisajes_txt_cabecera">Landscapes</string>
+    <string name="act_texturas_txt_cabecera">Textures</string>
+    <string name="act_vehiculos_txt_cabecera">Vehicles</string>
+    <string name="frg_ajustes_email">Email</string>
+    <string name="frg_ajustes_nombre_usuario">User</string>
+    <string name="act_wallpaper_btn_visualizar">View</string>
+    <string name="frg_info_aviso_legal">Legal Notice</string>
+    <string name="act_login_correo_invalido">Invalid email</string>
+    <string name="act_login_longitud_password">Minimum length is 8 characters</string>
+    <string name="act_login_numero_password">Must contain a number</string>
+    <string name="act_login_mensaje_bienvenida">Welcome to Walls4me!</string>
+    <string name="act_login_mensaje_error">"Invalid email or password "</string>
+</resources>

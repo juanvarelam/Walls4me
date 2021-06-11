@@ -1,20 +1,15 @@
 <resources>
-    <string name="app_name">Walls4me</string>
-    <string name="act_inicial_slogan">Deja volar tu imaginación...</string>
-    <string name="act_inicial_nombre_app">Walls4me</string>
-    <string name="act_inicial_nombre">Walls4me</string>
+    <string name="app_name" translatable="false">Walls4me</string>
+    <string name="act_inicial_nombre_app" translatable="false">Walls4me</string>
+    <string name="act_inicial_nombre" translatable="false">Walls4me</string>
     <string name="act_inicial_txt_boton_login">Iniciar sesión</string>
     <string name="act_inicial_txt_boton_registrarse">Registrarse</string>
-    <string name="act_login_txt_cabecera">Iniciar sesión</string>
-    <string name="act_login_txt_ir_a_registrarse"><u>¿No tienes una cuenta? Regístrate!</u></string>
+    <string name="act_login_txt_ir_a_registrarse">¿No tienes una cuenta? Regístrate!</string>
     <string name="act_login_btn_login">Iniciar sesión</string>
     <string name="act_login_btn_recordar_pass">Recordar contraseña</string>
-    <string name="act_register_txt_cabecera">Registrarse</string>
     <string name="act_register_btn_register">Registrarse</string>
     <string name="bottom_navigation_categorias">Categorías</string>
     <string name="bottom_navigation_favoritos">Favoritos</string>
-    <string name="hello_blank_fragment">Hello blank fragment</string>
-    <string name="fragment_seleccionado">▁</string>
     <string name="bottom_navigation_home" formatted="true">Inicio</string>
     <string name="act_login_hint_email">Email</string>
     <string name="act_login_hint_password">Contraseña</string>
@@ -22,19 +17,16 @@
     <string name="act_register_hint_email">Email</string>
     <string name="act_register_hint_password">Contraseña</string>
     <string name="act_register_hint_confirm_password">Repita la contraseña</string>
-    <string name="act_register_txt_ir_a_login"><u>¿Tienes una cuenta? Inicia sesión</u></string>
-    <string name="act_login_btn_recordar_password"><u>Olvidaste tu contraseña?</u></string>
-    <string name="act_recupera_pass_txt_cabecera">Recuperar contraseña</string>
+    <string name="act_register_txt_ir_a_login">¿Tienes una cuenta? Inicia sesión</string>
+    <string name="act_login_btn_recordar_password">Olvidaste tu contraseña?</string>
     <string name="act_recupera_pass_hint_email">Email</string>
     <string name="act_recupera_pass_recuperar_pass">Recuperar contraseña</string>
     <string name="titulo_recupera_pass">¿Has olvidado la contraseña?</string>
     <string name="subtitulo_recupera_pass">Introduce el correo electrónico asociado a tu cuenta para restablecer la contraseña.</string>
     <string name="act_wallpaper_btn_establecer_fondo">Establecer</string>
-    <string name="act_wallpaper_btn_descargar">Descargar</string>
-    <string name="act_wallpaper_btn_tocar">Toque la imagen para ver las opciones</string>
     <string name="act_wallpaper_btn_mostrar_opciones">Toque la imagen para mostrar las opciones</string>
     <string name="act_login_mostrar_password">Mostrar</string>
-    <string name="act_recupera_pass_volver"><u>Ir a inicio de sesión</u></string>
+    <string name="act_recupera_pass_volver">Ir a inicio de sesión</string>
     <string name="frg_favoritos_disponobilidad">¡En breves podrás guardar tus fondos favoritos!</string>
     <string name="act_abstracto_txt_cabecera">Abstracto</string>
     <string name="act_ajustes_txt_cerrar_sesion">Cerrar sesión</string>
@@ -48,4 +40,9 @@
     <string name="frg_ajustes_nombre_usuario">Usuario</string>
     <string name="act_wallpaper_btn_visualizar">Visualizar</string>
     <string name="frg_info_aviso_legal">Aviso legal</string>
+    <string name="act_login_correo_invalido">Correo inválido</string>
+    <string name="act_login_longitud_password">La longitud mínima es de 8 caracteres</string>
+    <string name="act_login_numero_password">Debe contener un número</string>
+    <string name="act_login_mensaje_bienvenida">¡Bienvenido/a a Walls4me!</string>
+    <string name="act_login_mensaje_error">Correo o contraseña incorrectos</string>
 </resources>
