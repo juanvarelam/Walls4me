@@ -12,7 +12,7 @@
         android:id="@+id/act_inicial_txt_nombre"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="54dp"
+        android:layout_marginTop="30dp"
         android:fontFamily="@font/dohyeon_regular"
         android:text="@string/act_inicial_nombre"
         android:textColor="@color/botones"
