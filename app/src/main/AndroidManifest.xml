@@ -22,10 +22,10 @@
         <activity android:name=".Categorias.AbstractoActivity" />
         <activity android:name=".Models.WallpaperActivity" />
         <activity android:name=".Auth.RecuperaPassActivity" />
-        <activity android:name=".Auth.InicialActivity" />
+        <activity android:name=".Home.HomeActivity" />
         <activity android:name=".Auth.LoginActivity" />
         <activity android:name=".Auth.RegisterActivity" />
-        <activity android:name=".Home.HomeActivity">
+        <activity android:name=".Auth.InicialActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
                 <category android:name="android.intent.category.LAUNCHER" />
