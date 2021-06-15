@@ -50,7 +50,7 @@ public class WallpaperActivity extends AppCompatActivity {
         Glide.with(this)
                 .load(url)
                 .placeholder(R.drawable.ic_imagen_ph)
-                .error(R.drawable.ic_imagen_error)
+                .error(R.drawable.ic_imagen_ph)
                 .into(imgFondo);
 
         //Por defecto se establece esta visibilidad a los componentes

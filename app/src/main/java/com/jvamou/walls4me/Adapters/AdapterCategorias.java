@@ -58,7 +58,7 @@ public class AdapterCategorias extends RecyclerView.Adapter<AdapterCategorias.Vi
         Glide.with(mContext)
                 .load(url)
                 .placeholder(R.drawable.ic_imagen_ph)
-                .error(R.drawable.ic_imagen_error)
+                .error(R.drawable.ic_imagen_ph)
                 .into(holder.imageView);
 
         holder.gridLayout.setOnClickListener(new View.OnClickListener() {

@@ -49,7 +49,7 @@ public class AdapterActVehiculos extends RecyclerView.Adapter<AdapterActVehiculo
         Glide.with(mContext)
                 .load(url)
                 .placeholder(R.drawable.ic_imagen_ph)  //imagen mientras carga
-                .error(R.drawable.ic_imagen_error)  //imagen en caso de no poder
+                .error(R.drawable.ic_imagen_ph)  //imagen en caso de no poder
                 .into(holder.imageView);
 
         holder.gridLayout.setOnClickListener(new View.OnClickListener() {

@@ -49,7 +49,7 @@ public class AdapterActAbstracto extends RecyclerView.Adapter<AdapterActAbstract
         Glide.with(mContext)
                 .load(url)
                 .placeholder(R.drawable.ic_imagen_ph)  //imagen mientras carga
-                .error(R.drawable.ic_imagen_error)  //imagen en caso de no poder mostrarse
+                .error(R.drawable.ic_imagen_ph)  //imagen en caso de no poder mostrarse
                 .into(holder.imageView);
 
         //
